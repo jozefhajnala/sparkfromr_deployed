@@ -258,10 +258,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> Exploring the invoke API from R with Java reflection and examining invokes with logs</h1>
-<blockquote>
-<p>Then darkness took me, and I strayed out of thought and time, and I wandered far on roads that I will not tell</p>
-<p><em>Gandalf the White</em></p>
-</blockquote>
+<div class="wizardry">
+<p>
+Then darkness took me, and I strayed out of thought and time, and I wandered far on roads that I will not tell
+</p>
+<ul>
+<li>
+Gandalf the White
+</li>
+</ul>
+</div>
 <p>In the previous chapters, we have shown how to write functions as both <a href="https://jozef.io/r202-spark-r-dplyr-verbs/">combinations of dplyr verbs</a>, <a href="https://jozef.io/r203-spark-r-sql/">SQL query generators</a> that can be executed by Spark and <a href="https://jozef.io/r204-spark-r-invoke-scala/">how to use the lower-level API</a> to invoke methods on Java object references from R.</p>
 <p>In this chapter, we will look into more details around sparklyr’s <code>invoke()</code> API, investigate available methods for different classes of objects using the Java reflection API and look under the hood of the sparklyr interface mechanism with invoke logging.</p>
 <div id="examining-available-methods-from-r" class="section level2">

@@ -258,10 +258,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Using the lower-level invoke API to manipulate Spark’s Java objects from R</h1>
-<blockquote>
-<p>There will be no foolish wand-waving or silly incantations in this class.</p>
-<p><em>Severus Snape</em></p>
-</blockquote>
+<div class="wizardry">
+<p>
+There will be no foolish wand-waving or silly incantations in this class.
+</p>
+<ul>
+<li>
+Severus Snape
+</li>
+</ul>
+</div>
 <p>In the previous chapters, we have shown how to write functions as both <a href="constructing-functions-by-piping-dplyr-verbs.html">combinations of dplyr verbs</a> and <a href="using-r-to-construct-sql-queries-and-let-spark-execute-them.html">SQL query generators</a> that can be executed by Spark, how to execute them with DBI and how to achieve lazy SQL statements that only get executed when needed.</p>
 <p>In this chapter, we will look at how to write R functions that interface with Spark via a lower-level invocation API that lets us use all the functionality that is exposed by the Scala Spark APIs. We will also show how such R calls relate to Scala code.</p>
 <div id="the-invoke-api-of-sparklyr" class="section level2">

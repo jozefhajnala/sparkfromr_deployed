@@ -434,9 +434,7 @@ $(function () {
 
 </div>
 <p>Note that the absolute values here will vary based on the setup, the important message is in the relative differences.</p>
-<blockquote>
 <p>We can see that the operations executed via the SQL translation mechanism of dbplyr were executed in around <em>0.5 seconds</em> while those via spark_apply took orders of magnitude longer - more than <em>6 minutes</em>.</p>
-</blockquote>
 </div>
 <div id="what-happens-when-we-use-custom-functions-with-spark_apply" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> What happens when we use custom functions with <code>spark_apply</code></h3>
@@ -473,9 +471,7 @@ $(function () {
 <div id="what-is-apache-arrow-and-how-it-improves-performance" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> What is Apache Arrow and how it improves performance</h3>
 <p>Our benchmarks have shown that using <code>spark_apply()</code> does not scale well and the penalty of the bottleneck in performance caused by serialization, deserialization, and transfer is too high.</p>
-<blockquote>
 <p>To partially mitigate this we can take advantage of <a href="https://arrow.apache.org/">Apache Arrow</a>, a cross-language development platform for in-memory data that specifies a standardized language-independent columnar memory format for flat and hierarchical data.</p>
-</blockquote>
 <p>By adding support for Arrow in sparklyr, it makes Spark perform the row-format to column-format conversion in parallel in Spark, data is then transferred through the socket but no custom serialization takes place and all the R process needs to do is copy this data from the socket into its heap, transform it and copy it back to the socket connection.</p>
 <p>This makes the process significantly faster:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">mb =<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
@@ -582,9 +578,7 @@ $(function () {
 <div id="the-take-home-message" class="section level2">
 <h2><span class="header-section-number">5.4</span> The take-home message</h2>
 <p>Adding Arrow to the mix certainly significantly improved the performance of our example code, but is still quite slow compared to the native approach. Based on the above, we could conclude that</p>
-<blockquote>
 <p>Performance benefits are present mainly when all the computation is performed within Spark and R serves merely as a “messaging agent”, sending commands to Spark to be executed. If there are object serialization and transfer of larger objects present, performance is strongly impacted.</p>
-</blockquote>
 <p>The take-home message from this exercise is that we should strive to only use R code that can be executed within the Spark instance. If we need some data retrieved, it is advisable that this is data that was previously heavily aggregated within Spark and only a small amount is transferred to the R session.</p>
 </div>
 <div id="but-we-still-need-arbitrary-functions-to-run-fast" class="section level2">

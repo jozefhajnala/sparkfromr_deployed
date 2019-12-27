@@ -258,10 +258,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="using-r-to-construct-sql-queries-and-let-spark-execute-them" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Using R to construct SQL queries and let Spark execute them</h1>
-<blockquote>
-<p>I feel honoured to be the second to whom you turn. What have I done to deserve to be so high on your list?</p>
-<p><em>Yennefer of Vengerberg</em></p>
-</blockquote>
+<div class="wizardry">
+<p>
+I feel honoured to be the second to whom you turn. What have I done to deserve to be so high on your list?
+</p>
+<ul>
+<li>
+Yennefer of Vengerberg
+</li>
+</ul>
+</div>
 <p>In the <a href="constructing-functions-by-piping-dplyr-verbs.html">previous chapter</a> of this series, we looked at writing R functions that can be executed directly by Spark without serialization overhead with a focus on writing functions as combinations of dplyr verbs and investigated how the SQL is generated and Spark plans created.</p>
 <p>In this chapter, we will look at how to write R functions that generate SQL queries that can be executed by Spark, how to execute them with DBI and how to achieve lazy SQL statements that only get executed when needed. We also briefly present wrapping these approaches into functions that can be combined with other Spark operations.</p>
 <div id="r-functions-as-spark-sql-generators" class="section level2">
