@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Footnotes | Using Spark from R for performance with arbitrary code</title>
+  <title>Chapter 10 References and resources | Using Spark from R for performance with arbitrary code</title>
   <meta name="description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Footnotes | Using Spark from R for performance with arbitrary code" />
+  <meta property="og:title" content="Chapter 10 References and resources | Using Spark from R for performance with arbitrary code" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Footnotes | Using Spark from R for performance with arbitrary code" />
+  <meta name="twitter:title" content="Chapter 10 References and resources | Using Spark from R for performance with arbitrary code" />
   
   <meta name="twitter:description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="references-and-resources.html"/>
-
+<link rel="prev" href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"/>
+<link rel="next" href="footnotes.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -258,14 +258,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="footnotes" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Footnotes</h1>
-<div id="setup-of-apache-arrow" class="section level2">
-<h2><span class="header-section-number">11.1</span> Setup of Apache Arrow</h2>
-<p>It is worth noting that the implementation of Apache Arrow <a href="https://github.com/apache/arrow/tree/master/r">into R</a> arrived on <a href="https://cran.r-project.org/package=arrow">CRAN</a> early August 2019, which means at the time of writing of this article it is on CRAN about 3 weeks. The functionality also depends on the <a href="https://arrow.apache.org/install/">Arrow C++ library</a>, so installation is a bit more difficult than with some other R packages.</p>
-<p>Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.14.1, sparklyr 1.0.2 and the 0.14.1 version of the C++ libraries.
-Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.14.1, sparklyr 1.0.2 and the 0.14.1 version of the C++ libraries.</p>
-<p>The aforementioned <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">Docker image</a> has both the C++ libraries and the R arrow package available for use.</p>
+<div id="references-and-resources" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> References and resources</h1>
+<div id="getting-started-with-sparklyr" class="section level2">
+<h2><span class="header-section-number">10.1</span> Getting started with sparklyr</h2>
+<ul>
+<li>The <a href="https://therinspark.com/starting.html">Getting Started chapter</a> of the Mastering Spark with R book</li>
+<li>The <a href="https://therinspark.com/appendix.html#appendix-prerequisites">Prerequisites appendix</a> f the Mastering Spark with R book</li>
+<li>RStudio’s <a href="https://spark.rstudio.com/#installation">spark website</a></li>
+</ul>
+</div>
+<div id="dplyr-syntax" class="section level2">
+<h2><span class="header-section-number">10.2</span> dplyr syntax</h2>
+<ul>
+<li>Overview of the <a href="https://dplyr.tidyverse.org/">dplyr syntax</a></li>
+<li>The <a href="https://r4ds.had.co.nz/transform.html">Data transformation</a> chapter of R for Data Science</li>
+</ul>
+</div>
+<div id="dbi-spark-sql-hive" class="section level2">
+<h2><span class="header-section-number">10.3</span> DBI, Spark SQL, Hive</h2>
+<ul>
+<li><a href="https://spark.apache.org/docs/latest/api/sql/index.html">Spark SQL, Built-in Functions</a></li>
+<li>Documentation on <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF">Hive Operators and User-Defined Functions</a> website</li>
+<li>The <a href="https://cran.r-project.org/package=DBI">DBI package</a> on CRAN</li>
+<li>The <a href="https://db.rstudio.com/dbi/">Introduction to DBI</a> page of Databases using R</li>
+<li>The <a href="https://dbplyr.tidyverse.org/">Overview</a> page of dbplyr documentation</li>
+</ul>
+</div>
+<div id="docker" class="section level2">
+<h2><span class="header-section-number">10.4</span> Docker</h2>
+<ul>
+<li><a href="https://docs.docker.com/get-started/">Get started with Docker</a></li>
+<li><a href="https://www.rocker-project.org/">The Rocker Project</a> - Docker Containers for the R Environment</li>
+</ul>
+</div>
+<div id="java-scala-and-friends" class="section level2">
+<h2><span class="header-section-number">10.5</span> Java, Scala and friends</h2>
+<ul>
+<li>Spark <a href="https://spark.apache.org/docs/latest/api/scala/index.html">Scala API</a> documentation</li>
+<li>Spark <a href="https://spark.apache.org/docs/latest/api/java/index.html">Java API</a> documentation</li>
+<li>Wikipedia’s article on <a href="https://en.wikipedia.org/wiki/Method_chaining">Method Chaining</a></li>
+<li>Stackoverflow <a href="https://stackoverflow.com/questions/37628/what-is-reflection-and-why-is-it-useful">discussion of reflection</a></li>
+</ul>
+</div>
+<div id="apache-arrow" class="section level2">
+<h2><span class="header-section-number">10.6</span> Apache Arrow</h2>
+<ul>
+<li>Homepage of <a href="https://arrow.apache.org/">Apache Arrow</a></li>
+<li>Arrow C++ library <a href="https://arrow.apache.org/install/">installation guide</a></li>
+<li>R package <a href="https://cran.r-project.org/package=arrow">arrow on CRAN</a></li>
+<li>R package <a href="https://github.com/apache/arrow/tree/master/r">arrow on GitHub</a></li>
+</ul>
+</div>
+<div id="physical-books" class="section level2">
+<h2><span class="header-section-number">10.7</span> Physical Books</h2>
+<ul>
+<li><a href="https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/">Spark: The Definitive Guide</a> by Matei Zaharia, Bill Chambers</li>
+<li><a href="https://www.oreilly.com/library/view/mastering-spark-with/9781492046363/">Mastering Spark with R</a> by Edgar Ruiz, Kevin Kuo, Javier Luraschi</li>
+</ul>
 
 </div>
 </div>
@@ -274,8 +324,8 @@ Care should also be taken with regards to the capability of the C++ library, the
           </div>
         </div>
       </div>
-<a href="references-and-resources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="footnotes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
