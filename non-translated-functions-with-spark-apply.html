@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Footnotes | Using Spark from R for performance with arbitrary code</title>
+  <title>Chapter 6 Non-translated functions with spark_apply | Using Spark from R for performance with arbitrary code</title>
   <meta name="description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Footnotes | Using Spark from R for performance with arbitrary code" />
+  <meta property="og:title" content="Chapter 6 Non-translated functions with spark_apply | Using Spark from R for performance with arbitrary code" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Footnotes | Using Spark from R for performance with arbitrary code" />
+  <meta name="twitter:title" content="Chapter 6 Non-translated functions with spark_apply | Using Spark from R for performance with arbitrary code" />
   
   <meta name="twitter:description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="references-and-resources.html"/>
-
+<link rel="prev" href="communication-between-spark-and-sparklyr.html"/>
+<link rel="next" href="constructing-functions-by-piping-dplyr-verbs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -258,14 +258,294 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="footnotes" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> Footnotes</h1>
-<div id="setup-of-apache-arrow" class="section level2">
-<h2><span class="header-section-number">12.1</span> Setup of Apache Arrow</h2>
-<p>It is worth noting that the implementation of Apache Arrow <a href="https://github.com/apache/arrow/tree/master/r">into R</a> arrived on <a href="https://cran.r-project.org/package=arrow">CRAN</a> early August 2019, which means at the time of writing of this article it is on CRAN about 3 weeks. The functionality also depends on the <a href="https://arrow.apache.org/install/">Arrow C++ library</a>, so installation is a bit more difficult than with some other R packages.</p>
-<p>Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.14.1, sparklyr 1.0.2 and the 0.14.1 version of the C++ libraries.
-Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.14.1, sparklyr 1.0.2 and the 0.14.1 version of the C++ libraries.</p>
-<p>The aforementioned <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">Docker image</a> has both the C++ libraries and the R arrow package available for use.</p>
+<div id="non-translated-functions-with-spark_apply" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Non-translated functions with spark_apply</h1>
+<script src="static/js/highcharts.js"></script>
+<script src="static/js/highcharts-more.js"></script>
+<p>In this chapter we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance.</p>
+<p>As an example we will try to rewrite the function from the previous chapter allowing to use the non-translated <code>casefold()</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># Define a custom function using `casefold`</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">fun_r_custom &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName) {</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">  tbl[[colName]] &lt;-<span class="st"> </span><span class="kw">casefold</span>(tbl[[colName]], <span class="dt">upper =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">  tbl</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">}</a></code></pre></div>
+<p>Now, we can use the <code>spark_apply</code> interface to execute our custom function on a Spark DataFrame, providing the name of the column on which we want to apply the function as the <code>context</code> argument.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># Execute on Spark via `spark_apply`:</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">head</span>(tbl_weather) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">spark_apply</span>(fun_r_custom, <span class="dt">context =</span> {colName &lt;-<span class="st"> &quot;origin&quot;</span>})</a></code></pre></div>
+<pre><code>## # Source: spark&lt;?&gt; [?? x 16]
+##      id origin  year month   day  hour  temp  dewp humid wind_dir wind_speed
+##   &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+## 1     1 ewr     2013     1     1     1  39.0  26.1  59.4      270      10.4 
+## 2     2 ewr     2013     1     1     2  39.0  27.0  61.6      250       8.06
+## 3     3 ewr     2013     1     1     3  39.0  28.0  64.4      240      11.5 
+## 4     4 ewr     2013     1     1     4  39.9  28.0  62.2      250      12.7 
+## 5     5 ewr     2013     1     1     5  39.0  28.0  64.4      260      12.7 
+## 6     6 ewr     2013     1     1     6  37.9  28.0  67.2      240      11.5 
+## # … with 5 more variables: wind_gust &lt;dbl&gt;, precip &lt;dbl&gt;, pressure &lt;dbl&gt;,
+## #   visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+<div id="what-is-so-important-about-this-distinction" class="section level2">
+<h2><span class="header-section-number">6.1</span> What is so important about this distinction?</h2>
+<p>We have now shown that we can also send code that was not translated by <code>dbplyr</code> to Spark and get it executed without issues using <code>spark_apply()</code>. So what is the catch and where does the importance of the meaning of the word <em>interface</em> come in?</p>
+<p>Let us quickly examine the performance of the operations:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">mb =<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">  <span class="dt">times =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">  <span class="dt">hive_builtin =</span> <span class="kw">fun_hive_builtin</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="dt">translated_dplyr =</span> <span class="kw">fun_implemented</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  <span class="dt">spark_apply =</span> <span class="kw">spark_apply</span>(tbl_weather, fun_r_custom, <span class="dt">context =</span> {colName &lt;-<span class="st"> &quot;origin&quot;</span>}) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>()</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">)</a></code></pre></div>
+<script type="text/javascript">
+$(function () {
+  $('#r201-01-bench-spark-apply').highcharts({
+  title: {     
+    text: "Simple column transformation on a small dataset"     
+  },     
+  yAxis: {     
+    title: {     
+      text: "time (milliseconds)"     
+    },     
+    min: 0     
+  },     
+  credits: {     
+    enabled: false     
+  },     
+  exporting: {     
+    enabled: false     
+  },     
+  plotOptions: {     
+    series: {     
+      label: {     
+        enabled: false     
+      },     
+      turboThreshold: 0,     
+      marker: {     
+        symbol: "circle"     
+      },     
+      showInLegend: false     
+    },     
+    treemap: {     
+      layoutAlgorithm: "squarified"     
+    },     
+    boxplot: {     
+      fillColor: "#C9E4FF",     
+      lineWidth: 0.5,     
+      medianWidth: 1,     
+      stemDashStyle: "dot",     
+      stemWidth: 1,     
+      whiskerLength: "40%",     
+      whiskerWidth: 1     
+    }     
+  },     
+  chart: {     
+    type: "column"     
+  },     
+  xAxis: {     
+    type: "category",     
+    categories: ""     
+  },     
+  series: [     
+    {     
+      g2: null,     
+      data: [     
+        {     
+          name: "hive_builtin",     
+          low: 396,     
+          q1: 430,     
+          median: 461,     
+          q3: 486,     
+          high: 495     
+        },     
+        {     
+          name: "translated_dplyr",     
+          low: 407,     
+          q1: 431,     
+          median: 462.5,     
+          q3: 501,     
+          high: 511     
+        },     
+        {     
+          name: "spark_apply",     
+          low: 372653,     
+          q1: 374472,     
+          median: 376849,     
+          q3: 381262,     
+          high: 381262     
+        }     
+      ],     
+      type: "boxplot",     
+      id: null,     
+      color: "blue",     
+      name: "Simple column transformation on a small dataset"     
+    }     
+  ]     
+}     
+  );
+});
+</script>
+<div id="r201-01-bench-spark-apply">
+
+</div>
+<p>Note that the absolute values here will vary based on the setup and the infrastructure, the important message is in the relative differences, not in the absolute timings.</p>
+<p>We can see that the operations executed via the SQL translation mechanism of dbplyr were executed in around <em>0.5 seconds</em> while those via spark_apply took orders of magnitude longer - more than <em>6 minutes</em>.</p>
+</div>
+<div id="what-happens-when-we-use-custom-functions-with-spark_apply" class="section level2">
+<h2><span class="header-section-number">6.2</span> What happens when we use custom functions with <code>spark_apply</code></h2>
+<p>We can now see that the operation with <code>spark_apply()</code> is extremely slow compared to the other two. The key to understanding the difference is to examine how the custom transformations of data using R functions are performed within <code>spark_apply()</code>. In simplified terms, this happens in a few steps:</p>
+<ol style="list-style-type: decimal">
+<li>the data is moved in row-format from Spark into the R process through a socket connection. This is inefficient as multiple data types need to be deserialized over each row</li>
+<li>the data gets converted to columnar format since this is how R data frames are implemented</li>
+<li>the R functions are applied to compute the results</li>
+<li>the results are again converted to row-format, serialized row-by-row and sent back to Spark over the socket connection</li>
+</ol>
+</div>
+<div id="what-happens-when-we-use-translated-or-hive-built-in-functions" class="section level2">
+<h2><span class="header-section-number">6.3</span> What happens when we use translated or Hive built-in functions</h2>
+<p>When using functions that can be translated to Spark SQL the process is very different</p>
+<ul>
+<li>The call is translated to Spark SQL using the dbplyr backend</li>
+<li>The constructed query is sent to Spark for execution using DBI</li>
+<li>Only when <code>collect()</code> or <code>compute()</code> is called, the SQL is executed within Spark</li>
+<li>Only when <code>collect()</code> is called the results are also sent to the R session</li>
+</ul>
+<p>This means that the transfer of data only happens once and only when <code>collect()</code> is called, which saves a vast amount of overhead.</p>
+</div>
+<div id="which-r-functionality-is-currently-translated-and-built-in-to-hive" class="section level2">
+<h2><span class="header-section-number">6.4</span> Which R functionality is currently translated and built-in to Hive</h2>
+<p>An important question to answer with regards to performance then is what amount of functionality is available using the fast dbplyr backend. As seen above, these features can be categorized into two groups:</p>
+<ol style="list-style-type: decimal">
+<li><p>R functions translatable to Spark SQL via dbplyr. The full list of such functions is available on <a href="https://spark.rstudio.com/dplyr/#sql-translation">RStudio’s sparklyr website</a></p></li>
+<li><p>Hive built-in functions that get translated as they are and can be evaluated by Spark. The full list is available on the <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF">Hive Operators and User-Defined Functions</a> website.</p></li>
+</ol>
+</div>
+<div id="making-serialization-faster-with-apache-arrow" class="section level2">
+<h2><span class="header-section-number">6.5</span> Making serialization faster with Apache Arrow</h2>
+<div id="what-is-apache-arrow-and-how-it-improves-performance" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> What is Apache Arrow and how it improves performance</h3>
+<p>Our benchmarks have shown that using <code>spark_apply()</code> does not scale well and the penalty of the bottleneck in performance caused by serialization, deserialization, and transfer is too high.</p>
+<p>To partially mitigate this we can take advantage of <a href="https://arrow.apache.org/">Apache Arrow</a>, a cross-language development platform for in-memory data that specifies a standardized language-independent columnar memory format for flat and hierarchical data.</p>
+<p>By adding support for Arrow in sparklyr, it makes Spark perform the row-format to column-format conversion in parallel in Spark, data is then transferred through the socket but no custom serialization takes place and all the R process needs to do is copy this data from the socket into its heap, transform it and copy it back to the socket connection.</p>
+<p>This makes the process significantly faster:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">mb =<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">  <span class="dt">times =</span> <span class="dv">10</span>, </a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">  <span class="dt">setup =</span> <span class="kw">library</span>(arrow),</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">  <span class="dt">hive_builtin =</span> <span class="kw">fun_hive_builtin</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">  <span class="dt">translated_dplyr =</span> <span class="kw">fun_implemented</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">  <span class="dt">spark_apply_arrow =</span> <span class="kw">spark_apply</span>(tbl_weather, fun_r_custom, <span class="dt">context =</span> {colName &lt;-<span class="st"> &quot;origin&quot;</span>}) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>()</a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">)</a></code></pre></div>
+<p>We can see that the timing on <code>spark_apply()</code> decreased from more than 6 minutes to around 4.5 seconds, which is a very signigicant performance boost. Compared to the other methods we however still experience an order of magnitude difference.</p>
+<script type="text/javascript">
+$(function () {
+  $('#r201-02-bench-spark-apply').highcharts({
+  title: {     
+    text: "Simple column transformation on a small dataset"     
+  },     
+  yAxis: {     
+    title: {     
+      text: "time (milliseconds)"     
+    },     
+    min: 0     
+  },     
+  credits: {     
+    enabled: false     
+  },     
+  exporting: {     
+    enabled: false     
+  },     
+  plotOptions: {     
+    series: {     
+      label: {     
+        enabled: false     
+      },     
+      turboThreshold: 0,     
+      marker: {     
+        symbol: "circle"     
+      },     
+      showInLegend: false     
+    },     
+    treemap: {     
+      layoutAlgorithm: "squarified"     
+    },     
+    boxplot: {     
+      fillColor: "#C9E4FF",     
+      lineWidth: 0.5,     
+      medianWidth: 1,     
+      stemDashStyle: "dot",     
+      stemWidth: 1,     
+      whiskerLength: "40%",     
+      whiskerWidth: 1     
+    }     
+  },     
+  chart: {     
+    type: "column"     
+  },     
+  xAxis: {     
+    type: "category",     
+    categories: ""     
+  },     
+  series: [     
+    {     
+      g2: null,     
+      data: [     
+        {     
+          name: "hive_builtin",     
+          low: 494,     
+          q1: 510,     
+          median: 524.5,     
+          q3: 544,     
+          high: 577     
+        },     
+        {     
+          name: "translated_dplyr",     
+          low: 439,     
+          q1: 460,     
+          median: 556.5,     
+          q3: 571,     
+          high: 572     
+        },     
+        {     
+          name: "spark_apply_arrow",     
+          low: 4491,     
+          q1: 4498,     
+          median: 4526.5,     
+          q3: 4571,     
+          high: 4571     
+        }     
+      ],     
+      type: "boxplot",     
+      id: null,     
+      color: "blue",     
+      name: "Simple column transformation on a small dataset"     
+    }     
+  ]     
+}     
+  );
+});
+</script>
+<div id="r201-02-bench-spark-apply">
+
+</div>
+</div>
+</div>
+<div id="the-take-home-messages" class="section level2">
+<h2><span class="header-section-number">6.6</span> The take-home messages</h2>
+<p>Adding Arrow to the mix certainly significantly improved the performance of our example code, but is still quite slow compared to the native approach. Based on the above, we could conclude that:</p>
+<ul>
+<li>Performance benefits are present mainly when all the computation is performed within Spark and R serves merely as a “messaging agent”, sending commands to Spark to be executed</li>
+<li>If there are object serialization and transfer of larger objects present, performance is strongly impacted.</li>
+</ul>
+<p>The take-home message from this exercise is that</p>
+<ul>
+<li>We should strive to only use R code that can be executed within the Spark instance - If we need some data retrieved, it is advisable that this is data that was previously heavily aggregated within Spark and only a small amount is transferred to the R session.</li>
+</ul>
+</div>
+<div id="but-we-still-need-arbitrary-functions-to-run-fast" class="section level2">
+<h2><span class="header-section-number">6.7</span> But we still need arbitrary functions to run fast</h2>
+<p>In the next chapters, we will investigate a few options that allow us to retain the performance of Spark while still being able to write arbitrary R functions by using methods already implemented and available in the Spark API.</p>
+<ol style="list-style-type: decimal">
+<li><a href="constructing-functions-by-piping-dplyr-verbs.html">Rewriting the functions as collections of dplyr verbs that all support translation to Spark SQL</a></li>
+<li><a href="constructing-sql-and-executing-it-with-spark.html">Rewriting the functions into Spark SQL and execute them via Spark</a></li>
+<li>[Rewriting the functions as series of Scala method invocations]((using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html)</li>
+</ol>
 
 </div>
 </div>
@@ -274,8 +554,8 @@ Care should also be taken with regards to the capability of the C++ library, the
           </div>
         </div>
       </div>
-<a href="references-and-resources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="communication-between-spark-and-sparklyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="constructing-functions-by-piping-dplyr-verbs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

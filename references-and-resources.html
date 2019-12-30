@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 References and resources | Using Spark from R for performance with arbitrary code</title>
+  <title>Chapter 11 References and resources | Using Spark from R for performance with arbitrary code</title>
   <meta name="description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 References and resources | Using Spark from R for performance with arbitrary code" />
+  <meta property="og:title" content="Chapter 11 References and resources | Using Spark from R for performance with arbitrary code" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 References and resources | Using Spark from R for performance with arbitrary code" />
+  <meta name="twitter:title" content="Chapter 11 References and resources | Using Spark from R for performance with arbitrary code" />
   
   <meta name="twitter:description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-28" />
+<meta name="date" content="2019-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,85 +159,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="connecting-and-using-a-local-spark-instance.html"><a href="connecting-and-using-a-local-spark-instance.html#first-glance-at-the-data"><i class="fa fa-check"></i><b>4.3</b> First glance at the data</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html"><i class="fa fa-check"></i><b>5</b> Communication between Spark and sparklyr</a><ul>
-<li class="chapter" data-level="5.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#sparklyr-as-a-spark-interface-provider"><i class="fa fa-check"></i><b>5.1</b> Sparklyr as a Spark interface provider</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.1.1</b> An R function translated to Spark SQL</a></li>
-<li class="chapter" data-level="5.1.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-not-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.1.2</b> An R function not translated to Spark SQL</a></li>
-<li class="chapter" data-level="5.1.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r"><i class="fa fa-check"></i><b>5.1.3</b> A Hive built-in function not existing in R</a></li>
+<li class="chapter" data-level="5.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#sparklyr-as-a-spark-interface-provider"><i class="fa fa-check"></i><b>5.1</b> Sparklyr as a Spark interface provider</a></li>
+<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.2</b> An R function translated to Spark SQL</a></li>
+<li class="chapter" data-level="5.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-not-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.3</b> An R function not translated to Spark SQL</a></li>
+<li class="chapter" data-level="5.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r"><i class="fa fa-check"></i><b>5.4</b> A Hive built-in function not existing in R</a></li>
+<li class="chapter" data-level="5.5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#using-non-translated-functions-with-sparklyr"><i class="fa fa-check"></i><b>5.5</b> Using non-translated functions with sparklyr</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#using-non-translated-functions-with-sparklyr"><i class="fa fa-check"></i><b>5.2</b> Using non-translated functions with sparklyr</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-is-so-important-about-this-distinction"><i class="fa fa-check"></i><b>5.2.1</b> What is so important about this distinction?</a></li>
-<li class="chapter" data-level="5.2.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>5.2.2</b> What happens when we use custom functions with <code>spark_apply</code></a></li>
-<li class="chapter" data-level="5.2.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-happens-when-we-use-translated-or-hive-built-in-functions"><i class="fa fa-check"></i><b>5.2.3</b> What happens when we use translated or Hive built-in functions</a></li>
-<li class="chapter" data-level="5.2.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#which-r-functionality-is-currently-translated-and-built-in-to-hive"><i class="fa fa-check"></i><b>5.2.4</b> Which R functionality is currently translated and built-in to Hive</a></li>
+<li class="chapter" data-level="6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html"><i class="fa fa-check"></i><b>6</b> Non-translated functions with spark_apply</a><ul>
+<li class="chapter" data-level="6.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-so-important-about-this-distinction"><i class="fa fa-check"></i><b>6.1</b> What is so important about this distinction?</a></li>
+<li class="chapter" data-level="6.2" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>6.2</b> What happens when we use custom functions with <code>spark_apply</code></a></li>
+<li class="chapter" data-level="6.3" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-translated-or-hive-built-in-functions"><i class="fa fa-check"></i><b>6.3</b> What happens when we use translated or Hive built-in functions</a></li>
+<li class="chapter" data-level="6.4" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#which-r-functionality-is-currently-translated-and-built-in-to-hive"><i class="fa fa-check"></i><b>6.4</b> Which R functionality is currently translated and built-in to Hive</a></li>
+<li class="chapter" data-level="6.5" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>6.5</b> Making serialization faster with Apache Arrow</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-apache-arrow-and-how-it-improves-performance"><i class="fa fa-check"></i><b>6.5.1</b> What is Apache Arrow and how it improves performance</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>5.3</b> Making serialization faster with Apache Arrow</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-is-apache-arrow-and-how-it-improves-performance"><i class="fa fa-check"></i><b>5.3.1</b> What is Apache Arrow and how it improves performance</a></li>
+<li class="chapter" data-level="6.6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#the-take-home-messages"><i class="fa fa-check"></i><b>6.6</b> The take-home messages</a></li>
+<li class="chapter" data-level="6.7" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#but-we-still-need-arbitrary-functions-to-run-fast"><i class="fa fa-check"></i><b>6.7</b> But we still need arbitrary functions to run fast</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#the-take-home-message"><i class="fa fa-check"></i><b>5.4</b> The take-home message</a></li>
-<li class="chapter" data-level="5.5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#but-we-still-need-arbitrary-functions-to-run-fast"><i class="fa fa-check"></i><b>5.5</b> But we still need arbitrary functions to run fast</a></li>
+<li class="chapter" data-level="7" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html"><i class="fa fa-check"></i><b>7</b> Constructing functions by piping dplyr verbs</a><ul>
+<li class="chapter" data-level="7.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#r-functions-as-combinations-of-dplyr-verbs-and-spark"><i class="fa fa-check"></i><b>7.1</b> R functions as combinations of dplyr verbs and Spark</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#trying-it-with-base-r-functions"><i class="fa fa-check"></i><b>7.1.1</b> Trying it with base R functions</a></li>
+<li class="chapter" data-level="7.1.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-a-combination-of-supported-dplyr-verbs-and-operations"><i class="fa fa-check"></i><b>7.1.2</b> Using a combination of supported dplyr verbs and operations</a></li>
+<li class="chapter" data-level="7.1.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#investigating-the-sql-translation-and-its-spark-plan"><i class="fa fa-check"></i><b>7.1.3</b> Investigating the SQL translation and its Spark plan</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html"><i class="fa fa-check"></i><b>6</b> Constructing functions by piping dplyr verbs</a><ul>
-<li class="chapter" data-level="6.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#r-functions-as-combinations-of-dplyr-verbs-and-spark"><i class="fa fa-check"></i><b>6.1</b> R functions as combinations of dplyr verbs and Spark</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#trying-it-with-base-r-functions"><i class="fa fa-check"></i><b>6.1.1</b> Trying it with base R functions</a></li>
-<li class="chapter" data-level="6.1.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-a-combination-of-supported-dplyr-verbs-and-operations"><i class="fa fa-check"></i><b>6.1.2</b> Using a combination of supported dplyr verbs and operations</a></li>
-<li class="chapter" data-level="6.1.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#investigating-the-sql-translation-and-its-spark-plan"><i class="fa fa-check"></i><b>6.1.3</b> Investigating the SQL translation and its Spark plan</a></li>
+<li class="chapter" data-level="7.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#a-more-complex-use-case---joins-group-bys-and-aggregations"><i class="fa fa-check"></i><b>7.2</b> A more complex use case - Joins, group bys, and aggregations</a></li>
+<li class="chapter" data-level="7.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>7.3</b> Using the functions with local versus remote datasets</a></li>
+<li class="chapter" data-level="7.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#the-take-home-message"><i class="fa fa-check"></i><b>7.4</b> The take-home message</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#a-more-complex-use-case---joins-group-bys-and-aggregations"><i class="fa fa-check"></i><b>6.2</b> A more complex use case - Joins, group bys, and aggregations</a></li>
-<li class="chapter" data-level="6.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>6.3</b> Using the functions with local versus remote datasets</a></li>
-<li class="chapter" data-level="6.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#the-take-home-message-1"><i class="fa fa-check"></i><b>6.4</b> The take-home message</a></li>
+<li class="chapter" data-level="8" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html"><i class="fa fa-check"></i><b>8</b> Constructing SQL and executing it with Spark</a><ul>
+<li class="chapter" data-level="8.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#r-functions-as-spark-sql-generators"><i class="fa fa-check"></i><b>8.1</b> R functions as Spark SQL generators</a></li>
+<li class="chapter" data-level="8.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#executing-the-generated-queries-via-spark"><i class="fa fa-check"></i><b>8.2</b> Executing the generated queries via Spark</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-dbi-as-the-interface"><i class="fa fa-check"></i><b>8.2.1</b> Using DBI as the interface</a></li>
+<li class="chapter" data-level="8.2.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#invoking-sql-on-a-spark-session-object"><i class="fa fa-check"></i><b>8.2.2</b> Invoking sql on a Spark session object</a></li>
+<li class="chapter" data-level="8.2.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-tbl-with-dbplyrs-sql"><i class="fa fa-check"></i><b>8.2.3</b> Using tbl with dbplyr’s sql</a></li>
+<li class="chapter" data-level="8.2.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#wrapping-the-tbl-approach-into-functions"><i class="fa fa-check"></i><b>8.2.4</b> Wrapping the tbl approach into functions</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html"><i class="fa fa-check"></i><b>7</b> Constructing SQL and executing it with Spark</a><ul>
-<li class="chapter" data-level="7.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#r-functions-as-spark-sql-generators"><i class="fa fa-check"></i><b>7.1</b> R functions as Spark SQL generators</a></li>
-<li class="chapter" data-level="7.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#executing-the-generated-queries-via-spark"><i class="fa fa-check"></i><b>7.2</b> Executing the generated queries via Spark</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-dbi-as-the-interface"><i class="fa fa-check"></i><b>7.2.1</b> Using DBI as the interface</a></li>
-<li class="chapter" data-level="7.2.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#invoking-sql-on-a-spark-session-object"><i class="fa fa-check"></i><b>7.2.2</b> Invoking sql on a Spark session object</a></li>
-<li class="chapter" data-level="7.2.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-tbl-with-dbplyrs-sql"><i class="fa fa-check"></i><b>7.2.3</b> Using tbl with dbplyr’s sql</a></li>
-<li class="chapter" data-level="7.2.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#wrapping-the-tbl-approach-into-functions"><i class="fa fa-check"></i><b>7.2.4</b> Wrapping the tbl approach into functions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#combining-multiple-approaches-and-functions-into-lazy-datasets"><i class="fa fa-check"></i><b>7.3</b> Combining multiple approaches and functions into lazy datasets</a></li>
-<li class="chapter" data-level="7.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>7.4</b> Where SQL can be better than dbplyr translation</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>7.4.1</b> When a translation is not there</a></li>
-<li class="chapter" data-level="7.4.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>7.4.2</b> When translation does not provide expected results</a></li>
-<li class="chapter" data-level="7.4.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>7.4.3</b> When portability is important</a></li>
+<li class="chapter" data-level="8.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#combining-multiple-approaches-and-functions-into-lazy-datasets"><i class="fa fa-check"></i><b>8.3</b> Combining multiple approaches and functions into lazy datasets</a></li>
+<li class="chapter" data-level="8.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>8.4</b> Where SQL can be better than dbplyr translation</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>8.4.1</b> When a translation is not there</a></li>
+<li class="chapter" data-level="8.4.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>8.4.2</b> When translation does not provide expected results</a></li>
+<li class="chapter" data-level="8.4.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>8.4.3</b> When portability is important</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><i class="fa fa-check"></i><b>8</b> Using the lower-level invoke API to manipulate Spark’s Java objects from R</a><ul>
-<li class="chapter" data-level="8.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#the-invoke-api-of-sparklyr"><i class="fa fa-check"></i><b>8.1</b> The invoke() API of sparklyr</a></li>
-<li class="chapter" data-level="8.2" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#getting-started-with-the-invoke-api"><i class="fa fa-check"></i><b>8.2</b> Getting started with the invoke API</a></li>
-<li class="chapter" data-level="8.3" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#grouping-and-aggregation-with-invoke-chains"><i class="fa fa-check"></i><b>8.3</b> Grouping and aggregation with invoke chains</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#what-is-all-that-extra-code"><i class="fa fa-check"></i><b>8.3.1</b> What is all that extra code?</a></li>
+<li class="chapter" data-level="9" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><i class="fa fa-check"></i><b>9</b> Using the lower-level invoke API to manipulate Spark’s Java objects from R</a><ul>
+<li class="chapter" data-level="9.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#the-invoke-api-of-sparklyr"><i class="fa fa-check"></i><b>9.1</b> The invoke() API of sparklyr</a></li>
+<li class="chapter" data-level="9.2" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#getting-started-with-the-invoke-api"><i class="fa fa-check"></i><b>9.2</b> Getting started with the invoke API</a></li>
+<li class="chapter" data-level="9.3" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#grouping-and-aggregation-with-invoke-chains"><i class="fa fa-check"></i><b>9.3</b> Grouping and aggregation with invoke chains</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#what-is-all-that-extra-code"><i class="fa fa-check"></i><b>9.3.1</b> What is all that extra code?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#wrapping-the-invocations-into-r-functions"><i class="fa fa-check"></i><b>8.4</b> Wrapping the invocations into R functions</a></li>
-<li class="chapter" data-level="8.5" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#reconstructing-variable-normalization"><i class="fa fa-check"></i><b>8.5</b> Reconstructing variable normalization</a></li>
-<li class="chapter" data-level="8.6" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#where-invoke-can-be-better-than-dplyr-translation-or-sql"><i class="fa fa-check"></i><b>8.6</b> Where invoke can be better than dplyr translation or SQL</a></li>
-<li class="chapter" data-level="8.7" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+<li class="chapter" data-level="9.4" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#wrapping-the-invocations-into-r-functions"><i class="fa fa-check"></i><b>9.4</b> Wrapping the invocations into R functions</a></li>
+<li class="chapter" data-level="9.5" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#reconstructing-variable-normalization"><i class="fa fa-check"></i><b>9.5</b> Reconstructing variable normalization</a></li>
+<li class="chapter" data-level="9.6" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#where-invoke-can-be-better-than-dplyr-translation-or-sql"><i class="fa fa-check"></i><b>9.6</b> Where invoke can be better than dplyr translation or SQL</a></li>
+<li class="chapter" data-level="9.7" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#conclusion"><i class="fa fa-check"></i><b>9.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><i class="fa fa-check"></i><b>9</b> Exploring the invoke API from R with Java reflection and examining invokes with logs</a><ul>
-<li class="chapter" data-level="9.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#examining-available-methods-from-r"><i class="fa fa-check"></i><b>9.1</b> Examining available methods from R</a></li>
-<li class="chapter" data-level="9.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-java-reflection-api-to-list-the-available-methods"><i class="fa fa-check"></i><b>9.2</b> Using the Java reflection API to list the available methods</a></li>
-<li class="chapter" data-level="9.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#investigating-dataset-and-sparkcontext-class-methods"><i class="fa fa-check"></i><b>9.3</b> Investigating DataSet and SparkContext class methods</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-helpers-to-explore-the-methods"><i class="fa fa-check"></i><b>9.3.1</b> Using helpers to explore the methods</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#unexported-helpers-provided-by-sparklyr"><i class="fa fa-check"></i><b>9.3.2</b> Unexported helpers provided by sparklyr</a></li>
+<li class="chapter" data-level="10" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><i class="fa fa-check"></i><b>10</b> Exploring the invoke API from R with Java reflection and examining invokes with logs</a><ul>
+<li class="chapter" data-level="10.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#examining-available-methods-from-r"><i class="fa fa-check"></i><b>10.1</b> Examining available methods from R</a></li>
+<li class="chapter" data-level="10.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-java-reflection-api-to-list-the-available-methods"><i class="fa fa-check"></i><b>10.2</b> Using the Java reflection API to list the available methods</a></li>
+<li class="chapter" data-level="10.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#investigating-dataset-and-sparkcontext-class-methods"><i class="fa fa-check"></i><b>10.3</b> Investigating DataSet and SparkContext class methods</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-helpers-to-explore-the-methods"><i class="fa fa-check"></i><b>10.3.1</b> Using helpers to explore the methods</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#unexported-helpers-provided-by-sparklyr"><i class="fa fa-check"></i><b>10.3.2</b> Unexported helpers provided by sparklyr</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#how-sparklyr-communicates-with-spark-invoke-logging"><i class="fa fa-check"></i><b>9.4</b> How sparklyr communicates with Spark, invoke logging</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dplyr-verbs-translated-with-dbplyr"><i class="fa fa-check"></i><b>9.4.1</b> Using dplyr verbs translated with dbplyr</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dbi-to-send-queries"><i class="fa fa-check"></i><b>9.4.2</b> Using DBI to send queries</a></li>
-<li class="chapter" data-level="9.4.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-invoke-interface"><i class="fa fa-check"></i><b>9.4.3</b> Using the invoke interface</a></li>
-<li class="chapter" data-level="9.4.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#redirecting-the-invoke-logs"><i class="fa fa-check"></i><b>9.4.4</b> Redirecting the invoke logs</a></li>
+<li class="chapter" data-level="10.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#how-sparklyr-communicates-with-spark-invoke-logging"><i class="fa fa-check"></i><b>10.4</b> How sparklyr communicates with Spark, invoke logging</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dplyr-verbs-translated-with-dbplyr"><i class="fa fa-check"></i><b>10.4.1</b> Using dplyr verbs translated with dbplyr</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dbi-to-send-queries"><i class="fa fa-check"></i><b>10.4.2</b> Using DBI to send queries</a></li>
+<li class="chapter" data-level="10.4.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-invoke-interface"><i class="fa fa-check"></i><b>10.4.3</b> Using the invoke interface</a></li>
+<li class="chapter" data-level="10.4.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#redirecting-the-invoke-logs"><i class="fa fa-check"></i><b>10.4.4</b> Redirecting the invoke logs</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#conclusion-1"><i class="fa fa-check"></i><b>9.5</b> Conclusion</a></li>
+<li class="chapter" data-level="10.5" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#conclusion-1"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>10</b> References and resources</a><ul>
-<li class="chapter" data-level="10.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>10.1</b> Getting started with sparklyr</a></li>
-<li class="chapter" data-level="10.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dplyr-syntax"><i class="fa fa-check"></i><b>10.2</b> dplyr syntax</a></li>
-<li class="chapter" data-level="10.3" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>10.3</b> DBI, Spark SQL, Hive</a></li>
-<li class="chapter" data-level="10.4" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>10.4</b> Docker</a></li>
-<li class="chapter" data-level="10.5" data-path="references-and-resources.html"><a href="references-and-resources.html#java-scala-and-friends"><i class="fa fa-check"></i><b>10.5</b> Java, Scala and friends</a></li>
-<li class="chapter" data-level="10.6" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>10.6</b> Apache Arrow</a></li>
-<li class="chapter" data-level="10.7" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>10.7</b> Physical Books</a></li>
+<li class="chapter" data-level="11" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>11</b> References and resources</a><ul>
+<li class="chapter" data-level="11.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>11.1</b> Getting started with sparklyr</a></li>
+<li class="chapter" data-level="11.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dplyr-syntax"><i class="fa fa-check"></i><b>11.2</b> dplyr syntax</a></li>
+<li class="chapter" data-level="11.3" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>11.3</b> DBI, Spark SQL, Hive</a></li>
+<li class="chapter" data-level="11.4" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>11.4</b> Docker</a></li>
+<li class="chapter" data-level="11.5" data-path="references-and-resources.html"><a href="references-and-resources.html#java-scala-and-friends"><i class="fa fa-check"></i><b>11.5</b> Java, Scala and friends</a></li>
+<li class="chapter" data-level="11.6" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>11.6</b> Apache Arrow</a></li>
+<li class="chapter" data-level="11.7" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>11.7</b> Physical Books</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>11</b> Footnotes</a><ul>
-<li class="chapter" data-level="11.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>11.1</b> Setup of Apache Arrow</a></li>
+<li class="chapter" data-level="12" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>12</b> Footnotes</a><ul>
+<li class="chapter" data-level="12.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>12.1</b> Setup of Apache Arrow</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -259,9 +259,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="references-and-resources" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> References and resources</h1>
+<h1><span class="header-section-number">Chapter 11</span> References and resources</h1>
 <div id="getting-started-with-sparklyr" class="section level2">
-<h2><span class="header-section-number">10.1</span> Getting started with sparklyr</h2>
+<h2><span class="header-section-number">11.1</span> Getting started with sparklyr</h2>
 <ul>
 <li>The <a href="https://therinspark.com/starting.html">Getting Started chapter</a> of the Mastering Spark with R book</li>
 <li>The <a href="https://therinspark.com/appendix.html#appendix-prerequisites">Prerequisites appendix</a> f the Mastering Spark with R book</li>
@@ -269,14 +269,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="dplyr-syntax" class="section level2">
-<h2><span class="header-section-number">10.2</span> dplyr syntax</h2>
+<h2><span class="header-section-number">11.2</span> dplyr syntax</h2>
 <ul>
 <li>Overview of the <a href="https://dplyr.tidyverse.org/">dplyr syntax</a></li>
 <li>The <a href="https://r4ds.had.co.nz/transform.html">Data transformation</a> chapter of R for Data Science</li>
 </ul>
 </div>
 <div id="dbi-spark-sql-hive" class="section level2">
-<h2><span class="header-section-number">10.3</span> DBI, Spark SQL, Hive</h2>
+<h2><span class="header-section-number">11.3</span> DBI, Spark SQL, Hive</h2>
 <ul>
 <li><a href="https://spark.apache.org/docs/latest/api/sql/index.html">Spark SQL, Built-in Functions</a></li>
 <li>Documentation on <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF">Hive Operators and User-Defined Functions</a> website</li>
@@ -286,14 +286,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="docker" class="section level2">
-<h2><span class="header-section-number">10.4</span> Docker</h2>
+<h2><span class="header-section-number">11.4</span> Docker</h2>
 <ul>
 <li><a href="https://docs.docker.com/get-started/">Get started with Docker</a></li>
 <li><a href="https://www.rocker-project.org/">The Rocker Project</a> - Docker Containers for the R Environment</li>
 </ul>
 </div>
 <div id="java-scala-and-friends" class="section level2">
-<h2><span class="header-section-number">10.5</span> Java, Scala and friends</h2>
+<h2><span class="header-section-number">11.5</span> Java, Scala and friends</h2>
 <ul>
 <li>Spark <a href="https://spark.apache.org/docs/latest/api/scala/index.html">Scala API</a> documentation</li>
 <li>Spark <a href="https://spark.apache.org/docs/latest/api/java/index.html">Java API</a> documentation</li>
@@ -302,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="apache-arrow" class="section level2">
-<h2><span class="header-section-number">10.6</span> Apache Arrow</h2>
+<h2><span class="header-section-number">11.6</span> Apache Arrow</h2>
 <ul>
 <li>Homepage of <a href="https://arrow.apache.org/">Apache Arrow</a></li>
 <li>Arrow C++ library <a href="https://arrow.apache.org/install/">installation guide</a></li>
@@ -311,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="physical-books" class="section level2">
-<h2><span class="header-section-number">10.7</span> Physical Books</h2>
+<h2><span class="header-section-number">11.7</span> Physical Books</h2>
 <ul>
 <li><a href="https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/">Spark: The Definitive Guide</a> by Matei Zaharia, Bill Chambers</li>
 <li><a href="https://www.oreilly.com/library/view/mastering-spark-with/9781492046363/">Mastering Spark with R</a> by Edgar Ruiz, Kevin Kuo, Javier Luraschi</li>

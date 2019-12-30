@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Exploring the invoke API from R with Java reflection and examining invokes with logs | Using Spark from R for performance with arbitrary code</title>
+  <title>Chapter 10 Exploring the invoke API from R with Java reflection and examining invokes with logs | Using Spark from R for performance with arbitrary code</title>
   <meta name="description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Exploring the invoke API from R with Java reflection and examining invokes with logs | Using Spark from R for performance with arbitrary code" />
+  <meta property="og:title" content="Chapter 10 Exploring the invoke API from R with Java reflection and examining invokes with logs | Using Spark from R for performance with arbitrary code" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Exploring the invoke API from R with Java reflection and examining invokes with logs | Using Spark from R for performance with arbitrary code" />
+  <meta name="twitter:title" content="Chapter 10 Exploring the invoke API from R with Java reflection and examining invokes with logs | Using Spark from R for performance with arbitrary code" />
   
   <meta name="twitter:description" content="This bookdown publication attempts to provide practical insights into using the sparklyr interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-28" />
+<meta name="date" content="2019-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,85 +159,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="connecting-and-using-a-local-spark-instance.html"><a href="connecting-and-using-a-local-spark-instance.html#first-glance-at-the-data"><i class="fa fa-check"></i><b>4.3</b> First glance at the data</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html"><i class="fa fa-check"></i><b>5</b> Communication between Spark and sparklyr</a><ul>
-<li class="chapter" data-level="5.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#sparklyr-as-a-spark-interface-provider"><i class="fa fa-check"></i><b>5.1</b> Sparklyr as a Spark interface provider</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.1.1</b> An R function translated to Spark SQL</a></li>
-<li class="chapter" data-level="5.1.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-not-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.1.2</b> An R function not translated to Spark SQL</a></li>
-<li class="chapter" data-level="5.1.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r"><i class="fa fa-check"></i><b>5.1.3</b> A Hive built-in function not existing in R</a></li>
+<li class="chapter" data-level="5.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#sparklyr-as-a-spark-interface-provider"><i class="fa fa-check"></i><b>5.1</b> Sparklyr as a Spark interface provider</a></li>
+<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.2</b> An R function translated to Spark SQL</a></li>
+<li class="chapter" data-level="5.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-not-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.3</b> An R function not translated to Spark SQL</a></li>
+<li class="chapter" data-level="5.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r"><i class="fa fa-check"></i><b>5.4</b> A Hive built-in function not existing in R</a></li>
+<li class="chapter" data-level="5.5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#using-non-translated-functions-with-sparklyr"><i class="fa fa-check"></i><b>5.5</b> Using non-translated functions with sparklyr</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#using-non-translated-functions-with-sparklyr"><i class="fa fa-check"></i><b>5.2</b> Using non-translated functions with sparklyr</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-is-so-important-about-this-distinction"><i class="fa fa-check"></i><b>5.2.1</b> What is so important about this distinction?</a></li>
-<li class="chapter" data-level="5.2.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>5.2.2</b> What happens when we use custom functions with <code>spark_apply</code></a></li>
-<li class="chapter" data-level="5.2.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-happens-when-we-use-translated-or-hive-built-in-functions"><i class="fa fa-check"></i><b>5.2.3</b> What happens when we use translated or Hive built-in functions</a></li>
-<li class="chapter" data-level="5.2.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#which-r-functionality-is-currently-translated-and-built-in-to-hive"><i class="fa fa-check"></i><b>5.2.4</b> Which R functionality is currently translated and built-in to Hive</a></li>
+<li class="chapter" data-level="6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html"><i class="fa fa-check"></i><b>6</b> Non-translated functions with spark_apply</a><ul>
+<li class="chapter" data-level="6.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-so-important-about-this-distinction"><i class="fa fa-check"></i><b>6.1</b> What is so important about this distinction?</a></li>
+<li class="chapter" data-level="6.2" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>6.2</b> What happens when we use custom functions with <code>spark_apply</code></a></li>
+<li class="chapter" data-level="6.3" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-translated-or-hive-built-in-functions"><i class="fa fa-check"></i><b>6.3</b> What happens when we use translated or Hive built-in functions</a></li>
+<li class="chapter" data-level="6.4" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#which-r-functionality-is-currently-translated-and-built-in-to-hive"><i class="fa fa-check"></i><b>6.4</b> Which R functionality is currently translated and built-in to Hive</a></li>
+<li class="chapter" data-level="6.5" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>6.5</b> Making serialization faster with Apache Arrow</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-apache-arrow-and-how-it-improves-performance"><i class="fa fa-check"></i><b>6.5.1</b> What is Apache Arrow and how it improves performance</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>5.3</b> Making serialization faster with Apache Arrow</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#what-is-apache-arrow-and-how-it-improves-performance"><i class="fa fa-check"></i><b>5.3.1</b> What is Apache Arrow and how it improves performance</a></li>
+<li class="chapter" data-level="6.6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#the-take-home-messages"><i class="fa fa-check"></i><b>6.6</b> The take-home messages</a></li>
+<li class="chapter" data-level="6.7" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#but-we-still-need-arbitrary-functions-to-run-fast"><i class="fa fa-check"></i><b>6.7</b> But we still need arbitrary functions to run fast</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#the-take-home-message"><i class="fa fa-check"></i><b>5.4</b> The take-home message</a></li>
-<li class="chapter" data-level="5.5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#but-we-still-need-arbitrary-functions-to-run-fast"><i class="fa fa-check"></i><b>5.5</b> But we still need arbitrary functions to run fast</a></li>
+<li class="chapter" data-level="7" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html"><i class="fa fa-check"></i><b>7</b> Constructing functions by piping dplyr verbs</a><ul>
+<li class="chapter" data-level="7.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#r-functions-as-combinations-of-dplyr-verbs-and-spark"><i class="fa fa-check"></i><b>7.1</b> R functions as combinations of dplyr verbs and Spark</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#trying-it-with-base-r-functions"><i class="fa fa-check"></i><b>7.1.1</b> Trying it with base R functions</a></li>
+<li class="chapter" data-level="7.1.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-a-combination-of-supported-dplyr-verbs-and-operations"><i class="fa fa-check"></i><b>7.1.2</b> Using a combination of supported dplyr verbs and operations</a></li>
+<li class="chapter" data-level="7.1.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#investigating-the-sql-translation-and-its-spark-plan"><i class="fa fa-check"></i><b>7.1.3</b> Investigating the SQL translation and its Spark plan</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html"><i class="fa fa-check"></i><b>6</b> Constructing functions by piping dplyr verbs</a><ul>
-<li class="chapter" data-level="6.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#r-functions-as-combinations-of-dplyr-verbs-and-spark"><i class="fa fa-check"></i><b>6.1</b> R functions as combinations of dplyr verbs and Spark</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#trying-it-with-base-r-functions"><i class="fa fa-check"></i><b>6.1.1</b> Trying it with base R functions</a></li>
-<li class="chapter" data-level="6.1.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-a-combination-of-supported-dplyr-verbs-and-operations"><i class="fa fa-check"></i><b>6.1.2</b> Using a combination of supported dplyr verbs and operations</a></li>
-<li class="chapter" data-level="6.1.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#investigating-the-sql-translation-and-its-spark-plan"><i class="fa fa-check"></i><b>6.1.3</b> Investigating the SQL translation and its Spark plan</a></li>
+<li class="chapter" data-level="7.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#a-more-complex-use-case---joins-group-bys-and-aggregations"><i class="fa fa-check"></i><b>7.2</b> A more complex use case - Joins, group bys, and aggregations</a></li>
+<li class="chapter" data-level="7.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>7.3</b> Using the functions with local versus remote datasets</a></li>
+<li class="chapter" data-level="7.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#the-take-home-message"><i class="fa fa-check"></i><b>7.4</b> The take-home message</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#a-more-complex-use-case---joins-group-bys-and-aggregations"><i class="fa fa-check"></i><b>6.2</b> A more complex use case - Joins, group bys, and aggregations</a></li>
-<li class="chapter" data-level="6.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>6.3</b> Using the functions with local versus remote datasets</a></li>
-<li class="chapter" data-level="6.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#the-take-home-message-1"><i class="fa fa-check"></i><b>6.4</b> The take-home message</a></li>
+<li class="chapter" data-level="8" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html"><i class="fa fa-check"></i><b>8</b> Constructing SQL and executing it with Spark</a><ul>
+<li class="chapter" data-level="8.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#r-functions-as-spark-sql-generators"><i class="fa fa-check"></i><b>8.1</b> R functions as Spark SQL generators</a></li>
+<li class="chapter" data-level="8.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#executing-the-generated-queries-via-spark"><i class="fa fa-check"></i><b>8.2</b> Executing the generated queries via Spark</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-dbi-as-the-interface"><i class="fa fa-check"></i><b>8.2.1</b> Using DBI as the interface</a></li>
+<li class="chapter" data-level="8.2.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#invoking-sql-on-a-spark-session-object"><i class="fa fa-check"></i><b>8.2.2</b> Invoking sql on a Spark session object</a></li>
+<li class="chapter" data-level="8.2.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-tbl-with-dbplyrs-sql"><i class="fa fa-check"></i><b>8.2.3</b> Using tbl with dbplyr’s sql</a></li>
+<li class="chapter" data-level="8.2.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#wrapping-the-tbl-approach-into-functions"><i class="fa fa-check"></i><b>8.2.4</b> Wrapping the tbl approach into functions</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html"><i class="fa fa-check"></i><b>7</b> Constructing SQL and executing it with Spark</a><ul>
-<li class="chapter" data-level="7.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#r-functions-as-spark-sql-generators"><i class="fa fa-check"></i><b>7.1</b> R functions as Spark SQL generators</a></li>
-<li class="chapter" data-level="7.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#executing-the-generated-queries-via-spark"><i class="fa fa-check"></i><b>7.2</b> Executing the generated queries via Spark</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-dbi-as-the-interface"><i class="fa fa-check"></i><b>7.2.1</b> Using DBI as the interface</a></li>
-<li class="chapter" data-level="7.2.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#invoking-sql-on-a-spark-session-object"><i class="fa fa-check"></i><b>7.2.2</b> Invoking sql on a Spark session object</a></li>
-<li class="chapter" data-level="7.2.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-tbl-with-dbplyrs-sql"><i class="fa fa-check"></i><b>7.2.3</b> Using tbl with dbplyr’s sql</a></li>
-<li class="chapter" data-level="7.2.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#wrapping-the-tbl-approach-into-functions"><i class="fa fa-check"></i><b>7.2.4</b> Wrapping the tbl approach into functions</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#combining-multiple-approaches-and-functions-into-lazy-datasets"><i class="fa fa-check"></i><b>7.3</b> Combining multiple approaches and functions into lazy datasets</a></li>
-<li class="chapter" data-level="7.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>7.4</b> Where SQL can be better than dbplyr translation</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>7.4.1</b> When a translation is not there</a></li>
-<li class="chapter" data-level="7.4.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>7.4.2</b> When translation does not provide expected results</a></li>
-<li class="chapter" data-level="7.4.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>7.4.3</b> When portability is important</a></li>
+<li class="chapter" data-level="8.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#combining-multiple-approaches-and-functions-into-lazy-datasets"><i class="fa fa-check"></i><b>8.3</b> Combining multiple approaches and functions into lazy datasets</a></li>
+<li class="chapter" data-level="8.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>8.4</b> Where SQL can be better than dbplyr translation</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>8.4.1</b> When a translation is not there</a></li>
+<li class="chapter" data-level="8.4.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>8.4.2</b> When translation does not provide expected results</a></li>
+<li class="chapter" data-level="8.4.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>8.4.3</b> When portability is important</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><i class="fa fa-check"></i><b>8</b> Using the lower-level invoke API to manipulate Spark’s Java objects from R</a><ul>
-<li class="chapter" data-level="8.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#the-invoke-api-of-sparklyr"><i class="fa fa-check"></i><b>8.1</b> The invoke() API of sparklyr</a></li>
-<li class="chapter" data-level="8.2" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#getting-started-with-the-invoke-api"><i class="fa fa-check"></i><b>8.2</b> Getting started with the invoke API</a></li>
-<li class="chapter" data-level="8.3" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#grouping-and-aggregation-with-invoke-chains"><i class="fa fa-check"></i><b>8.3</b> Grouping and aggregation with invoke chains</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#what-is-all-that-extra-code"><i class="fa fa-check"></i><b>8.3.1</b> What is all that extra code?</a></li>
+<li class="chapter" data-level="9" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><i class="fa fa-check"></i><b>9</b> Using the lower-level invoke API to manipulate Spark’s Java objects from R</a><ul>
+<li class="chapter" data-level="9.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#the-invoke-api-of-sparklyr"><i class="fa fa-check"></i><b>9.1</b> The invoke() API of sparklyr</a></li>
+<li class="chapter" data-level="9.2" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#getting-started-with-the-invoke-api"><i class="fa fa-check"></i><b>9.2</b> Getting started with the invoke API</a></li>
+<li class="chapter" data-level="9.3" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#grouping-and-aggregation-with-invoke-chains"><i class="fa fa-check"></i><b>9.3</b> Grouping and aggregation with invoke chains</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#what-is-all-that-extra-code"><i class="fa fa-check"></i><b>9.3.1</b> What is all that extra code?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#wrapping-the-invocations-into-r-functions"><i class="fa fa-check"></i><b>8.4</b> Wrapping the invocations into R functions</a></li>
-<li class="chapter" data-level="8.5" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#reconstructing-variable-normalization"><i class="fa fa-check"></i><b>8.5</b> Reconstructing variable normalization</a></li>
-<li class="chapter" data-level="8.6" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#where-invoke-can-be-better-than-dplyr-translation-or-sql"><i class="fa fa-check"></i><b>8.6</b> Where invoke can be better than dplyr translation or SQL</a></li>
-<li class="chapter" data-level="8.7" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#conclusion"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+<li class="chapter" data-level="9.4" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#wrapping-the-invocations-into-r-functions"><i class="fa fa-check"></i><b>9.4</b> Wrapping the invocations into R functions</a></li>
+<li class="chapter" data-level="9.5" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#reconstructing-variable-normalization"><i class="fa fa-check"></i><b>9.5</b> Reconstructing variable normalization</a></li>
+<li class="chapter" data-level="9.6" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#where-invoke-can-be-better-than-dplyr-translation-or-sql"><i class="fa fa-check"></i><b>9.6</b> Where invoke can be better than dplyr translation or SQL</a></li>
+<li class="chapter" data-level="9.7" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html#conclusion"><i class="fa fa-check"></i><b>9.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><i class="fa fa-check"></i><b>9</b> Exploring the invoke API from R with Java reflection and examining invokes with logs</a><ul>
-<li class="chapter" data-level="9.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#examining-available-methods-from-r"><i class="fa fa-check"></i><b>9.1</b> Examining available methods from R</a></li>
-<li class="chapter" data-level="9.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-java-reflection-api-to-list-the-available-methods"><i class="fa fa-check"></i><b>9.2</b> Using the Java reflection API to list the available methods</a></li>
-<li class="chapter" data-level="9.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#investigating-dataset-and-sparkcontext-class-methods"><i class="fa fa-check"></i><b>9.3</b> Investigating DataSet and SparkContext class methods</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-helpers-to-explore-the-methods"><i class="fa fa-check"></i><b>9.3.1</b> Using helpers to explore the methods</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#unexported-helpers-provided-by-sparklyr"><i class="fa fa-check"></i><b>9.3.2</b> Unexported helpers provided by sparklyr</a></li>
+<li class="chapter" data-level="10" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><i class="fa fa-check"></i><b>10</b> Exploring the invoke API from R with Java reflection and examining invokes with logs</a><ul>
+<li class="chapter" data-level="10.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#examining-available-methods-from-r"><i class="fa fa-check"></i><b>10.1</b> Examining available methods from R</a></li>
+<li class="chapter" data-level="10.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-java-reflection-api-to-list-the-available-methods"><i class="fa fa-check"></i><b>10.2</b> Using the Java reflection API to list the available methods</a></li>
+<li class="chapter" data-level="10.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#investigating-dataset-and-sparkcontext-class-methods"><i class="fa fa-check"></i><b>10.3</b> Investigating DataSet and SparkContext class methods</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-helpers-to-explore-the-methods"><i class="fa fa-check"></i><b>10.3.1</b> Using helpers to explore the methods</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#unexported-helpers-provided-by-sparklyr"><i class="fa fa-check"></i><b>10.3.2</b> Unexported helpers provided by sparklyr</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#how-sparklyr-communicates-with-spark-invoke-logging"><i class="fa fa-check"></i><b>9.4</b> How sparklyr communicates with Spark, invoke logging</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dplyr-verbs-translated-with-dbplyr"><i class="fa fa-check"></i><b>9.4.1</b> Using dplyr verbs translated with dbplyr</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dbi-to-send-queries"><i class="fa fa-check"></i><b>9.4.2</b> Using DBI to send queries</a></li>
-<li class="chapter" data-level="9.4.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-invoke-interface"><i class="fa fa-check"></i><b>9.4.3</b> Using the invoke interface</a></li>
-<li class="chapter" data-level="9.4.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#redirecting-the-invoke-logs"><i class="fa fa-check"></i><b>9.4.4</b> Redirecting the invoke logs</a></li>
+<li class="chapter" data-level="10.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#how-sparklyr-communicates-with-spark-invoke-logging"><i class="fa fa-check"></i><b>10.4</b> How sparklyr communicates with Spark, invoke logging</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dplyr-verbs-translated-with-dbplyr"><i class="fa fa-check"></i><b>10.4.1</b> Using dplyr verbs translated with dbplyr</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-dbi-to-send-queries"><i class="fa fa-check"></i><b>10.4.2</b> Using DBI to send queries</a></li>
+<li class="chapter" data-level="10.4.3" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#using-the-invoke-interface"><i class="fa fa-check"></i><b>10.4.3</b> Using the invoke interface</a></li>
+<li class="chapter" data-level="10.4.4" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#redirecting-the-invoke-logs"><i class="fa fa-check"></i><b>10.4.4</b> Redirecting the invoke logs</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#conclusion-1"><i class="fa fa-check"></i><b>9.5</b> Conclusion</a></li>
+<li class="chapter" data-level="10.5" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#conclusion-1"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>10</b> References and resources</a><ul>
-<li class="chapter" data-level="10.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>10.1</b> Getting started with sparklyr</a></li>
-<li class="chapter" data-level="10.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dplyr-syntax"><i class="fa fa-check"></i><b>10.2</b> dplyr syntax</a></li>
-<li class="chapter" data-level="10.3" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>10.3</b> DBI, Spark SQL, Hive</a></li>
-<li class="chapter" data-level="10.4" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>10.4</b> Docker</a></li>
-<li class="chapter" data-level="10.5" data-path="references-and-resources.html"><a href="references-and-resources.html#java-scala-and-friends"><i class="fa fa-check"></i><b>10.5</b> Java, Scala and friends</a></li>
-<li class="chapter" data-level="10.6" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>10.6</b> Apache Arrow</a></li>
-<li class="chapter" data-level="10.7" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>10.7</b> Physical Books</a></li>
+<li class="chapter" data-level="11" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>11</b> References and resources</a><ul>
+<li class="chapter" data-level="11.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>11.1</b> Getting started with sparklyr</a></li>
+<li class="chapter" data-level="11.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dplyr-syntax"><i class="fa fa-check"></i><b>11.2</b> dplyr syntax</a></li>
+<li class="chapter" data-level="11.3" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>11.3</b> DBI, Spark SQL, Hive</a></li>
+<li class="chapter" data-level="11.4" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>11.4</b> Docker</a></li>
+<li class="chapter" data-level="11.5" data-path="references-and-resources.html"><a href="references-and-resources.html#java-scala-and-friends"><i class="fa fa-check"></i><b>11.5</b> Java, Scala and friends</a></li>
+<li class="chapter" data-level="11.6" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>11.6</b> Apache Arrow</a></li>
+<li class="chapter" data-level="11.7" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>11.7</b> Physical Books</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>11</b> Footnotes</a><ul>
-<li class="chapter" data-level="11.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>11.1</b> Setup of Apache Arrow</a></li>
+<li class="chapter" data-level="12" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>12</b> Footnotes</a><ul>
+<li class="chapter" data-level="12.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>12.1</b> Setup of Apache Arrow</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Exploring the invoke API from R with Java reflection and examining invokes with logs</h1>
+<h1><span class="header-section-number">Chapter 10</span> Exploring the invoke API from R with Java reflection and examining invokes with logs</h1>
 <div class="wizardry">
 <p>
 Then darkness took me, and I strayed out of thought and time, and I wandered far on roads that I will not tell
@@ -273,71 +273,71 @@ Gandalf the White
 <p>In the previous chapters, we have shown how to write functions as both <a href="https://jozef.io/r202-spark-r-dplyr-verbs/">combinations of dplyr verbs</a>, <a href="https://jozef.io/r203-spark-r-sql/">SQL query generators</a> that can be executed by Spark and <a href="https://jozef.io/r204-spark-r-invoke-scala/">how to use the lower-level API</a> to invoke methods on Java object references from R.</p>
 <p>In this chapter, we will look into more details around sparklyr’s <code>invoke()</code> API, investigate available methods for different classes of objects using the Java reflection API and look under the hood of the sparklyr interface mechanism with invoke logging.</p>
 <div id="examining-available-methods-from-r" class="section level2">
-<h2><span class="header-section-number">9.1</span> Examining available methods from R</h2>
+<h2><span class="header-section-number">10.1</span> Examining available methods from R</h2>
 <p>If you did not do so, it is recommended to read the <a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html">previous chapter</a> of this book before this one to get a quick overview of the <code>invoke()</code> API.</p>
 </div>
 <div id="using-the-java-reflection-api-to-list-the-available-methods" class="section level2">
-<h2><span class="header-section-number">9.2</span> Using the Java reflection API to list the available methods</h2>
+<h2><span class="header-section-number">10.2</span> Using the Java reflection API to list the available methods</h2>
 <p>The <code>invoke()</code> interface is powerful, but also a bit hidden from the eyes as we do not immediately know what methods are available for which object classes. We can circumvent that using the <code>getMethods</code> method which (in short) returns an array of Method objects reflecting public member methods of the class.</p>
 <p>For instance, retrieving a list of methods for the <code>org.apache.spark.SparkContext</code> class:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">mthds &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
-<a class="sourceLine" id="cb123-4" data-line-number="4"><span class="kw">head</span>(mthds)</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">mthds &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
+<a class="sourceLine" id="cb132-4" data-line-number="4"><span class="kw">head</span>(mthds)</a></code></pre></div>
 <pre><code>## [[1]]
-## &lt;jobj[648]&gt;
+## &lt;jobj[827]&gt;
 ##   java.lang.reflect.Method
 ##   public org.apache.spark.util.CallSite org.apache.spark.SparkContext.org$apache$spark$SparkContext$$creationSite()
 ## 
 ## [[2]]
-## &lt;jobj[649]&gt;
+## &lt;jobj[828]&gt;
 ##   java.lang.reflect.Method
 ##   public org.apache.spark.SparkConf org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_conf()
 ## 
 ## [[3]]
-## &lt;jobj[650]&gt;
+## &lt;jobj[829]&gt;
 ##   java.lang.reflect.Method
 ##   public org.apache.spark.SparkEnv org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_env()
 ## 
 ## [[4]]
-## &lt;jobj[651]&gt;
+## &lt;jobj[830]&gt;
 ##   java.lang.reflect.Method
 ##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_progressBar()
 ## 
 ## [[5]]
-## &lt;jobj[652]&gt;
+## &lt;jobj[831]&gt;
 ##   java.lang.reflect.Method
 ##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_ui()
 ## 
 ## [[6]]
-## &lt;jobj[653]&gt;
+## &lt;jobj[832]&gt;
 ##   java.lang.reflect.Method
 ##   public org.apache.spark.rpc.RpcEndpointRef org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_heartbeatReceiver()</code></pre>
 <p>We can see that the <code>invoke()</code> chain has returned a list of Java object references, each of them of class <code>java.lang.reflect.Method</code>. This is a good result, but the output is not very user-friendly from the R user perspective. Let us write a small wrapper that will return a some of the method’s details in a more readable fashion, for instance the return type and an overview of parameters:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">getMethodDetails &lt;-<span class="st"> </span><span class="cf">function</span>(mthd) {</a>
-<a class="sourceLine" id="cb125-2" data-line-number="2">  returnType &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getReturnType&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a>
-<a class="sourceLine" id="cb125-3" data-line-number="3">  params &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getParameters&quot;</span>)</a>
-<a class="sourceLine" id="cb125-4" data-line-number="4">  params &lt;-<span class="st"> </span><span class="kw">vapply</span>(params, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb125-5" data-line-number="5">  <span class="kw">c</span>(<span class="dt">returnType =</span> returnType, <span class="dt">params =</span> <span class="kw">paste</span>(params, <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>))</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">getMethodDetails &lt;-<span class="st"> </span><span class="cf">function</span>(mthd) {</a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">  returnType &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getReturnType&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a>
+<a class="sourceLine" id="cb134-3" data-line-number="3">  params &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getParameters&quot;</span>)</a>
+<a class="sourceLine" id="cb134-4" data-line-number="4">  params &lt;-<span class="st"> </span><span class="kw">vapply</span>(params, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb134-5" data-line-number="5">  <span class="kw">c</span>(<span class="dt">returnType =</span> returnType, <span class="dt">params =</span> <span class="kw">paste</span>(params, <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>))</a>
+<a class="sourceLine" id="cb134-6" data-line-number="6">}</a></code></pre></div>
 <p>Finally, to get a nice overview, we can make another helper function that will return a named list of methods for an object’s class, including their return types and overview of parameters:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">getAvailableMethods &lt;-<span class="st"> </span><span class="cf">function</span>(jobj) {</a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">  mthds &lt;-<span class="st"> </span>jobj <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
-<a class="sourceLine" id="cb126-3" data-line-number="3">  nms &lt;-<span class="st"> </span><span class="kw">vapply</span>(mthds, invoke, <span class="st">&quot;getName&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb126-4" data-line-number="4">  res &lt;-<span class="st"> </span><span class="kw">lapply</span>(mthds, getMethodDetails)</a>
-<a class="sourceLine" id="cb126-5" data-line-number="5">  <span class="kw">names</span>(res) &lt;-<span class="st"> </span>nms</a>
-<a class="sourceLine" id="cb126-6" data-line-number="6">  res</a>
-<a class="sourceLine" id="cb126-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">getAvailableMethods &lt;-<span class="st"> </span><span class="cf">function</span>(jobj) {</a>
+<a class="sourceLine" id="cb135-2" data-line-number="2">  mthds &lt;-<span class="st"> </span>jobj <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
+<a class="sourceLine" id="cb135-3" data-line-number="3">  nms &lt;-<span class="st"> </span><span class="kw">vapply</span>(mthds, invoke, <span class="st">&quot;getName&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb135-4" data-line-number="4">  res &lt;-<span class="st"> </span><span class="kw">lapply</span>(mthds, getMethodDetails)</a>
+<a class="sourceLine" id="cb135-5" data-line-number="5">  <span class="kw">names</span>(res) &lt;-<span class="st"> </span>nms</a>
+<a class="sourceLine" id="cb135-6" data-line-number="6">  res</a>
+<a class="sourceLine" id="cb135-7" data-line-number="7">}</a></code></pre></div>
 </div>
 <div id="investigating-dataset-and-sparkcontext-class-methods" class="section level2">
-<h2><span class="header-section-number">9.3</span> Investigating DataSet and SparkContext class methods</h2>
+<h2><span class="header-section-number">10.3</span> Investigating DataSet and SparkContext class methods</h2>
 <p>Using the above defined function we can explore the methods available to a DataFrame reference, showing a few of the names first:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">dfMethods &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="st">  </span><span class="kw">getAvailableMethods</span>()</a>
-<a class="sourceLine" id="cb127-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb127-4" data-line-number="4"><span class="co"># Show some method names:</span></a>
-<a class="sourceLine" id="cb127-5" data-line-number="5">dfMethodNames &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">names</span>(dfMethods)))</a>
-<a class="sourceLine" id="cb127-6" data-line-number="6"><span class="kw">head</span>(dfMethodNames, <span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">dfMethods &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="st">  </span><span class="kw">getAvailableMethods</span>()</a>
+<a class="sourceLine" id="cb136-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb136-4" data-line-number="4"><span class="co"># Show some method names:</span></a>
+<a class="sourceLine" id="cb136-5" data-line-number="5">dfMethodNames &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">names</span>(dfMethods)))</a>
+<a class="sourceLine" id="cb136-6" data-line-number="6"><span class="kw">head</span>(dfMethodNames, <span class="dv">20</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;agg&quot;                           &quot;alias&quot;                        
 ##  [3] &quot;apply&quot;                         &quot;as&quot;                           
 ##  [5] &quot;cache&quot;                         &quot;checkpoint&quot;                   
@@ -349,11 +349,11 @@ Gandalf the White
 ## [17] &quot;createOrReplaceGlobalTempView&quot; &quot;createOrReplaceTempView&quot;      
 ## [19] &quot;createTempView&quot;                &quot;crossJoin&quot;</code></pre>
 <p>If we would like to see more details we can now investigate further, for instance show different parameter interfaces for the <code>agg</code> method, showing that the <code>agg</code> method has the following parameter interfaces:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">vapply</span>(</a>
-<a class="sourceLine" id="cb129-2" data-line-number="2">  dfMethods[<span class="kw">names</span>(dfMethods) <span class="op">==</span><span class="st"> &quot;agg&quot;</span>], </a>
-<a class="sourceLine" id="cb129-3" data-line-number="3">  <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;params&quot;</span>,</a>
-<a class="sourceLine" id="cb129-4" data-line-number="4">  <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb129-5" data-line-number="5">))</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">vapply</span>(</a>
+<a class="sourceLine" id="cb138-2" data-line-number="2">  dfMethods[<span class="kw">names</span>(dfMethods) <span class="op">==</span><span class="st"> &quot;agg&quot;</span>], </a>
+<a class="sourceLine" id="cb138-3" data-line-number="3">  <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;params&quot;</span>,</a>
+<a class="sourceLine" id="cb138-4" data-line-number="4">  <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb138-5" data-line-number="5">))</a></code></pre></div>
 <pre><code>##                                                                                                                                  agg 
 ##                                                                             &quot;java.util.Map&lt;java.lang.String, java.lang.String&gt; arg0&quot; 
 ##                                                                                                                                  agg 
@@ -365,10 +365,10 @@ Gandalf the White
 ##                                                                                                                                  agg 
 ## &quot;scala.Tuple2&lt;java.lang.String, java.lang.String&gt; arg0, scala.collection.Seq&lt;scala.Tuple2&lt;java.lang.String, java.lang.String&gt;&gt; arg1&quot;</code></pre>
 <p>Similarly, we can look at a <code>SparkContext</code> class and show some available methods that can be invoked:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">scMethods &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="st">  </span><span class="kw">getAvailableMethods</span>()</a>
-<a class="sourceLine" id="cb131-3" data-line-number="3">scMethodNames &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">names</span>(scMethods)))</a>
-<a class="sourceLine" id="cb131-4" data-line-number="4"><span class="kw">head</span>(scMethodNames, <span class="dv">60</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">scMethods &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">  </span><span class="kw">getAvailableMethods</span>()</a>
+<a class="sourceLine" id="cb140-3" data-line-number="3">scMethodNames &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">names</span>(scMethods)))</a>
+<a class="sourceLine" id="cb140-4" data-line-number="4"><span class="kw">head</span>(scMethodNames, <span class="dv">60</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;$lessinit$greater$default$3&quot; &quot;$lessinit$greater$default$4&quot;
 ##  [3] &quot;$lessinit$greater$default$5&quot; &quot;accumulable&quot;                
 ##  [5] &quot;accumulableCollection&quot;       &quot;accumulator&quot;                
@@ -400,15 +400,15 @@ Gandalf the White
 ## [57] &quot;getExecutorIds&quot;              &quot;getExecutorMemoryStatus&quot;    
 ## [59] &quot;getExecutorThreadDump&quot;       &quot;getLocalProperties&quot;</code></pre>
 <div id="using-helpers-to-explore-the-methods" class="section level3">
-<h3><span class="header-section-number">9.3.1</span> Using helpers to explore the methods</h3>
+<h3><span class="header-section-number">10.3.1</span> Using helpers to explore the methods</h3>
 <p>We can also use the helper functions to investigate more. For instance, we see that there is a <code>getConf</code> method avaiable to us. Looking at the object reference however does not provide useful information, so we can list the methods for that class and look for <code>&quot;get&quot;</code> methods that would show us the configuration:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">spark_conf &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;conf&quot;</span>)</a>
-<a class="sourceLine" id="cb133-2" data-line-number="2">spark_conf_methods &lt;-<span class="st"> </span>spark_conf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">getAvailableMethods</span>() </a>
-<a class="sourceLine" id="cb133-3" data-line-number="3">spark_conf_get_methods &lt;-<span class="st"> </span>spark_conf_methods <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb133-4" data-line-number="4"><span class="st">  </span><span class="kw">names</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb133-5" data-line-number="5"><span class="st">  </span><span class="kw">grep</span>(<span class="dt">pattern =</span> <span class="st">&quot;get&quot;</span>, ., <span class="dt">value =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb133-6" data-line-number="6"><span class="st">  </span><span class="kw">sort</span>()</a>
-<a class="sourceLine" id="cb133-7" data-line-number="7">spark_conf_get_methods</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">spark_conf &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;conf&quot;</span>)</a>
+<a class="sourceLine" id="cb142-2" data-line-number="2">spark_conf_methods &lt;-<span class="st"> </span>spark_conf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">getAvailableMethods</span>() </a>
+<a class="sourceLine" id="cb142-3" data-line-number="3">spark_conf_get_methods &lt;-<span class="st"> </span>spark_conf_methods <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb142-4" data-line-number="4"><span class="st">  </span><span class="kw">names</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb142-5" data-line-number="5"><span class="st">  </span><span class="kw">grep</span>(<span class="dt">pattern =</span> <span class="st">&quot;get&quot;</span>, ., <span class="dt">value =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb142-6" data-line-number="6"><span class="st">  </span><span class="kw">sort</span>()</a>
+<a class="sourceLine" id="cb142-7" data-line-number="7">spark_conf_get_methods</a></code></pre></div>
 <pre><code>##  [1] &quot;get&quot;                 &quot;get&quot;                 &quot;get&quot;                
 ##  [4] &quot;getAll&quot;              &quot;getAllWithPrefix&quot;    &quot;getAppId&quot;           
 ##  [7] &quot;getAvroSchema&quot;       &quot;getBoolean&quot;          &quot;getClass&quot;           
@@ -420,27 +420,27 @@ Gandalf the White
 ## [25] &quot;getSizeAsMb&quot;         &quot;getTimeAsMs&quot;         &quot;getTimeAsMs&quot;        
 ## [28] &quot;getTimeAsSeconds&quot;    &quot;getTimeAsSeconds&quot;    &quot;getWithSubstitution&quot;</code></pre>
 <p>We see that there is a <code>getAll</code> method that could prove useful, returning a list of tuples and taking no arguments as input:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># Returns a list of tuples, takes no arguments:</span></a>
-<a class="sourceLine" id="cb135-2" data-line-number="2">spark_conf_methods[[<span class="st">&quot;getAll&quot;</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="co"># Returns a list of tuples, takes no arguments:</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">spark_conf_methods[[<span class="st">&quot;getAll&quot;</span>]]</a></code></pre></div>
 <pre><code>##              returnType                  params 
 ## &quot;class [Lscala.Tuple2;&quot;                      &quot;&quot;</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="co"># Invoke the `getAll` method and look at part of the result</span></a>
-<a class="sourceLine" id="cb137-2" data-line-number="2">spark_confs &lt;-<span class="st"> </span>spark_conf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getAll&quot;</span>)</a>
-<a class="sourceLine" id="cb137-3" data-line-number="3">spark_confs &lt;-<span class="st"> </span><span class="kw">vapply</span>(spark_confs, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb137-4" data-line-number="4"><span class="kw">sort</span>(spark_confs)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">12</span>, <span class="dv">14</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="co"># Invoke the `getAll` method and look at part of the result</span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2">spark_confs &lt;-<span class="st"> </span>spark_conf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getAll&quot;</span>)</a>
+<a class="sourceLine" id="cb146-3" data-line-number="3">spark_confs &lt;-<span class="st"> </span><span class="kw">vapply</span>(spark_confs, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb146-4" data-line-number="4"><span class="kw">sort</span>(spark_confs)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">12</span>, <span class="dv">14</span>)]</a></code></pre></div>
 <pre><code>## [1] &quot;(spark.app.name,sparklyr)&quot;        &quot;(spark.driver.host,localhost)&quot;   
 ## [3] &quot;(spark.sql.shuffle.partitions,4)&quot; NA</code></pre>
 <p>Looking at <a href="https://spark.apache.org/docs/1.6.0/api/java/org/apache/spark/SparkConf.html#getAll()">the Scala documentation for the <code>getAll</code> method</a>, we actually see that there is information missing on our data - the classes of the objects in the tuple, which in this case is <code>scala.Tuple2&lt;java.lang.String,java.lang.String&gt;[]</code>.</p>
 <p>We could therefore improve our helper to be more detailed in the return value information.</p>
 </div>
 <div id="unexported-helpers-provided-by-sparklyr" class="section level3">
-<h3><span class="header-section-number">9.3.2</span> Unexported helpers provided by sparklyr</h3>
+<h3><span class="header-section-number">10.3.2</span> Unexported helpers provided by sparklyr</h3>
 <p>The sparklyr package itself provides facilities of nature similar to those above, looking at some of them, even though they are not exported:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">sparklyr<span class="op">:::</span><span class="kw">jobj_class</span>(spark_conf)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">sparklyr<span class="op">:::</span><span class="kw">jobj_class</span>(spark_conf)</a></code></pre></div>
 <pre><code>## [1] &quot;SparkConf&quot; &quot;Object&quot;</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">sparklyr<span class="op">:::</span><span class="kw">jobj_info</span>(spark_conf)<span class="op">$</span>class</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">sparklyr<span class="op">:::</span><span class="kw">jobj_info</span>(spark_conf)<span class="op">$</span>class</a></code></pre></div>
 <pre><code>## [1] &quot;org.apache.spark.SparkConf&quot;</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">capture.output</span>(sparklyr<span class="op">:::</span><span class="kw">jobj_inspect</span>(spark_conf)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">capture.output</span>(sparklyr<span class="op">:::</span><span class="kw">jobj_inspect</span>(spark_conf)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;&lt;jobj[1645]&gt;&quot;                                                                                                                   
 ##  [2] &quot;  org.apache.spark.SparkConf&quot;                                                                                                   
 ##  [3] &quot;  org.apache.spark.SparkConf@7ec389e7&quot;                                                                                          
@@ -454,7 +454,7 @@ Gandalf the White
 </div>
 </div>
 <div id="how-sparklyr-communicates-with-spark-invoke-logging" class="section level2">
-<h2><span class="header-section-number">9.4</span> How sparklyr communicates with Spark, invoke logging</h2>
+<h2><span class="header-section-number">10.4</span> How sparklyr communicates with Spark, invoke logging</h2>
 <p>Now that we have and overview of the <code>invoke()</code> interface, we can take a look under the hood of sparklyr and see how it actually communicates with the Spark instance. In fact, the communication is a set of invocations that can be very different depending on which of the approches we choose for our purposes.</p>
 <p>To obtain the information, we use the <code>sparklyr.log.invoke</code> property. We can choose one of the following 3 values based on our preferences:</p>
 <ul>
@@ -463,17 +463,17 @@ Gandalf the White
 <li><code>&quot;callstack&quot;</code> will use <code>message()</code> to communicate short info on what is being invoked and the callstack</li>
 </ul>
 <p>We will use <code>TRUE</code> in our article to keep the output short and easily manageable. First, we will close the previous connection and create a new one with the configuration containing the <code>sparklyr.log.invoke</code> set to <code>TRUE</code>, and copy in the flights dataset:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">sparklyr<span class="op">::</span><span class="kw">spark_disconnect</span>(sc)</a>
-<a class="sourceLine" id="cb145-2" data-line-number="2">config &lt;-<span class="st"> </span>sparklyr<span class="op">::</span><span class="kw">spark_config</span>()</a>
-<a class="sourceLine" id="cb145-3" data-line-number="3">config<span class="op">$</span>sparklyr.log.invoke &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb145-4" data-line-number="4"><span class="kw">suppressMessages</span>({</a>
-<a class="sourceLine" id="cb145-5" data-line-number="5">  sc &lt;-<span class="st"> </span>sparklyr<span class="op">::</span><span class="kw">spark_connect</span>(<span class="dt">master =</span> <span class="st">&quot;local&quot;</span>, <span class="dt">config =</span> config)</a>
-<a class="sourceLine" id="cb145-6" data-line-number="6">  tbl_flights &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">copy_to</span>(sc, nycflights13<span class="op">::</span>flights, <span class="st">&quot;flights&quot;</span>)</a>
-<a class="sourceLine" id="cb145-7" data-line-number="7">})</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">sparklyr<span class="op">::</span><span class="kw">spark_disconnect</span>(sc)</a>
+<a class="sourceLine" id="cb154-2" data-line-number="2">config &lt;-<span class="st"> </span>sparklyr<span class="op">::</span><span class="kw">spark_config</span>()</a>
+<a class="sourceLine" id="cb154-3" data-line-number="3">config<span class="op">$</span>sparklyr.log.invoke &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb154-4" data-line-number="4"><span class="kw">suppressMessages</span>({</a>
+<a class="sourceLine" id="cb154-5" data-line-number="5">  sc &lt;-<span class="st"> </span>sparklyr<span class="op">::</span><span class="kw">spark_connect</span>(<span class="dt">master =</span> <span class="st">&quot;local&quot;</span>, <span class="dt">config =</span> config)</a>
+<a class="sourceLine" id="cb154-6" data-line-number="6">  tbl_flights &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">copy_to</span>(sc, nycflights13<span class="op">::</span>flights, <span class="st">&quot;flights&quot;</span>)</a>
+<a class="sourceLine" id="cb154-7" data-line-number="7">})</a></code></pre></div>
 <div id="using-dplyr-verbs-translated-with-dbplyr" class="section level3">
-<h3><span class="header-section-number">9.4.1</span> Using dplyr verbs translated with dbplyr</h3>
+<h3><span class="header-section-number">10.4.1</span> Using dplyr verbs translated with dbplyr</h3>
 <p>Now that the setup is complete, we use the dplyr verb approach to retrieve the count of rows and look the invocations that this entails:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">count</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## Invoking sql
 ## Invoking sql</code></pre>
 <pre><code>## Invoking columns</code></pre>
@@ -497,9 +497,9 @@ Gandalf the White
 <p>We see multiple invocations do the <code>sql</code> method and also the <code>columns</code> method. This makes sense since the dplyr verb approach actually works by translating the commands into Spark SQL via dbplyr and then sends those translated commands to Spark via that interface.</p>
 </div>
 <div id="using-dbi-to-send-queries" class="section level3">
-<h3><span class="header-section-number">9.4.2</span> Using DBI to send queries</h3>
+<h3><span class="header-section-number">10.4.2</span> Using DBI to send queries</h3>
 <p>Similarly, we can investigate the invocations that happen when we try to retrieve the same results via the DBI interface:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(sc, <span class="st">&quot;SELECT count(1) AS n FROM flights&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(sc, <span class="st">&quot;SELECT count(1) AS n FROM flights&quot;</span>)</a></code></pre></div>
 <pre><code>## Invoking sql</code></pre>
 <pre><code>## Invoking isStreaming</code></pre>
 <pre><code>## Invoking sparklyr.Utils collect</code></pre>
@@ -514,16 +514,16 @@ Gandalf the White
 <p>We see slightly fewer invocations compared to the above dplyr approach, but the output is also less processed.</p>
 </div>
 <div id="using-the-invoke-interface" class="section level3">
-<h3><span class="header-section-number">9.4.3</span> Using the invoke interface</h3>
+<h3><span class="header-section-number">10.4.3</span> Using the invoke interface</h3>
 <p>Looking at the invocations that get executed using the <code>invoke()</code> interface:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
 <pre><code>## Invoking sql</code></pre>
 <pre><code>## Invoking count</code></pre>
 <pre><code>## [1] 336776</code></pre>
 <p>We see that the amount of invocations is much lower, where the top 3 invocations come from the first part of the pipe. The <code>invoke(&quot;count&quot;)</code> part translated to exactly one invocation to the <code>count</code> method. We see therefore that the <code>invoke()</code> interface is indeed a more lower-level interface that invokes methods as we request them, with little to none overhead related to translations and other effects.</p>
 </div>
 <div id="redirecting-the-invoke-logs" class="section level3">
-<h3><span class="header-section-number">9.4.4</span> Redirecting the invoke logs</h3>
+<h3><span class="header-section-number">10.4.4</span> Redirecting the invoke logs</h3>
 <p>When running R applications that use Spark as a calculation engine, it is useful to get detailed invoke logs for debugging and diagnostic purposes. Implementing such mechanisms, we need to take into consideration how R handles the invoke logs produced by sparklyr. In simple terms, the invoke logs produced when using</p>
 <ul>
 <li><code>TRUE</code> and <code>&quot;callstack&quot;</code> are created using <code>message()</code>, which means they get sent to the <code>stderr()</code> connection by default</li>
@@ -533,7 +533,7 @@ Gandalf the White
 </div>
 </div>
 <div id="conclusion-1" class="section level2">
-<h2><span class="header-section-number">9.5</span> Conclusion</h2>
+<h2><span class="header-section-number">10.5</span> Conclusion</h2>
 <p>In this chapter, we have looked at using the Java reflection API with sparklyr’s <code>invoke()</code> interface to get useful insight on available methods for different object types that can be used in the context of Spark, but also in other contexts. Using invoke logging, we have also shown how the different sparklyr interfacing methods communicate with Spark under the hood.</p>
 
 </div>
