@@ -173,7 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>6.5</b> Making serialization faster with Apache Arrow</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-apache-arrow-and-how-it-improves-performance"><i class="fa fa-check"></i><b>6.5.1</b> What is Apache Arrow and how it improves performance</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#the-take-home-messages"><i class="fa fa-check"></i><b>6.6</b> The take-home messages</a></li>
+<li class="chapter" data-level="6.6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#conclusion-take-home-messages"><i class="fa fa-check"></i><b>6.6</b> Conclusion, take-home messages</a></li>
 <li class="chapter" data-level="6.7" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#but-we-still-need-arbitrary-functions-to-run-fast"><i class="fa fa-check"></i><b>6.7</b> But we still need arbitrary functions to run fast</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html"><i class="fa fa-check"></i><b>7</b> Constructing functions by piping dplyr verbs</a><ul>
@@ -183,8 +183,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#investigating-the-sql-translation-and-its-spark-plan"><i class="fa fa-check"></i><b>7.1.3</b> Investigating the SQL translation and its Spark plan</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#a-more-complex-use-case---joins-group-bys-and-aggregations"><i class="fa fa-check"></i><b>7.2</b> A more complex use case - Joins, group bys, and aggregations</a></li>
-<li class="chapter" data-level="7.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>7.3</b> Using the functions with local versus remote datasets</a></li>
-<li class="chapter" data-level="7.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#the-take-home-message"><i class="fa fa-check"></i><b>7.4</b> The take-home message</a></li>
+<li class="chapter" data-level="7.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>7.3</b> Using the functions with local versus remote datasets</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#unified-front-end-different-back-ends"><i class="fa fa-check"></i><b>7.3.1</b> Unified front-end, different back-ends</a></li>
+<li class="chapter" data-level="7.3.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#differences-in-na-and-nan-values"><i class="fa fa-check"></i><b>7.3.2</b> Differences in <code>NA</code> and <code>NaN</code> values</a></li>
+<li class="chapter" data-level="7.3.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#dates-times-and-time-zones"><i class="fa fa-check"></i><b>7.3.3</b> Dates, times and time zones</a></li>
+<li class="chapter" data-level="7.3.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#joins"><i class="fa fa-check"></i><b>7.3.4</b> Joins</a></li>
+<li class="chapter" data-level="7.3.5" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#portability-of-used-methods"><i class="fa fa-check"></i><b>7.3.5</b> Portability of used methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#conclusion-take-home-messages-1"><i class="fa fa-check"></i><b>7.4</b> Conclusion, take-home messages</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html"><i class="fa fa-check"></i><b>8</b> Constructing SQL and executing it with Spark</a><ul>
 <li class="chapter" data-level="8.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#r-functions-as-spark-sql-generators"><i class="fa fa-check"></i><b>8.1</b> R functions as Spark SQL generators</a></li>
@@ -194,11 +200,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-tbl-with-dbplyrs-sql"><i class="fa fa-check"></i><b>8.2.3</b> Using tbl with dbplyr’s sql</a></li>
 <li class="chapter" data-level="8.2.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#wrapping-the-tbl-approach-into-functions"><i class="fa fa-check"></i><b>8.2.4</b> Wrapping the tbl approach into functions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#combining-multiple-approaches-and-functions-into-lazy-datasets"><i class="fa fa-check"></i><b>8.3</b> Combining multiple approaches and functions into lazy datasets</a></li>
-<li class="chapter" data-level="8.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>8.4</b> Where SQL can be better than dbplyr translation</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>8.4.1</b> When a translation is not there</a></li>
-<li class="chapter" data-level="8.4.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>8.4.2</b> When translation does not provide expected results</a></li>
-<li class="chapter" data-level="8.4.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>8.4.3</b> When portability is important</a></li>
+<li class="chapter" data-level="8.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>8.3</b> Where SQL can be better than dbplyr translation</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>8.3.1</b> When a translation is not there</a></li>
+<li class="chapter" data-level="8.3.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>8.3.2</b> When translation does not provide expected results</a></li>
+<li class="chapter" data-level="8.3.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>8.3.3</b> When portability is important</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><i class="fa fa-check"></i><b>9</b> Using the lower-level invoke API to manipulate Spark’s Java objects from R</a><ul>
@@ -227,17 +232,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#conclusion-1"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>11</b> References and resources</a><ul>
-<li class="chapter" data-level="11.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>11.1</b> Getting started with sparklyr</a></li>
-<li class="chapter" data-level="11.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dplyr-syntax"><i class="fa fa-check"></i><b>11.2</b> dplyr syntax</a></li>
-<li class="chapter" data-level="11.3" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>11.3</b> DBI, Spark SQL, Hive</a></li>
-<li class="chapter" data-level="11.4" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>11.4</b> Docker</a></li>
-<li class="chapter" data-level="11.5" data-path="references-and-resources.html"><a href="references-and-resources.html#java-scala-and-friends"><i class="fa fa-check"></i><b>11.5</b> Java, Scala and friends</a></li>
-<li class="chapter" data-level="11.6" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>11.6</b> Apache Arrow</a></li>
-<li class="chapter" data-level="11.7" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>11.7</b> Physical Books</a></li>
+<li class="chapter" data-level="11" data-path="combining-approaches-into-lazy-datasets.html"><a href="combining-approaches-into-lazy-datasets.html"><i class="fa fa-check"></i><b>11</b> Combining approaches into lazy datasets</a></li>
+<li class="chapter" data-level="12" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>12</b> References and resources</a><ul>
+<li class="chapter" data-level="12.1" data-path="references-and-resources.html"><a href="references-and-resources.html#online-resources"><i class="fa fa-check"></i><b>12.1</b> Online resources</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>12.1.1</b> Getting started with sparklyr</a></li>
+<li class="chapter" data-level="12.1.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>12.1.2</b> DBI, Spark SQL, Hive</a></li>
+<li class="chapter" data-level="12.1.3" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>12.1.3</b> Docker</a></li>
+<li class="chapter" data-level="12.1.4" data-path="references-and-resources.html"><a href="references-and-resources.html#spark-api-java-scala-and-friends"><i class="fa fa-check"></i><b>12.1.4</b> Spark API, Java, Scala and friends</a></li>
+<li class="chapter" data-level="12.1.5" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>12.1.5</b> Apache Arrow</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>12</b> Footnotes</a><ul>
-<li class="chapter" data-level="12.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>12.1</b> Setup of Apache Arrow</a></li>
+<li class="chapter" data-level="12.2" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>12.2</b> Physical Books</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>13</b> Footnotes</a><ul>
+<li class="chapter" data-level="13.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>13.1</b> Setup of Apache Arrow</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -292,16 +299,16 @@ Severus Snape
 <div id="getting-started-with-the-invoke-api" class="section level2">
 <h2><span class="header-section-number">9.2</span> Getting started with the invoke API</h2>
 <p>We can start with a few very simple examples of <code>invoke()</code> usage, for instance getting the number of rows of the <code>tbl_flights</code>:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="co"># Get the count of rows</span></a>
-<a class="sourceLine" id="cb110-2" data-line-number="2">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb110-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co"># Get the count of rows</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] 336776</code></pre>
 <p>We see one extra operation before invoking the count: <code>spark_dataframe()</code>. This is because the <code>invoke()</code> interface works with Java object references and not <code>tbl</code> objects in remote sources such as <code>tbl_flights</code>. We, therefore, need to convert <code>tbl_flights</code> to a Java object reference, for which we use the <code>spark_dataframe()</code> function.</p>
 <p>Now, for something more exciting, let us compute a summary of the variables in <code>tbl_flights</code> using the <code>describe</code> method:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">tbl_flights_summary &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;describe&quot;</span>, <span class="kw">as.list</span>(<span class="kw">colnames</span>(tbl_flights))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="st">  </span><span class="kw">sdf_register</span>()</a>
-<a class="sourceLine" id="cb112-4" data-line-number="4">tbl_flights_summary</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">tbl_flights_summary &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;describe&quot;</span>, <span class="kw">as.list</span>(<span class="kw">colnames</span>(tbl_flights))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="st">  </span><span class="kw">sdf_register</span>()</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4">tbl_flights_summary</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 20]
 ##   summary id    year  month day   dep_time sched_dep_time dep_delay arr_time
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;   
@@ -315,7 +322,7 @@ Severus Snape
 ## #   air_time &lt;chr&gt;, distance &lt;chr&gt;, hour &lt;chr&gt;, minute &lt;chr&gt;</code></pre>
 <p>We also one see extra operation after invoking the describe method: <code>sdf_register()</code>. This is because the <code>invoke()</code> interface also <em>returns</em> Java object references and we may like to see a more user-friendly <code>tbl</code> object instead. This is where <code>sdf_register()</code> comes in to register a Spark DataFrame and return a <code>tbl_spark</code> object back to us.</p>
 <p>And indeed, we can see that the wrapper <code>sdf_describe()</code> provided by the sparklyr package itself works in a very similar fashion:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">body</span>(sparklyr<span class="op">::</span>sdf_describe)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">body</span>(sparklyr<span class="op">::</span>sdf_describe)</a></code></pre></div>
 <pre><code>## {
 ##     in_df &lt;- cols %in% colnames(x)
 ##     if (any(!in_df)) {
@@ -328,9 +335,9 @@ Severus Snape
 ##         sdf_register()
 ## }</code></pre>
 <p>If we so wish, for DataFrame related object references, we can also call <code>collect()</code> to retrieve the results directly, without using <code>sdf_register()</code> first, for instance retrieving the full content of the <code>origin</code> column:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;select&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="st">  </span><span class="kw">collect</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;select&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb103-3" data-line-number="3"><span class="st">  </span><span class="kw">collect</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 1
 ##    origin
 ##    &lt;chr&gt; 
@@ -346,39 +353,45 @@ Severus Snape
 ## 10 LGA   
 ## # … with 336,766 more rows</code></pre>
 <p>It can also be helpful to investigate the schema of our flights DataFrame:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb118-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;schema&quot;</span>)</a></code></pre></div>
-<pre><code>## &lt;jobj[748]&gt;
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;schema&quot;</span>)</a></code></pre></div>
+<pre><code>## &lt;jobj[733]&gt;
 ##   org.apache.spark.sql.types.StructType
 ##   StructType(StructField(id,IntegerType,true), StructField(year,IntegerType,true), StructField(month,IntegerType,true), StructField(day,IntegerType,true), StructField(dep_time,IntegerType,true), StructField(sched_dep_time,IntegerType,true), StructField(dep_delay,DoubleType,true), StructField(arr_time,IntegerType,true), StructField(sched_arr_time,IntegerType,true), StructField(arr_delay,DoubleType,true), StructField(carrier,StringType,true), StructField(flight,IntegerType,true), StructField(tailnum,StringType,true), StructField(origin,StringType,true), StructField(dest,StringType,true), StructField(air_time,DoubleType,true), StructField(distance,DoubleType,true), StructField(hour,DoubleType,true), StructField(minute,DoubleType,true), StructField(time_hour,TimestampType,true))</code></pre>
 <p>We can also use the invoke interface on other objects, for instance the <code>SparkContext</code>. Let’s for instance retrieve the <code>uiWebUrl</code> of our context:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;uiWebUrl&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb120-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;uiWebUrl&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;Some(http://localhost:4040)&quot;</code></pre>
 </div>
 <div id="grouping-and-aggregation-with-invoke-chains" class="section level2">
 <h2><span class="header-section-number">9.3</span> Grouping and aggregation with invoke chains</h2>
 <p>Imagine we would like to do simple aggregations of a Spark DataFrame, such as an average of a column grouped by another column. For reference, we can do this very simply using the dplyr approach. Let’s compute the average departure delay by origin of the flight:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(origin) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb122-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">avg</span>(dep_delay))</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(origin) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">avg</span>(dep_delay))</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 2]
 ##   origin `avg(dep_delay)`
 ##   &lt;chr&gt;             &lt;dbl&gt;
 ## 1 JFK                12.1
 ## 2 LGA                10.3
 ## 3 EWR                15.1</code></pre>
-<p>Now we will show how to do the same aggregation via the lower level API. Using the Spark shell we would simply do:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb124-1" data-line-number="1">flights.</a>
-<a class="sourceLine" id="cb124-2" data-line-number="2">  <span class="fu">groupBy</span>(<span class="st">&quot;origin&quot;</span>).</a>
-<a class="sourceLine" id="cb124-3" data-line-number="3">  <span class="fu">agg</span>(<span class="fu">avg</span>(<span class="st">&quot;dep_delay&quot;</span>))</a></code></pre></div>
-<p>Translating that into the lower level <code>invoke()</code> API provided by sparklyr looks something like this:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="st">  </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;groupBy&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-4" data-line-number="4"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, <span class="kw">invoke_static</span>(sc, <span class="st">&quot;org.apache.spark.sql.functions&quot;</span>, <span class="st">&quot;expr&quot;</span>, <span class="st">&quot;avg(dep_delay)&quot;</span>), <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-5" data-line-number="5"><span class="st">  </span><span class="kw">sdf_register</span>()</a></code></pre></div>
+<p>Now we will show how to do the same aggregation via the lower level API. Using the Spark shell we would simply write in Scala:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb111-1" data-line-number="1">flights.</a>
+<a class="sourceLine" id="cb111-2" data-line-number="2">  <span class="fu">groupBy</span>(<span class="st">&quot;origin&quot;</span>).</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3">  <span class="fu">agg</span>(<span class="fu">avg</span>(<span class="st">&quot;dep_delay&quot;</span>))</a></code></pre></div>
+<p>Translating that into the lower level <code>invoke()</code> API provided by sparklyr can look similar to the following code.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="st">  </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;groupBy&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb112-4" data-line-number="4"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, <span class="kw">invoke_static</span>(sc, <span class="st">&quot;org.apache.spark.sql.functions&quot;</span>, <span class="st">&quot;expr&quot;</span>, <span class="st">&quot;avg(dep_delay)&quot;</span>), <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb112-5" data-line-number="5"><span class="st">  </span><span class="kw">sdf_register</span>()</a></code></pre></div>
+<pre><code>## # Source: spark&lt;?&gt; [?? x 2]
+##   origin `avg(dep_delay)`
+##   &lt;chr&gt;             &lt;dbl&gt;
+## 1 JFK                12.1
+## 2 LGA                10.3
+## 3 EWR                15.1</code></pre>
 <div id="what-is-all-that-extra-code" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> What is all that extra code?</h3>
 <p>Now, compared to the very simple 2 operations in the Scala version, we have some gotchas to examine:</p>
@@ -391,25 +404,25 @@ Severus Snape
 <div id="wrapping-the-invocations-into-r-functions" class="section level2">
 <h2><span class="header-section-number">9.4</span> Wrapping the invocations into R functions</h2>
 <p>Seeing the above example, we can quickly write a useful wrapper to ease the pain a little. First, we can create a small function that will generate the aggregation expression we can use with <code>invoke(&quot;agg&quot;, ...)</code>:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">agg_expr &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, exprs) {</a>
-<a class="sourceLine" id="cb126-2" data-line-number="2">  sparklyr<span class="op">::</span><span class="kw">invoke_static</span>(</a>
-<a class="sourceLine" id="cb126-3" data-line-number="3">    tbl[[<span class="st">&quot;src&quot;</span>]][[<span class="st">&quot;con&quot;</span>]],</a>
-<a class="sourceLine" id="cb126-4" data-line-number="4">    <span class="st">&quot;org.apache.spark.sql.functions&quot;</span>,</a>
-<a class="sourceLine" id="cb126-5" data-line-number="5">    <span class="st">&quot;expr&quot;</span>,</a>
-<a class="sourceLine" id="cb126-6" data-line-number="6">    exprs</a>
-<a class="sourceLine" id="cb126-7" data-line-number="7">  )</a>
-<a class="sourceLine" id="cb126-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">agg_expr &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, exprs) {</a>
+<a class="sourceLine" id="cb114-2" data-line-number="2">  sparklyr<span class="op">::</span><span class="kw">invoke_static</span>(</a>
+<a class="sourceLine" id="cb114-3" data-line-number="3">    tbl[[<span class="st">&quot;src&quot;</span>]][[<span class="st">&quot;con&quot;</span>]],</a>
+<a class="sourceLine" id="cb114-4" data-line-number="4">    <span class="st">&quot;org.apache.spark.sql.functions&quot;</span>,</a>
+<a class="sourceLine" id="cb114-5" data-line-number="5">    <span class="st">&quot;expr&quot;</span>,</a>
+<a class="sourceLine" id="cb114-6" data-line-number="6">    exprs</a>
+<a class="sourceLine" id="cb114-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb114-8" data-line-number="8">}</a></code></pre></div>
 <p>Next, we can wrap around the entire process to make a more generic aggregation function, using the fact that a remote tibble has the details on <code>sc</code> within its <code>tbl[[&quot;src&quot;]][[&quot;con&quot;]]</code> element:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">grpagg_invoke &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName, groupColName, aggOperation) {</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2">  avgColumn &lt;-<span class="st"> </span>tbl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">agg_expr</span>(<span class="kw">paste0</span>(aggOperation, <span class="st">&quot;(&quot;</span>, colName, <span class="st">&quot;)&quot;</span>))</a>
-<a class="sourceLine" id="cb127-3" data-line-number="3">  tbl <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb127-4" data-line-number="4"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;groupBy&quot;</span>, groupColName, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb127-5" data-line-number="5"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, avgColumn, <span class="kw">list</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb127-6" data-line-number="6"><span class="st">    </span><span class="kw">sdf_register</span>()</a>
-<a class="sourceLine" id="cb127-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">grpagg_invoke &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName, groupColName, aggOperation) {</a>
+<a class="sourceLine" id="cb115-2" data-line-number="2">  avgColumn &lt;-<span class="st"> </span>tbl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">agg_expr</span>(<span class="kw">paste0</span>(aggOperation, <span class="st">&quot;(&quot;</span>, colName, <span class="st">&quot;)&quot;</span>))</a>
+<a class="sourceLine" id="cb115-3" data-line-number="3">  tbl <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb115-4" data-line-number="4"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;groupBy&quot;</span>, groupColName, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb115-5" data-line-number="5"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, avgColumn, <span class="kw">list</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb115-6" data-line-number="6"><span class="st">    </span><span class="kw">sdf_register</span>()</a>
+<a class="sourceLine" id="cb115-7" data-line-number="7">}</a></code></pre></div>
 <p>And finally use our wrapper to get the same results in a more user-friendly way:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span><span class="kw">grpagg_invoke</span>(<span class="st">&quot;arr_delay&quot;</span>, <span class="dt">groupColName =</span> <span class="st">&quot;origin&quot;</span>, <span class="dt">aggOperation =</span> <span class="st">&quot;avg&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="st">  </span><span class="kw">grpagg_invoke</span>(<span class="st">&quot;arr_delay&quot;</span>, <span class="dt">groupColName =</span> <span class="st">&quot;origin&quot;</span>, <span class="dt">aggOperation =</span> <span class="st">&quot;avg&quot;</span>)</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 2]
 ##   origin `avg(arr_delay)`
 ##   &lt;chr&gt;             &lt;dbl&gt;
@@ -420,22 +433,22 @@ Severus Snape
 <div id="reconstructing-variable-normalization" class="section level2">
 <h2><span class="header-section-number">9.5</span> Reconstructing variable normalization</h2>
 <p>Now we will attempt to construct the variable normalization that we have shown in the previous parts with dplyr verbs and SQL generation - we will normalize the values of a column by first subtracting the mean value and then dividing the values by the standard deviation:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">normalize_invoke &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName) {</a>
-<a class="sourceLine" id="cb130-2" data-line-number="2">  sdf &lt;-<span class="st"> </span>tbl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>()</a>
-<a class="sourceLine" id="cb130-3" data-line-number="3">  stdCol &lt;-<span class="st"> </span><span class="kw">agg_expr</span>(tbl, <span class="kw">paste0</span>(<span class="st">&quot;stddev_samp(&quot;</span>, colName, <span class="st">&quot;)&quot;</span>))</a>
-<a class="sourceLine" id="cb130-4" data-line-number="4">  avgCol &lt;-<span class="st"> </span><span class="kw">agg_expr</span>(tbl, <span class="kw">paste0</span>(<span class="st">&quot;avg(&quot;</span>, colName, <span class="st">&quot;)&quot;</span>))</a>
-<a class="sourceLine" id="cb130-5" data-line-number="5">  avgTemp &lt;-<span class="st"> </span>sdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, avgCol, <span class="kw">list</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;first&quot;</span>)</a>
-<a class="sourceLine" id="cb130-6" data-line-number="6">  stdTemp &lt;-<span class="st"> </span>sdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, stdCol, <span class="kw">list</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;first&quot;</span>)</a>
-<a class="sourceLine" id="cb130-7" data-line-number="7">  newCol &lt;-<span class="st"> </span>sdf <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-8" data-line-number="8"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;col&quot;</span>, colName) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-9" data-line-number="9"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;minus&quot;</span>, <span class="kw">as.numeric</span>(avgTemp)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-10" data-line-number="10"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;divide&quot;</span>, <span class="kw">as.numeric</span>(stdTemp))</a>
-<a class="sourceLine" id="cb130-11" data-line-number="11">  sdf <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-12" data-line-number="12"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;withColumn&quot;</span>, colName, newCol) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-13" data-line-number="13"><span class="st">    </span><span class="kw">sdf_register</span>()</a>
-<a class="sourceLine" id="cb130-14" data-line-number="14">}</a>
-<a class="sourceLine" id="cb130-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb130-16" data-line-number="16">tbl_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">normalize_invoke</span>(<span class="st">&quot;temp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">normalize_invoke &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName) {</a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">  sdf &lt;-<span class="st"> </span>tbl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>()</a>
+<a class="sourceLine" id="cb118-3" data-line-number="3">  stdCol &lt;-<span class="st"> </span><span class="kw">agg_expr</span>(tbl, <span class="kw">paste0</span>(<span class="st">&quot;stddev_samp(&quot;</span>, colName, <span class="st">&quot;)&quot;</span>))</a>
+<a class="sourceLine" id="cb118-4" data-line-number="4">  avgCol &lt;-<span class="st"> </span><span class="kw">agg_expr</span>(tbl, <span class="kw">paste0</span>(<span class="st">&quot;avg(&quot;</span>, colName, <span class="st">&quot;)&quot;</span>))</a>
+<a class="sourceLine" id="cb118-5" data-line-number="5">  avgTemp &lt;-<span class="st"> </span>sdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, avgCol, <span class="kw">list</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;first&quot;</span>)</a>
+<a class="sourceLine" id="cb118-6" data-line-number="6">  stdTemp &lt;-<span class="st"> </span>sdf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;agg&quot;</span>, stdCol, <span class="kw">list</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;first&quot;</span>)</a>
+<a class="sourceLine" id="cb118-7" data-line-number="7">  newCol &lt;-<span class="st"> </span>sdf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb118-8" data-line-number="8"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;col&quot;</span>, colName) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb118-9" data-line-number="9"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;minus&quot;</span>, <span class="kw">as.numeric</span>(avgTemp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb118-10" data-line-number="10"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;divide&quot;</span>, <span class="kw">as.numeric</span>(stdTemp))</a>
+<a class="sourceLine" id="cb118-11" data-line-number="11">  sdf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb118-12" data-line-number="12"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;withColumn&quot;</span>, colName, newCol) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb118-13" data-line-number="13"><span class="st">    </span><span class="kw">sdf_register</span>()</a>
+<a class="sourceLine" id="cb118-14" data-line-number="14">}</a>
+<a class="sourceLine" id="cb118-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb118-16" data-line-number="16">tbl_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">normalize_invoke</span>(<span class="st">&quot;temp&quot;</span>)</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 16]
 ##       id origin  year month   day  hour   temp  dewp humid wind_dir wind_speed
 ##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;

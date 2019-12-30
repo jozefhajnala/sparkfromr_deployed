@@ -173,7 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>6.5</b> Making serialization faster with Apache Arrow</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-apache-arrow-and-how-it-improves-performance"><i class="fa fa-check"></i><b>6.5.1</b> What is Apache Arrow and how it improves performance</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#the-take-home-messages"><i class="fa fa-check"></i><b>6.6</b> The take-home messages</a></li>
+<li class="chapter" data-level="6.6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#conclusion-take-home-messages"><i class="fa fa-check"></i><b>6.6</b> Conclusion, take-home messages</a></li>
 <li class="chapter" data-level="6.7" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#but-we-still-need-arbitrary-functions-to-run-fast"><i class="fa fa-check"></i><b>6.7</b> But we still need arbitrary functions to run fast</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html"><i class="fa fa-check"></i><b>7</b> Constructing functions by piping dplyr verbs</a><ul>
@@ -183,8 +183,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#investigating-the-sql-translation-and-its-spark-plan"><i class="fa fa-check"></i><b>7.1.3</b> Investigating the SQL translation and its Spark plan</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#a-more-complex-use-case---joins-group-bys-and-aggregations"><i class="fa fa-check"></i><b>7.2</b> A more complex use case - Joins, group bys, and aggregations</a></li>
-<li class="chapter" data-level="7.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>7.3</b> Using the functions with local versus remote datasets</a></li>
-<li class="chapter" data-level="7.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#the-take-home-message"><i class="fa fa-check"></i><b>7.4</b> The take-home message</a></li>
+<li class="chapter" data-level="7.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#using-the-functions-with-local-versus-remote-datasets"><i class="fa fa-check"></i><b>7.3</b> Using the functions with local versus remote datasets</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#unified-front-end-different-back-ends"><i class="fa fa-check"></i><b>7.3.1</b> Unified front-end, different back-ends</a></li>
+<li class="chapter" data-level="7.3.2" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#differences-in-na-and-nan-values"><i class="fa fa-check"></i><b>7.3.2</b> Differences in <code>NA</code> and <code>NaN</code> values</a></li>
+<li class="chapter" data-level="7.3.3" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#dates-times-and-time-zones"><i class="fa fa-check"></i><b>7.3.3</b> Dates, times and time zones</a></li>
+<li class="chapter" data-level="7.3.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#joins"><i class="fa fa-check"></i><b>7.3.4</b> Joins</a></li>
+<li class="chapter" data-level="7.3.5" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#portability-of-used-methods"><i class="fa fa-check"></i><b>7.3.5</b> Portability of used methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="constructing-functions-by-piping-dplyr-verbs.html"><a href="constructing-functions-by-piping-dplyr-verbs.html#conclusion-take-home-messages-1"><i class="fa fa-check"></i><b>7.4</b> Conclusion, take-home messages</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html"><i class="fa fa-check"></i><b>8</b> Constructing SQL and executing it with Spark</a><ul>
 <li class="chapter" data-level="8.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#r-functions-as-spark-sql-generators"><i class="fa fa-check"></i><b>8.1</b> R functions as Spark SQL generators</a></li>
@@ -194,11 +200,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#using-tbl-with-dbplyrs-sql"><i class="fa fa-check"></i><b>8.2.3</b> Using tbl with dbplyr’s sql</a></li>
 <li class="chapter" data-level="8.2.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#wrapping-the-tbl-approach-into-functions"><i class="fa fa-check"></i><b>8.2.4</b> Wrapping the tbl approach into functions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#combining-multiple-approaches-and-functions-into-lazy-datasets"><i class="fa fa-check"></i><b>8.3</b> Combining multiple approaches and functions into lazy datasets</a></li>
-<li class="chapter" data-level="8.4" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>8.4</b> Where SQL can be better than dbplyr translation</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>8.4.1</b> When a translation is not there</a></li>
-<li class="chapter" data-level="8.4.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>8.4.2</b> When translation does not provide expected results</a></li>
-<li class="chapter" data-level="8.4.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>8.4.3</b> When portability is important</a></li>
+<li class="chapter" data-level="8.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#where-sql-can-be-better-than-dbplyr-translation"><i class="fa fa-check"></i><b>8.3</b> Where SQL can be better than dbplyr translation</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-a-translation-is-not-there"><i class="fa fa-check"></i><b>8.3.1</b> When a translation is not there</a></li>
+<li class="chapter" data-level="8.3.2" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-translation-does-not-provide-expected-results"><i class="fa fa-check"></i><b>8.3.2</b> When translation does not provide expected results</a></li>
+<li class="chapter" data-level="8.3.3" data-path="constructing-sql-and-executing-it-with-spark.html"><a href="constructing-sql-and-executing-it-with-spark.html#when-portability-is-important"><i class="fa fa-check"></i><b>8.3.3</b> When portability is important</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html"><i class="fa fa-check"></i><b>9</b> Using the lower-level invoke API to manipulate Spark’s Java objects from R</a><ul>
@@ -227,17 +232,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html"><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html#conclusion-1"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>11</b> References and resources</a><ul>
-<li class="chapter" data-level="11.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>11.1</b> Getting started with sparklyr</a></li>
-<li class="chapter" data-level="11.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dplyr-syntax"><i class="fa fa-check"></i><b>11.2</b> dplyr syntax</a></li>
-<li class="chapter" data-level="11.3" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>11.3</b> DBI, Spark SQL, Hive</a></li>
-<li class="chapter" data-level="11.4" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>11.4</b> Docker</a></li>
-<li class="chapter" data-level="11.5" data-path="references-and-resources.html"><a href="references-and-resources.html#java-scala-and-friends"><i class="fa fa-check"></i><b>11.5</b> Java, Scala and friends</a></li>
-<li class="chapter" data-level="11.6" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>11.6</b> Apache Arrow</a></li>
-<li class="chapter" data-level="11.7" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>11.7</b> Physical Books</a></li>
+<li class="chapter" data-level="11" data-path="combining-approaches-into-lazy-datasets.html"><a href="combining-approaches-into-lazy-datasets.html"><i class="fa fa-check"></i><b>11</b> Combining approaches into lazy datasets</a></li>
+<li class="chapter" data-level="12" data-path="references-and-resources.html"><a href="references-and-resources.html"><i class="fa fa-check"></i><b>12</b> References and resources</a><ul>
+<li class="chapter" data-level="12.1" data-path="references-and-resources.html"><a href="references-and-resources.html#online-resources"><i class="fa fa-check"></i><b>12.1</b> Online resources</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="references-and-resources.html"><a href="references-and-resources.html#getting-started-with-sparklyr"><i class="fa fa-check"></i><b>12.1.1</b> Getting started with sparklyr</a></li>
+<li class="chapter" data-level="12.1.2" data-path="references-and-resources.html"><a href="references-and-resources.html#dbi-spark-sql-hive"><i class="fa fa-check"></i><b>12.1.2</b> DBI, Spark SQL, Hive</a></li>
+<li class="chapter" data-level="12.1.3" data-path="references-and-resources.html"><a href="references-and-resources.html#docker"><i class="fa fa-check"></i><b>12.1.3</b> Docker</a></li>
+<li class="chapter" data-level="12.1.4" data-path="references-and-resources.html"><a href="references-and-resources.html#spark-api-java-scala-and-friends"><i class="fa fa-check"></i><b>12.1.4</b> Spark API, Java, Scala and friends</a></li>
+<li class="chapter" data-level="12.1.5" data-path="references-and-resources.html"><a href="references-and-resources.html#apache-arrow"><i class="fa fa-check"></i><b>12.1.5</b> Apache Arrow</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>12</b> Footnotes</a><ul>
-<li class="chapter" data-level="12.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>12.1</b> Setup of Apache Arrow</a></li>
+<li class="chapter" data-level="12.2" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>12.2</b> Physical Books</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>13</b> Footnotes</a><ul>
+<li class="chapter" data-level="13.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>13.1</b> Setup of Apache Arrow</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -262,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 7</span> Constructing functions by piping dplyr verbs</h1>
 <script src="static/js/highcharts.js"></script>
 <script src="static/js/highcharts-more.js"></script>
-<p>In the <a href="communication-between-spark-and-sparklyr.html">previous chapter</a>, we looked at how the sparklyr interface communicates with the Spark instance and what this means for performance with regards to arbitrarily defined R functions. We also examined how Apache Arrow can increase the performance of data transfers between the R session and the Spark instance.</p>
+<p>In the <a href="communication-between-spark-and-sparklyr.html">previous chapters</a>, we looked at how the sparklyr interface communicates with the Spark instance and what this means for performance with regards to arbitrarily defined R functions. We also examined how Apache Arrow can increase the performance of data transfers between the R session and the Spark instance.</p>
 <p>In this chapter, we will look at how to write R functions that can be executed directly by Spark without serialization overhead that we have shown in the previous installment. We will focus on writing functions as combinations of dplyr verbs that can be translated using dbplyr and investigate how the SQL is generated and Spark plans created.</p>
 <div id="r-functions-as-combinations-of-dplyr-verbs-and-spark" class="section level2">
 <h2><span class="header-section-number">7.1</span> R functions as combinations of dplyr verbs and Spark</h2>
@@ -297,7 +304,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">tbl_weather <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span><span class="kw">normalize_dplyr_scale</span>(temp, <span class="st">&quot;normTemp&quot;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb41-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(id, temp, normTemp)</a></code></pre></div>
-<pre><code>Error: org.apache.spark.sql.AnalysisException: Undefined function: &#39;scale&#39;. </code></pre>
+<pre><code>## Error: org.apache.spark.sql.AnalysisException: Undefined function: &#39;scale&#39;. This function is neither a registered temporary function nor a permanent function registered in the database &#39;default&#39;.; line 1 pos 21
+##  at org.apache.spark.sql.catalyst.analysis.Analyzer$LookupFunctions$$anonfun$apply$15$$anonfun$applyOrElse$49.apply(Analyzer.scala:1281)
+##  at org.apache.spark.sql.catalyst.analysis.Analyzer$LookupFunctions$$anonfun$apply$15$$anonfun$applyOrElse$49.apply(Analyzer.scala:1281)
+##  at org.apache.spark.sql.catalyst.analysis.package$.withPosition(package.scala:53)
+...</code></pre>
 </div>
 <div id="using-a-combination-of-supported-dplyr-verbs-and-operations" class="section level3">
 <h3><span class="header-section-number">7.1.2</span> Using a combination of supported dplyr verbs and operations</h3>
@@ -359,8 +370,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## &lt;PLAN&gt;</code></pre>
 <pre><code>## == Physical Plan ==
-## *(1) Project [id#24, origin#25, year#26, month#27, day#28, hour#29, temp#30, dewp#31, humid#32, wind_dir#33, wind_speed#34, wind_gust#35, precip#36, pressure#37, visib#38, time_hour#39, ((temp#30 - _we0#1994) / _we1#1995) AS normTemp#1980]
-## +- Window [avg(temp#30) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS _we0#1994, stddev_samp(temp#30) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS _we1#1995]
+## *(1) Project [id#24, origin#25, year#26, month#27, day#28, hour#29, temp#30, dewp#31, humid#32, wind_dir#33, wind_speed#34, wind_gust#35, precip#36, pressure#37, visib#38, time_hour#39, ((temp#30 - _we0#1995) / _we1#1996) AS normTemp#1981]
+## +- Window [avg(temp#30) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS _we0#1995, stddev_samp(temp#30) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS _we1#1996]
 ##    +- Exchange SinglePartition
 ##       +- InMemoryTableScan [id#24, origin#25, year#26, month#27, day#28, hour#29, temp#30, dewp#31, humid#32, wind_dir#33, wind_speed#34, wind_gust#35, precip#36, pressure#37, visib#38, time_hour#39]
 ##             +- InMemoryRelation [id#24, origin#25, year#26, month#27, day#28, hour#29, temp#30, dewp#31, humid#32, wind_dir#33, wind_speed#34, wind_gust#35, precip#36, pressure#37, visib#38, time_hour#39], StorageLevel(disk, memory, deserialized, 1 replicas)
@@ -454,53 +465,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="using-the-functions-with-local-versus-remote-datasets" class="section level2">
 <h2><span class="header-section-number">7.3</span> Using the functions with local versus remote datasets</h2>
+<div id="unified-front-end-different-back-ends" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Unified front-end, different back-ends</h3>
 <p>Some of the appeal of the dplyr syntax comes from the fact that we can use the same functions to conveniently manipulate local data frames in memory and, with the very same code, data from remote sources such as relational databases, data.tables and even data within Spark.</p>
 <p>This unified front-end, however, comes with some important differences that we must be aware of when applying and porting code from using it to manipulate and compute on local data versus on remote sources. The same holds for remote Spark DataFrames that we are manipulating when using dplyr functions.</p>
-<p>An example of a different behavior is joining. The very simplest example - trying to inner join two tables can lead to a different amount of rows for the remote Spark DataFrames and the local R data frames:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">bycols &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="st">&quot;hour&quot;</span>, <span class="st">&quot;time_hour&quot;</span>)</a>
-<a class="sourceLine" id="cb60-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="co"># Look at count of rows of Inner join of the Spark data frames </span></a>
-<a class="sourceLine" id="cb60-4" data-line-number="4">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(tbl_weather, <span class="dt">by =</span> bycols) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
-<pre><code>## # Source: spark&lt;?&gt; [?? x 1]
-##        n
-##    &lt;dbl&gt;
-## 1 335096</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># Look at count of rows of Inner join of the local data frames </span></a>
-<a class="sourceLine" id="cb62-2" data-line-number="2">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(weather, <span class="dt">by =</span> bycols) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##        n
-##    &lt;int&gt;
-## 1 335220</code></pre>
+<p>The following paragraphs will show a few examples of issues we can come across when porting local data handling to a remote source such as Spark.</p>
+</div>
+<div id="differences-in-na-and-nan-values" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Differences in <code>NA</code> and <code>NaN</code> values</h3>
 <p>Another example of differences can arise from handling <code>NA</code> and <code>NaN</code> values:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co"># Create (lazy) left joins</span></a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">joined_spark &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(tbl_weather, <span class="dt">by =</span> bycols) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>()</a>
-<a class="sourceLine" id="cb64-3" data-line-number="3">joined_local &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(weather, <span class="dt">by =</span> bycols)</a>
-<a class="sourceLine" id="cb64-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="co"># Look at counts of NA values</span></a>
-<a class="sourceLine" id="cb64-6" data-line-number="6">joined_local <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(temp)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1  1573</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">joined_spark <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(temp)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
-##       n
-##   &lt;int&gt;
-## 1  1697</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co"># Look at counts of NaN values</span></a>
-<a class="sourceLine" id="cb68-2" data-line-number="2">joined_local <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.nan</span>(temp)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">bycols &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="st">&quot;hour&quot;</span>)</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="co"># Create left joins</span></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4">joined_spark &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="st">  </span><span class="kw">left_join</span>(tbl_weather, <span class="dt">by =</span> bycols) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb60-6" data-line-number="6"><span class="st">  </span><span class="kw">collect</span>()</a>
+<a class="sourceLine" id="cb60-7" data-line-number="7">joined_local &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb60-8" data-line-number="8"><span class="st">  </span><span class="kw">left_join</span>(weather, <span class="dt">by =</span> bycols)</a>
+<a class="sourceLine" id="cb60-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb60-10" data-line-number="10"><span class="co"># Look at counts of NaN values</span></a>
+<a class="sourceLine" id="cb60-11" data-line-number="11">joined_local <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.nan</span>(temp)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##       n
 ##   &lt;int&gt;
 ## 1     0</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">joined_spark <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.nan</span>(temp)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">joined_spark <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.nan</span>(temp)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##       n
 ##   &lt;int&gt;
-## 1  1697</code></pre>
+## 1  1573</code></pre>
+</div>
+<div id="dates-times-and-time-zones" class="section level3">
+<h3><span class="header-section-number">7.3.3</span> Dates, times and time zones</h3>
 <p>Special care must also be taken when dealing with date/time values and their time zones:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># Note the time_hour values are different</span></a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(id, time_hour)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co"># Note the time_hour values are different</span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(id, time_hour)</a></code></pre></div>
 <pre><code>## # A tibble: 26,115 x 2
 ##       id time_hour          
 ##    &lt;int&gt; &lt;dttm&gt;             
@@ -515,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9     9 2013-01-01 09:00:00
 ## 10    10 2013-01-01 10:00:00
 ## # … with 26,105 more rows</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">tbl_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(id, time_hour)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">tbl_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(id, time_hour)</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 2]
 ##       id time_hour          
 ##    &lt;int&gt; &lt;dttm&gt;             
@@ -530,11 +529,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9     9 2013-01-01 14:00:00
 ## 10    10 2013-01-01 15:00:00
 ## # … with more rows</code></pre>
+</div>
+<div id="joins" class="section level3">
+<h3><span class="header-section-number">7.3.4</span> Joins</h3>
+<p>Another example of a different behavior is joining due to matching column values. Care must be taken to write conditions that are portable to ensure that the joins are consistent across data sources.</p>
+</div>
+<div id="portability-of-used-methods" class="section level3">
+<h3><span class="header-section-number">7.3.5</span> Portability of used methods</h3>
 <p>And, rather obviously, when using Hive built-in functions in the dplyr-based function, we will most likely not be able to execute it on the local data frames, as we have <a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r">seen previously</a>.</p>
 </div>
-<div id="the-take-home-message" class="section level2">
-<h2><span class="header-section-number">7.4</span> The take-home message</h2>
-<p>In this part of the series, we have shown that we can take advantage of the performance of Spark while still writing arbitrary R functions by using dplyr syntax, which supports translation to Spark SQL using the dbplyr backend. We have also looked at some important differences when applying the same dplyr transformations to local and remote data sets.</p>
+</div>
+<div id="conclusion-take-home-messages-1" class="section level2">
+<h2><span class="header-section-number">7.4</span> Conclusion, take-home messages</h2>
+<p>In this chapter, we have shown that we can take advantage of the performance of Spark while still writing arbitrary R functions by using dplyr syntax, which supports translation to Spark SQL using the dbplyr backend. We have also looked at some important differences when applying the same dplyr transformations to local and remote data sets.</p>
 <p>With this approach, we can use R development best practices, testing, and documentation methods in a standard way when writing our R packages, getting the best of both worlds - Apache Spark for performance and R for convenient development of data science applications.</p>
 <p>In the next chapter, we will look at writing R functions that will be using SQL directly, instead of relying on dbplyr for the translation, and how we can efficiently send them to the Spark instance for execution and optionally retrieve the results to our R session.</p>
 
