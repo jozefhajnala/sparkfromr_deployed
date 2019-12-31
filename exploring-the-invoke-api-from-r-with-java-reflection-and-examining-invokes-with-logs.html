@@ -436,7 +436,7 @@ Gandalf the White
 <a class="sourceLine" id="cb134-3" data-line-number="3">spark_confs &lt;-<span class="st"> </span><span class="kw">vapply</span>(spark_confs, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb134-4" data-line-number="4"><span class="kw">sort</span>(spark_confs)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">12</span>)]</a></code></pre></div>
 <pre><code>## [1] &quot;(spark.app.name,sparklyr)&quot;        &quot;(spark.driver.host,localhost)&quot;   
-## [3] &quot;(spark.sql.shuffle.partitions,4)&quot;</code></pre>
+## [3] &quot;(spark.sql.shuffle.partitions,2)&quot;</code></pre>
 <p>Looking at <a href="https://spark.apache.org/docs/1.6.0/api/java/org/apache/spark/SparkConf.html#getAll()">the Scala documentation for the <code>getAll</code> method</a>, we actually see that there is information missing on our data - the classes of the objects in the tuple, which in this case is <code>scala.Tuple2&lt;java.lang.String,java.lang.String&gt;[]</code>.</p>
 <p>We could therefore improve our helper to be more detailed in the return value information.</p>
 </div>

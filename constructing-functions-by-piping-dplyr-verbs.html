@@ -447,9 +447,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &lt;PLAN&gt;</code></pre>
 <pre><code>## == Physical Plan ==
 ## *(4) Sort [visib#38 ASC NULLS FIRST], true, 0
-## +- Exchange rangepartitioning(visib#38 ASC NULLS FIRST, 4)
+## +- Exchange rangepartitioning(visib#38 ASC NULLS FIRST, 2)
 ##    +- *(3) HashAggregate(keys=[visib#38], functions=[avg(arr_delay#411)])
-##       +- Exchange hashpartitioning(visib#38, 4)
+##       +- Exchange hashpartitioning(visib#38, 2)
 ##          +- *(2) HashAggregate(keys=[visib#38], functions=[partial_avg(arr_delay#411)])
 ##             +- *(2) Project [arr_delay#411, visib#38]
 ##                +- *(2) BroadcastHashJoin [year#403, month#404, day#405, origin#415, hour#419, time_hour#421], [year#26, month#27, day#28, origin#25, cast(hour#29 as double), time_hour#39], Inner, BuildRight

@@ -301,9 +301,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## # A tibble: 3 x 2
 ##   origin `mean(dep_delay_norm)`
 ##   &lt;chr&gt;                   &lt;dbl&gt;
-## 1 JFK                   -0.0131
-## 2 LGA                   -0.0570
-## 3 EWR                    0.0614</code></pre>
+## 1 EWR                    0.0614
+## 2 JFK                   -0.0131
+## 3 LGA                   -0.0570</code></pre>
 <p>The crucial advantage is that even though the <code>lazy_spark_query</code> would return the entire updated weather dataset when collected stand-alone, in combination with other operations Spark first figures out how to execute all the operations together efficiently and only then physically executes them and returns only the grouped and aggregated data to the R session.</p>
 <p>We can therefore effectively combine multiple approaches to interfacing with Spark while still keeping the benefit of retrieving only very small, aggregated amounts of data to the R session. The effect is quite significant even with a dataset as small as <code>flights</code> (336,776 rows of 19 columns) and with a local Spark instance. The chart below compares executing a query lazily, aggregating within Spark and only retrieving the aggregated data, versus retrieving first and aggregating locally. The third boxplot shows the cost of pure collection on the query itself:</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">bench &lt;-<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>

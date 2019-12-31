@@ -373,9 +373,9 @@ Severus Snape
 <pre><code>## # Source: spark&lt;?&gt; [?? x 2]
 ##   origin `avg(dep_delay)`
 ##   &lt;chr&gt;             &lt;dbl&gt;
-## 1 JFK                12.1
-## 2 LGA                10.3
-## 3 EWR                15.1</code></pre>
+## 1 EWR                15.1
+## 2 JFK                12.1
+## 3 LGA                10.3</code></pre>
 <p>Now we will show how to do the same aggregation via the lower level API. Using the Spark shell we would simply write in Scala:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb111-1" data-line-number="1">flights.</a>
 <a class="sourceLine" id="cb111-2" data-line-number="2">  <span class="fu">groupBy</span>(<span class="st">&quot;origin&quot;</span>).</a>
@@ -389,9 +389,9 @@ Severus Snape
 <pre><code>## # Source: spark&lt;?&gt; [?? x 2]
 ##   origin `avg(dep_delay)`
 ##   &lt;chr&gt;             &lt;dbl&gt;
-## 1 JFK                12.1
-## 2 LGA                10.3
-## 3 EWR                15.1</code></pre>
+## 1 EWR                15.1
+## 2 JFK                12.1
+## 3 LGA                10.3</code></pre>
 <div id="what-is-all-that-extra-code" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> What is all that extra code?</h3>
 <p>Now, compared to the very simple 2 operations in the Scala version, we have some gotchas to examine:</p>
@@ -426,9 +426,9 @@ Severus Snape
 <pre><code>## # Source: spark&lt;?&gt; [?? x 2]
 ##   origin `avg(arr_delay)`
 ##   &lt;chr&gt;             &lt;dbl&gt;
-## 1 JFK                5.55
-## 2 LGA                5.78
-## 3 EWR                9.11</code></pre>
+## 1 EWR                9.11
+## 2 JFK                5.55
+## 3 LGA                5.78</code></pre>
 </div>
 <div id="reconstructing-variable-normalization" class="section level2">
 <h2><span class="header-section-number">9.5</span> Reconstructing variable normalization</h2>
