@@ -160,14 +160,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html"><i class="fa fa-check"></i><b>5</b> Communication between Spark and sparklyr</a><ul>
 <li class="chapter" data-level="5.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#sparklyr-as-a-spark-interface-provider"><i class="fa fa-check"></i><b>5.1</b> Sparklyr as a Spark interface provider</a></li>
-<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.2</b> An R function translated to Spark SQL</a></li>
+<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.2</b> An R function translated to Spark SQL</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#how-does-spark-know-the-r-function-tolower"><i class="fa fa-check"></i><b>5.2.1</b> How does Spark know the R function <code>tolower()</code>?</a></li>
+</ul></li>
 <li class="chapter" data-level="5.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-not-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.3</b> An R function not translated to Spark SQL</a></li>
 <li class="chapter" data-level="5.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r"><i class="fa fa-check"></i><b>5.4</b> A Hive built-in function not existing in R</a></li>
 <li class="chapter" data-level="5.5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#using-non-translated-functions-with-sparklyr"><i class="fa fa-check"></i><b>5.5</b> Using non-translated functions with sparklyr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html"><i class="fa fa-check"></i><b>6</b> Non-translated functions with spark_apply</a><ul>
 <li class="chapter" data-level="6.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-so-important-about-this-distinction"><i class="fa fa-check"></i><b>6.1</b> What is so important about this distinction?</a></li>
-<li class="chapter" data-level="6.2" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>6.2</b> What happens when we use custom functions with <code>spark_apply</code></a></li>
+<li class="chapter" data-level="6.2" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>6.2</b> What happens when we use custom functions with <code>spark_apply()</code></a></li>
 <li class="chapter" data-level="6.3" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-translated-or-hive-built-in-functions"><i class="fa fa-check"></i><b>6.3</b> What happens when we use translated or Hive built-in functions</a></li>
 <li class="chapter" data-level="6.4" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#which-r-functionality-is-currently-translated-and-built-in-to-hive"><i class="fa fa-check"></i><b>6.4</b> Which R functionality is currently translated and built-in to Hive</a></li>
 <li class="chapter" data-level="6.5" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>6.5</b> Making serialization faster with Apache Arrow</a><ul>
@@ -271,11 +273,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sparklyr-as-a-spark-interface-provider" class="section level2">
 <h2><span class="header-section-number">5.1</span> Sparklyr as a Spark interface provider</h2>
 <p>The sparklyr package is an R <em>interface</em> to Apache Spark. The meaning of the word interface is very important in this context as the way we use this interface can significantly affect the performance benefits we get from using Spark.</p>
-<p>To understand the meaning of the above a bit better, we will examine 3 very simple functions that are different in implementation but intend to provide the same results, and how they behave with regards to Spark. We will keep using the datasets from the <a href="https://cran.r-project.org/package=nycflights13">nycflights13</a> package for our examples.</p>
+<p>To understand the meaning of the above a bit better, we will examine 3 very simple functions that are different in implementation but intend to provide the same results, and how they behave with regards to Spark. Our goal will be completely trivial - convert the <code>origin</code> column that contains the airport of origin of flights from uppercase to all lowercase. We will keep using the datasets from the nycflights13 package for our examples.</p>
 </div>
 <div id="an-r-function-translated-to-spark-sql" class="section level2">
 <h2><span class="header-section-number">5.2</span> An R function translated to Spark SQL</h2>
-<p>Using the following <code>fun_implemented()</code> function will yield the expected results for both a local data frame <code>nycflights13::weather</code> and the remote Spark object referenced by <code>tbl_weather</code>:</p>
+<p>Using the following <code>fun_implemented()</code> function will yield the expected results for both a local data frame <code>nycflights13::weather</code> and the remote Spark object referenced by <code>tbl_weather</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># An R function `tolower` translated to Spark SQL</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2">fun_implemented &lt;-<span class="st"> </span><span class="cf">function</span>(df, col) {</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3">  df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>({{col}} <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">tolower</span>({{col}}))</a>
@@ -297,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 ewr     2013     1     1    10  41    28.0  59.6      260      13.8 
 ## # … with 26,105 more rows, and 5 more variables: wind_gust &lt;dbl&gt;, precip &lt;dbl&gt;,
 ## #   pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-<p>Next, we use it against a remote Spark DataFrame. Notice that here the output is a remote object with <code>Source: spark&lt;?&gt; [?? x 16]</code> and once again, Spark only executed the minimal work to show this printout, so we do not yet know, how many lines in total are in the resulting DataFrame. We will talk about this in more detail in the later chapters.</p>
+<p>Next, we use it against a remote Spark DataFrame. Notice that here the output is a remote object with <code>Source: spark&lt;?&gt; [?? x 16]</code> and once again, Spark only executed the minimal work to show this printout, so we do not yet know how many lines in total are in the resulting DataFrame.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">fun_implemented</span>(tbl_weather, origin)</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 16]
 ##       id origin  year month   day  hour  temp  dewp humid wind_dir wind_speed
@@ -314,13 +316,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    10 ewr     2013     1     1    10  41    28.0  59.6      260      13.8 
 ## # … with more rows, and 5 more variables: wind_gust &lt;dbl&gt;, precip &lt;dbl&gt;,
 ## #   pressure &lt;dbl&gt;, visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-<p>So how does Spark know the R function <code>tolower()</code>? Our function call worked within Spark because the R function <code>tolower()</code> was translated by <code>dbplyr</code> to Spark SQL function <code>LOWER</code> and the resulting query was sent to Spark to be executed.</p>
-<p>We can see the actual translated SQL by running <code>sql_render()</code> on the function call:</p>
+<div id="how-does-spark-know-the-r-function-tolower" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> How does Spark know the R function <code>tolower()</code>?</h3>
+<p>Actually, it does not. Our function call worked within Spark because the R function <code>tolower()</code> was translated by the functionality of the dbplyr package to Spark SQL - converting the R <code>tolower()</code> function to <code>LOWER</code>, which is a function available in Spark SQL. The resulting query was then sent to Spark to be executed.</p>
+<p>This is the main mode of operation of the sparklyr interface - translating our R code to Spark SQL code and using Spark’s SQL API to execute it. We can see the actual translated SQL by running <code>sql_render()</code> on the above function call.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">dbplyr<span class="op">::</span><span class="kw">sql_render</span>(</a>
 <a class="sourceLine" id="cb19-2" data-line-number="2">  <span class="kw">fun_implemented</span>(tbl_weather, origin)</a>
 <a class="sourceLine" id="cb19-3" data-line-number="3">)</a></code></pre></div>
 <pre><code>## &lt;SQL&gt; SELECT `id`, LOWER(`origin`) AS `origin`, `year`, `month`, `day`, `hour`, `temp`, `dewp`, `humid`, `wind_dir`, `wind_speed`, `wind_gust`, `precip`, `pressure`, `visib`, `time_hour`
 ## FROM `weather`</code></pre>
+</div>
 </div>
 <div id="an-r-function-not-translated-to-spark-sql" class="section level2">
 <h2><span class="header-section-number">5.3</span> An R function not translated to Spark SQL</h2>
@@ -392,6 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-non-translated-functions-with-sparklyr" class="section level2">
 <h2><span class="header-section-number">5.5</span> Using non-translated functions with sparklyr</h2>
 <p>It can easily happen that one of the functions we want to use falls into the category where it is neither translated or a Hive built-in function. In this case, there is another interface provided by sparklyr that can allow us to do that - the <code>spark_apply()</code> function. We will look into this interface in more detail in <a href="non-translated-functions-with-spark-apply.html">the next chapter</a>.</p>
+<p>There is also a lower-level API provided by sparklyr allowing us to invoke Scala methods without using SQL translation. We discuss this API in detail in the <a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html">Using the lower-level invoke API to manipulate Spark’s Java objects from R</a> and <a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html">Exploring the invoke API from R with Java reflection and examining invokes with logs</a> chapters.</p>
 
 </div>
 </div>

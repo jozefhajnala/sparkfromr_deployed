@@ -160,14 +160,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html"><i class="fa fa-check"></i><b>5</b> Communication between Spark and sparklyr</a><ul>
 <li class="chapter" data-level="5.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#sparklyr-as-a-spark-interface-provider"><i class="fa fa-check"></i><b>5.1</b> Sparklyr as a Spark interface provider</a></li>
-<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.2</b> An R function translated to Spark SQL</a></li>
+<li class="chapter" data-level="5.2" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.2</b> An R function translated to Spark SQL</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#how-does-spark-know-the-r-function-tolower"><i class="fa fa-check"></i><b>5.2.1</b> How does Spark know the R function <code>tolower()</code>?</a></li>
+</ul></li>
 <li class="chapter" data-level="5.3" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#an-r-function-not-translated-to-spark-sql"><i class="fa fa-check"></i><b>5.3</b> An R function not translated to Spark SQL</a></li>
 <li class="chapter" data-level="5.4" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r"><i class="fa fa-check"></i><b>5.4</b> A Hive built-in function not existing in R</a></li>
 <li class="chapter" data-level="5.5" data-path="communication-between-spark-and-sparklyr.html"><a href="communication-between-spark-and-sparklyr.html#using-non-translated-functions-with-sparklyr"><i class="fa fa-check"></i><b>5.5</b> Using non-translated functions with sparklyr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html"><i class="fa fa-check"></i><b>6</b> Non-translated functions with spark_apply</a><ul>
 <li class="chapter" data-level="6.1" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-is-so-important-about-this-distinction"><i class="fa fa-check"></i><b>6.1</b> What is so important about this distinction?</a></li>
-<li class="chapter" data-level="6.2" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>6.2</b> What happens when we use custom functions with <code>spark_apply</code></a></li>
+<li class="chapter" data-level="6.2" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-custom-functions-with-spark_apply"><i class="fa fa-check"></i><b>6.2</b> What happens when we use custom functions with <code>spark_apply()</code></a></li>
 <li class="chapter" data-level="6.3" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#what-happens-when-we-use-translated-or-hive-built-in-functions"><i class="fa fa-check"></i><b>6.3</b> What happens when we use translated or Hive built-in functions</a></li>
 <li class="chapter" data-level="6.4" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#which-r-functionality-is-currently-translated-and-built-in-to-hive"><i class="fa fa-check"></i><b>6.4</b> Which R functionality is currently translated and built-in to Hive</a></li>
 <li class="chapter" data-level="6.5" data-path="non-translated-functions-with-spark-apply.html"><a href="non-translated-functions-with-spark-apply.html#making-serialization-faster-with-apache-arrow"><i class="fa fa-check"></i><b>6.5</b> Making serialization faster with Apache Arrow</a><ul>
@@ -269,8 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Non-translated functions with spark_apply</h1>
 <script src="static/js/highcharts.js"></script>
 <script src="static/js/highcharts-more.js"></script>
-<p>In this chapter we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance.</p>
-<p>As an example we will try to rewrite the function from the previous chapter allowing to use the non-translated <code>casefold()</code>.</p>
+<p>In this chapter we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance. As an example we will try to rewrite the function from the <a href="an-r-function-not-translated-to-spark-sql">previous chapter</a> allowing to use the non-translated <code>casefold()</code> function with Spark.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># Define a custom function using `casefold`</span></a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">fun_r_custom &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName) {</a>
 <a class="sourceLine" id="cb33-3" data-line-number="3">  tbl[[colName]] &lt;-<span class="st"> </span><span class="kw">casefold</span>(tbl[[colName]], <span class="dt">upper =</span> <span class="ot">FALSE</span>)</a>
@@ -294,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-is-so-important-about-this-distinction" class="section level2">
 <h2><span class="header-section-number">6.1</span> What is so important about this distinction?</h2>
 <p>We have now shown that we can also send code that was not translated by <code>dbplyr</code> to Spark and get it executed without issues using <code>spark_apply()</code>. So what is the catch and where does the importance of the meaning of the word <em>interface</em> come in?</p>
-<p>Let us quickly examine the performance of the operations:</p>
+<p>Let us quickly examine the performance of the 3 operations - using a Hive built-in function directly, using a function translated by dbplyr and using spark_apply:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">mb =<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
 <a class="sourceLine" id="cb36-2" data-line-number="2">  <span class="dt">times =</span> <span class="dv">10</span>,</a>
 <a class="sourceLine" id="cb36-3" data-line-number="3">  <span class="dt">hive_builtin =</span> <span class="kw">fun_hive_builtin</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
@@ -392,12 +393,17 @@ $(function () {
 <div id="r201-01-bench-spark-apply">
 
 </div>
+<p>We can see that</p>
+<ul>
+<li>the operations executed via the SQL translation mechanism of dbplyr (via both the hive built-in function and an R function with a SQL translation available) were executed in around <em>0.5 seconds</em> while</li>
+<li>the operation via <code>spark_apply()</code> took orders of magnitude longer - more than <em>6 minutes</em></li>
+</ul>
 <p>Note that the absolute values here will vary based on the setup and the infrastructure, the important message is in the relative differences, not in the absolute timings.</p>
-<p>We can see that the operations executed via the SQL translation mechanism of dbplyr were executed in around <em>0.5 seconds</em> while those via spark_apply took orders of magnitude longer - more than <em>6 minutes</em>.</p>
 </div>
 <div id="what-happens-when-we-use-custom-functions-with-spark_apply" class="section level2">
-<h2><span class="header-section-number">6.2</span> What happens when we use custom functions with <code>spark_apply</code></h2>
-<p>We can now see that the operation with <code>spark_apply()</code> is extremely slow compared to the other two. The key to understanding the difference is to examine how the custom transformations of data using R functions are performed within <code>spark_apply()</code>. In simplified terms, this happens in a few steps:</p>
+<h2><span class="header-section-number">6.2</span> What happens when we use custom functions with <code>spark_apply()</code></h2>
+<p>We can now see that the operation with <code>spark_apply()</code> is extremely slow compared to the other two. The key to understanding the difference is to examine how the custom transformations of data using R functions are performed within <code>spark_apply()</code>.</p>
+<p>In simplified terms, this happens in a few steps:</p>
 <ol style="list-style-type: decimal">
 <li>the data is moved in row-format from Spark into the R process through a socket connection. This is inefficient as multiple data types need to be deserialized over each row</li>
 <li>the data gets converted to columnar format since this is how R data frames are implemented</li>
@@ -408,12 +414,12 @@ $(function () {
 <div id="what-happens-when-we-use-translated-or-hive-built-in-functions" class="section level2">
 <h2><span class="header-section-number">6.3</span> What happens when we use translated or Hive built-in functions</h2>
 <p>When using functions that can be translated to Spark SQL the process is very different</p>
-<ul>
+<ol style="list-style-type: decimal">
 <li>The call is translated to Spark SQL using the dbplyr backend</li>
 <li>The constructed query is sent to Spark for execution using DBI</li>
 <li>Only when <code>collect()</code> or <code>compute()</code> is called, the SQL is executed within Spark</li>
 <li>Only when <code>collect()</code> is called the results are also sent to the R session</li>
-</ul>
+</ol>
 <p>This means that the transfer of data only happens once and only when <code>collect()</code> is called, which saves a vast amount of overhead.</p>
 </div>
 <div id="which-r-functionality-is-currently-translated-and-built-in-to-hive" class="section level2">
@@ -439,7 +445,7 @@ $(function () {
 <a class="sourceLine" id="cb37-5" data-line-number="5">  <span class="dt">translated_dplyr =</span> <span class="kw">fun_implemented</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
 <a class="sourceLine" id="cb37-6" data-line-number="6">  <span class="dt">spark_apply_arrow =</span> <span class="kw">spark_apply</span>(tbl_weather, fun_r_custom, <span class="dt">context =</span> {colName &lt;-<span class="st"> &quot;origin&quot;</span>}) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>()</a>
 <a class="sourceLine" id="cb37-7" data-line-number="7">)</a></code></pre></div>
-<p>We can see that the timing on <code>spark_apply()</code> decreased from more than 6 minutes to around 4.5 seconds, which is a very signigicant performance boost. Compared to the other methods we however still experience an order of magnitude difference.</p>
+<p>We can see that the timing on <code>spark_apply()</code> decreased from more than 6 minutes to around 4.5 seconds, which is a very significant performance boost. Compared to the other methods we however still experience an order of magnitude difference.</p>
 <script type="text/javascript">
 $(function () {
   $('#r201-02-bench-spark-apply').highcharts({
@@ -551,7 +557,7 @@ $(function () {
 <ol style="list-style-type: decimal">
 <li><a href="constructing-functions-by-piping-dplyr-verbs.html">Rewriting the functions as collections of dplyr verbs that all support translation to Spark SQL</a></li>
 <li><a href="constructing-sql-and-executing-it-with-spark.html">Rewriting the functions into Spark SQL and execute them via Spark</a></li>
-<li>[Rewriting the functions as series of Scala method invocations]((using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html)</li>
+<li><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html">Rewriting the functions as series of Scala method invocations</a></li>
 </ol>
 
 </div>
