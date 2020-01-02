@@ -140,7 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./index.html">Spark from R for performance</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>1.1</b> Acknowledgments</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="setting-up-spark-with-r-and-sparklyr.html"><a href="setting-up-spark-with-r-and-sparklyr.html"><i class="fa fa-check"></i><b>2</b> Setting up Spark with R and sparklyr</a><ul>
 <li class="chapter" data-level="2.1" data-path="setting-up-spark-with-r-and-sparklyr.html"><a href="setting-up-spark-with-r-and-sparklyr.html#interactive-manual-installation"><i class="fa fa-check"></i><b>2.1</b> Interactive manual installation</a></li>
 </ul></li>
@@ -245,8 +247,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="references-and-resources.html"><a href="references-and-resources.html#physical-books"><i class="fa fa-check"></i><b>12.2</b> Physical Books</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>13</b> Footnotes</a><ul>
-<li class="chapter" data-level="13.1" data-path="footnotes.html"><a href="footnotes.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>13.1</b> Setup of Apache Arrow</a></li>
+<li class="chapter" data-level="13" data-path="appendices.html"><a href="appendices.html"><i class="fa fa-check"></i><b>13</b> Appendices</a><ul>
+<li class="chapter" data-level="13.1" data-path="appendices.html"><a href="appendices.html#r-session-information"><i class="fa fa-check"></i><b>13.1</b> R session information</a></li>
+<li class="chapter" data-level="13.2" data-path="appendices.html"><a href="appendices.html#setup-of-apache-arrow"><i class="fa fa-check"></i><b>13.2</b> Setup of Apache Arrow</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -275,15 +278,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="welcome" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Welcome</h1>
 <p>Apache Spark is a popular open-source analytics engine for big data processing and thanks to the <span class="rpackage">sparklyr</span> and <span class="rpackage">SparkR</span> packages, the power of Spark is also available to R users.</p>
-<p>This short bookdown publication attempts to provide practical insights into using the <span class="rpackage">sparklyr</span> interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages.</p>
-<p>The focus of this publication is on exploring the <strong>different interfaces</strong> avaialable for communication between R and Spark using the <span class="rpackage">sparklyr</span> package, namely:</p>
+<p>This short publication attempts to provide practical insights into using the <span class="rpackage">sparklyr</span> interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages.</p>
+<p>This publication <strong>focuses on exploring the different interfaces</strong> avaialable for communication between R and Spark using the <span class="rpackage">sparklyr</span> package, namely:</p>
 <ul>
 <li><a href="constructing-functions-by-piping-dplyr-verbs.html">Constructing functions by piping dplyr verbs</a></li>
 <li><a href="constructing-sql-and-executing-it-with-spark.html">Constructing SQL and executing it with Spark</a></li>
 <li><a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html">Using the lower-level invoke API to manipulate Spark’s Java objects from R</a></li>
 <li><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html">Exploring the invoke API from R with Java reflection and examining invokes with logs</a></li>
 </ul>
-<p>If you are interested in the sparklyr package and working with Spark from R in general, we strongly recommend the <em>very comprehensive <a href="https://therinspark.com/">Mastering Spark with R</a> book</em> available online for free.</p>
+<p>If you are interested in the <span class="rpackage">sparklyr</span> package and working with Spark from R in general, we strongly recommend the very comprehensive <a href="https://therinspark.com/">Mastering Spark with R</a> book available online for free.</p>
+<div id="acknowledgments" class="section level2">
+<h2><span class="header-section-number">1.1</span> Acknowledgments</h2>
+<p>Creation of this book would not be possible without many openly available resources such as the R packages around the <span class="rpackage">rmarkdown</span> ecosystem created by <a href="https://yihui.org/en/">Yihui Xie</a>, namely the <span class="rpackage">bookdown</span> package via which this publication is rendered. This project also heavily relies on the <a href="https://www.rocker-project.org/">The Rocker Project</a> which provides Docker images for the R environment thanks to <a href="https://www.carlboettiger.info/">Carl Boettiger</a>, <a href="http://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a>, and <a href="https://www.noamross.net/">Noam Ross</a>. Last but not least there would be nothing to write about in this short book if the <span class="rpackage">sparklyr</span> package was not written by <a href="https://github.com/javierluraschi/">Javier Luraschi</a> et al., the R programming language itself maintained by the <a href="https://www.r-project.org/contributors.html">R core</a> group and the <a href="https://spark.apache.org/">Apache Spark</a> creators and maintainers. My thanks go to the creators and maintainers of all these amazing open source tools.</p>
 <div class="wizardry">
 <p>
 Differences of habit and language are nothing at all if our aims are identical and our hearts are open
@@ -297,6 +303,7 @@ Albus Dumbledore
 
 
 
+</div>
 </div>
             </section>
 
