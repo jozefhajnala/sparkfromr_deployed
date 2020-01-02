@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-31" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -280,7 +280,7 @@ Gandalf the White
 </ul>
 </div>
 <p>In the previous chapters, we have shown how to write functions as both <a href="https://jozef.io/r202-spark-r-dplyr-verbs/">combinations of dplyr verbs</a>, <a href="https://jozef.io/r203-spark-r-sql/">SQL query generators</a> that can be executed by Spark and <a href="https://jozef.io/r204-spark-r-invoke-scala/">how to use the lower-level API</a> to invoke methods on Java object references from R.</p>
-<p>In this chapter, we will look into more details around sparklyr’s <code>invoke()</code> API, investigate available methods for different classes of objects using the Java reflection API and look under the hood of the sparklyr interface mechanism with invoke logging.</p>
+<p>In this chapter, we will look into more details around <span class="rpackage">sparklyr</span>’s <code>invoke()</code> API, investigate available methods for different classes of objects using the Java reflection API and look under the hood of the <span class="rpackage">sparklyr</span> interface mechanism with invoke logging.</p>
 <div id="examining-available-methods-from-r" class="section level2">
 <h2><span class="header-section-number">10.1</span> Examining available methods from R</h2>
 <p>If you did not do so, it is recommended to read the <a href="using-the-lower-level-invoke-api-to-manipulate-sparks-java-objects-from-r.html">previous chapter</a> of this book before this one to get a quick overview of the <code>invoke()</code> API.</p>
@@ -322,14 +322,14 @@ Gandalf the White
 ## &lt;jobj[833]&gt;
 ##   java.lang.reflect.Method
 ##   public org.apache.spark.rpc.RpcEndpointRef org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_heartbeatReceiver()</code></pre>
-<p>We can see that the <code>invoke()</code> chain has returned a list of Java object references, each of them of class <code>java.lang.reflect.Method</code>. This is a good result, but the output is not very user-friendly from the R user perspective. Let us write a small wrapper that will return a some of the method’s details in a more readable fashion, for instance the return type and an overview of parameters:</p>
+<p>We can see that the <code>invoke()</code> chain has returned a list of Java object references, each of them of class <code>java.lang.reflect.Method</code>. This is a good result, but the output is not very user-friendly from the R user perspective. Let us write a small wrapper that will return a some of the method’s details in a more readable fashion, for instance the return type and an overview of parameters.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">getMethodDetails &lt;-<span class="st"> </span><span class="cf">function</span>(mthd) {</a>
 <a class="sourceLine" id="cb122-2" data-line-number="2">  returnType &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getReturnType&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a>
 <a class="sourceLine" id="cb122-3" data-line-number="3">  params &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getParameters&quot;</span>)</a>
 <a class="sourceLine" id="cb122-4" data-line-number="4">  params &lt;-<span class="st"> </span><span class="kw">vapply</span>(params, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb122-5" data-line-number="5">  <span class="kw">c</span>(<span class="dt">returnType =</span> returnType, <span class="dt">params =</span> <span class="kw">paste</span>(params, <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>))</a>
 <a class="sourceLine" id="cb122-6" data-line-number="6">}</a></code></pre></div>
-<p>Finally, to get a nice overview, we can make another helper function that will return a named list of methods for an object’s class, including their return types and overview of parameters:</p>
+<p>Finally, to get a nice overview, we can make another helper function that will return a named list of methods for an object’s class, including their return types and overview of parameters.</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">getAvailableMethods &lt;-<span class="st"> </span><span class="cf">function</span>(jobj) {</a>
 <a class="sourceLine" id="cb123-2" data-line-number="2">  mthds &lt;-<span class="st"> </span>jobj <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
 <a class="sourceLine" id="cb123-3" data-line-number="3">  nms &lt;-<span class="st"> </span><span class="kw">vapply</span>(mthds, invoke, <span class="st">&quot;getName&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
@@ -340,7 +340,7 @@ Gandalf the White
 </div>
 <div id="investigating-dataset-and-sparkcontext-class-methods" class="section level2">
 <h2><span class="header-section-number">10.3</span> Investigating DataSet and SparkContext class methods</h2>
-<p>Using the above defined function we can explore the methods available to a DataFrame reference, showing a few of the names first:</p>
+<p>Using the above defined function we can explore the methods available to a DataFrame reference, showing a few of the names first.</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">dfMethods &lt;-<span class="st"> </span>tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb124-2" data-line-number="2"><span class="st">  </span><span class="kw">getAvailableMethods</span>()</a>
 <a class="sourceLine" id="cb124-3" data-line-number="3"></a>
@@ -357,7 +357,7 @@ Gandalf the White
 ## [15] &quot;count&quot;                         &quot;createGlobalTempView&quot;         
 ## [17] &quot;createOrReplaceGlobalTempView&quot; &quot;createOrReplaceTempView&quot;      
 ## [19] &quot;createTempView&quot;                &quot;crossJoin&quot;</code></pre>
-<p>If we would like to see more details we can now investigate further, for instance show different parameter interfaces for the <code>agg</code> method, showing that the <code>agg</code> method has the following parameter interfaces:</p>
+<p>If we would like to see more details we can now investigate further, for instance show different parameter interfaces for the <code>agg</code> method, showing that the <code>agg</code> method has the following parameter interfaces.</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">vapply</span>(</a>
 <a class="sourceLine" id="cb126-2" data-line-number="2">  dfMethods[<span class="kw">names</span>(dfMethods) <span class="op">==</span><span class="st"> &quot;agg&quot;</span>], </a>
 <a class="sourceLine" id="cb126-3" data-line-number="3">  <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;params&quot;</span>,</a>
@@ -373,7 +373,7 @@ Gandalf the White
 ##                                                            &quot;scala.collection.immutable.Map&lt;java.lang.String, java.lang.String&gt; arg0&quot; 
 ##                                                                                                                                  agg 
 ## &quot;scala.Tuple2&lt;java.lang.String, java.lang.String&gt; arg0, scala.collection.Seq&lt;scala.Tuple2&lt;java.lang.String, java.lang.String&gt;&gt; arg1&quot;</code></pre>
-<p>Similarly, we can look at a <code>SparkContext</code> class and show some available methods that can be invoked:</p>
+<p>Similarly, we can look at a <code>SparkContext</code> class and show some available methods that can be invoked.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">scMethods &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span><span class="kw">getAvailableMethods</span>()</a>
 <a class="sourceLine" id="cb128-3" data-line-number="3">scMethodNames &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(<span class="kw">names</span>(scMethods)))</a>
@@ -410,7 +410,7 @@ Gandalf the White
 ## [59] &quot;getExecutorThreadDump&quot;       &quot;getLocalProperties&quot;</code></pre>
 <div id="using-helpers-to-explore-the-methods" class="section level3">
 <h3><span class="header-section-number">10.3.1</span> Using helpers to explore the methods</h3>
-<p>We can also use the helper functions to investigate more. For instance, we see that there is a <code>getConf</code> method avaiable to us. Looking at the object reference however does not provide useful information, so we can list the methods for that class and look for <code>&quot;get&quot;</code> methods that would show us the configuration:</p>
+<p>We can also use the helper functions to investigate more. For instance, we see that there is a <code>getConf</code> method avaiable to us. Looking at the object reference however does not provide useful information, so we can list the methods for that class and look for <code>&quot;get&quot;</code> methods that would show us the configuration.</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">spark_conf &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;conf&quot;</span>)</a>
 <a class="sourceLine" id="cb130-2" data-line-number="2">spark_conf_methods &lt;-<span class="st"> </span>spark_conf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">getAvailableMethods</span>() </a>
 <a class="sourceLine" id="cb130-3" data-line-number="3">spark_conf_get_methods &lt;-<span class="st"> </span>spark_conf_methods <span class="op">%&gt;%</span></a>
@@ -428,7 +428,7 @@ Gandalf the White
 ## [22] &quot;getSizeAsKb&quot;         &quot;getSizeAsKb&quot;         &quot;getSizeAsMb&quot;        
 ## [25] &quot;getSizeAsMb&quot;         &quot;getTimeAsMs&quot;         &quot;getTimeAsMs&quot;        
 ## [28] &quot;getTimeAsSeconds&quot;    &quot;getTimeAsSeconds&quot;    &quot;getWithSubstitution&quot;</code></pre>
-<p>We see that there is a <code>getAll</code> method that could prove useful, returning a list of tuples and taking no arguments as input:</p>
+<p>We see that there is a <code>getAll</code> method that could prove useful, returning a list of tuples and taking no arguments as input.</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="co"># Returns a list of tuples, takes no arguments:</span></a>
 <a class="sourceLine" id="cb132-2" data-line-number="2">spark_conf_methods[[<span class="st">&quot;getAll&quot;</span>]]</a></code></pre></div>
 <pre><code>##              returnType                  params 
@@ -444,7 +444,7 @@ Gandalf the White
 </div>
 <div id="unexported-helpers-provided-by-sparklyr" class="section level3">
 <h3><span class="header-section-number">10.3.2</span> Unexported helpers provided by sparklyr</h3>
-<p>The sparklyr package itself provides facilities of nature similar to those above, looking at some of them, even though they are not exported:</p>
+<p>The <span class="rpackage">sparklyr</span> package itself provides facilities of nature similar to those above, looking at some of them, even though they are not exported.</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">sparklyr<span class="op">:::</span><span class="kw">jobj_class</span>(spark_conf)</a></code></pre></div>
 <pre><code>## [1] &quot;SparkConf&quot; &quot;Object&quot;</code></pre>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">sparklyr<span class="op">:::</span><span class="kw">jobj_info</span>(spark_conf)<span class="op">$</span>class</a></code></pre></div>
@@ -464,15 +464,14 @@ Gandalf the White
 </div>
 <div id="how-sparklyr-communicates-with-spark-invoke-logging" class="section level2">
 <h2><span class="header-section-number">10.4</span> How sparklyr communicates with Spark, invoke logging</h2>
-<p>Now that we have and overview of the <code>invoke()</code> interface, we can take a look under the hood of sparklyr and see how it actually communicates with the Spark instance. In fact, the communication is a set of invocations that can be very different depending on which of the approches we choose for our purposes.</p>
+<p>Now that we have and overview of the <code>invoke()</code> interface, we can take a look under the hood of <span class="rpackage">sparklyr</span> and see how it actually communicates with the Spark instance. In fact, the communication is a set of invocations that can be very different depending on which of the approches we choose for our purposes.</p>
 <p>To obtain the information, we use the <code>sparklyr.log.invoke</code> property. We can choose one of the following 3 values based on our preferences:</p>
 <ul>
 <li><code>TRUE</code> will use <code>message()</code> to communicate short info on what is being invoked</li>
 <li><code>&quot;cat&quot;</code> will use <code>cat()</code> to communicate short info on what is being invoked</li>
 <li><code>&quot;callstack&quot;</code> will use <code>message()</code> to communicate short info on what is being invoked and the callstack</li>
 </ul>
-<p>We will use <code>&quot;cat&quot;</code> below
-to keep the output short and easily manageable. First, we will close the previous connection and create a new one with the configuration containing the <code>sparklyr.log.invoke</code> set to <code>&quot;cat&quot;</code>, and copy in the flights dataset:</p>
+<p>We will use <code>&quot;cat&quot;</code> below to keep the output short and easily manageable. First, we will close the previous connection and create a new one with the configuration containing the <code>sparklyr.log.invoke</code> set to <code>&quot;cat&quot;</code>, and copy in the flights dataset:</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">sparklyr<span class="op">::</span><span class="kw">spark_disconnect</span>(sc)</a>
 <a class="sourceLine" id="cb142-2" data-line-number="2">config &lt;-<span class="st"> </span>sparklyr<span class="op">::</span><span class="kw">spark_config</span>()</a>
 <a class="sourceLine" id="cb142-3" data-line-number="3">config<span class="op">$</span>sparklyr.log.invoke &lt;-<span class="st"> &quot;cat&quot;</span></a>
@@ -551,7 +550,7 @@ to keep the output short and easily manageable. First, we will close the previou
 ## Invoking fieldNames</code></pre>
 <div id="using-dplyr-verbs-translated-with-dbplyr" class="section level3">
 <h3><span class="header-section-number">10.4.1</span> Using dplyr verbs translated with dbplyr</h3>
-<p>Now that the setup is complete, we use the dplyr verb approach to retrieve the count of rows and look the invocations that this entails:</p>
+<p>Now that the setup is complete, we use the <span class="rpackage">dplyr</span> verb approach to retrieve the count of rows and look the invocations that this entails.</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## Invoking sql
 ## Invoking sql
@@ -573,11 +572,11 @@ to keep the output short and easily manageable. First, we will close the previou
 ##        n
 ##    &lt;dbl&gt;
 ## 1 336776</code></pre>
-<p>We see multiple invocations do the <code>sql</code> method and also the <code>columns</code> method. This makes sense since the dplyr verb approach actually works by translating the commands into Spark SQL via dbplyr and then sends those translated commands to Spark via that interface.</p>
+<p>We see multiple invocations do the <code>sql</code> method and also the <code>columns</code> method. This makes sense since the <span class="rpackage">dplyr</span> verb approach actually works by translating the commands into Spark SQL via <span class="rpackage">dbplyr</span> and then sends those translated commands to Spark via that interface.</p>
 </div>
 <div id="using-dbi-to-send-queries" class="section level3">
 <h3><span class="header-section-number">10.4.2</span> Using DBI to send queries</h3>
-<p>Similarly, we can investigate the invocations that happen when we try to retrieve the same results via the DBI interface:</p>
+<p>Similarly, we can investigate the invocations that happen when we try to retrieve the same results via the <span class="rpackage">DBI</span> interface:</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(sc, <span class="st">&quot;SELECT count(1) AS n FROM flights&quot;</span>)</a></code></pre></div>
 <pre><code>## Invoking sql
 ## Invoking isStreaming
@@ -590,20 +589,21 @@ to keep the output short and easily manageable. First, we will close the previou
 ## Invoking name</code></pre>
 <pre><code>##        n
 ## 1 336776</code></pre>
-<p>We see slightly fewer invocations compared to the above dplyr approach, but the output is also less processed.</p>
+<p>We see slightly fewer invocations compared to the above <span class="rpackage">dplyr</span> approach, but the output is also less processed.</p>
 </div>
 <div id="using-the-invoke-interface" class="section level3">
 <h3><span class="header-section-number">10.4.3</span> Using the invoke interface</h3>
-<p>Looking at the invocations that get executed using the <code>invoke()</code> interface:</p>
+<p>Looking at the invocations that get executed using the <code>invoke()</code> interface.</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
 <pre><code>## Invoking sql
 ## Invoking count</code></pre>
 <pre><code>## [1] 336776</code></pre>
-<p>We see that the amount of invocations is much lower, where the top 3 invocations come from the first part of the pipe. The <code>invoke(&quot;count&quot;)</code> part translated to exactly one invocation to the <code>count</code> method. We see therefore that the <code>invoke()</code> interface is indeed a more lower-level interface that invokes methods as we request them, with little to none overhead related to translations and other effects.</p>
+<p>We see that the amount of invocations is much lower, where the top 3 invocations come from the first part of the pipe. The <code>invoke(&quot;count&quot;)</code> part translated to exactly one invocation to the <code>count</code> method.</p>
+<p>We see therefore that the <code>invoke()</code> interface is indeed a more lower-level interface that invokes methods as we request them, with little to no overhead related to translations and other effects.</p>
 </div>
 <div id="redirecting-the-invoke-logs" class="section level3">
 <h3><span class="header-section-number">10.4.4</span> Redirecting the invoke logs</h3>
-<p>When running R applications that use Spark as a calculation engine, it is useful to get detailed invoke logs for debugging and diagnostic purposes. Implementing such mechanisms, we need to take into consideration how R handles the invoke logs produced by sparklyr. In simple terms, the invoke logs produced when using</p>
+<p>When running R applications that use Spark as a calculation engine, it is useful to get detailed invoke logs for debugging and diagnostic purposes. Implementing such mechanisms, we need to take into consideration how R handles the invoke logs produced by <span class="rpackage">sparklyr</span>. In simple terms, the invoke logs produced when using</p>
 <ul>
 <li><code>TRUE</code> and <code>&quot;callstack&quot;</code> are created using <code>message()</code>, which means they get sent to the <code>stderr()</code> connection by default</li>
 <li><code>&quot;cat&quot;</code> are created using <code>cat()</code>, so they get sent to <code>stdout()</code> connection by default</li>
@@ -613,7 +613,7 @@ to keep the output short and easily manageable. First, we will close the previou
 </div>
 <div id="conclusion-1" class="section level2">
 <h2><span class="header-section-number">10.5</span> Conclusion</h2>
-<p>In this chapter, we have looked at using the Java reflection API with sparklyr’s <code>invoke()</code> interface to get useful insight on available methods for different object types that can be used in the context of Spark, but also in other contexts. Using invoke logging, we have also shown how the different sparklyr interfacing methods communicate with Spark under the hood.</p>
+<p>In this chapter, we have looked at using the Java reflection API with <span class="rpackage">sparklyr</span>’s <code>invoke()</code> interface to get useful insight on available methods for different object types that can be used in the context of Spark, but also in other contexts. Using invoke logging, we have also shown how the different <span class="rpackage">sparklyr</span> interfacing methods communicate with Spark under the hood.</p>
 
 </div>
 </div>

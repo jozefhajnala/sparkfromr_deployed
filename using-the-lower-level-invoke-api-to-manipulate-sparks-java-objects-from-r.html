@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-31" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -285,12 +285,12 @@ Severus Snape
 <h2><span class="header-section-number">9.1</span> The invoke() API of sparklyr</h2>
 <p>So far when interfacing with Spark from R, we have used the sparklyr package in three ways:</p>
 <ul>
-<li>Writing combinations of dplyr verbs that would be translated to Spark SQL via the dbplyr package and the SQL executed by Spark when requested</li>
+<li>Writing combinations of <span class="rpackage">dplyr</span> verbs that would be translated to Spark SQL via the <span class="rpackage">dbplyr</span> package and the SQL executed by Spark when requested</li>
 <li>Generating Spark SQL code directly and sending it for execution in multiple ways</li>
 <li>Combinations of the above two methods</li>
 </ul>
 <p>What these methods have in common is that they translate operations written in R to Spark SQL and that SQL code is then sent for execution by our Spark instance.</p>
-<p>There is however another approach that we can use with sparklyr, which will be more familiar to users or developers who have worked with <a href="https://jozef.io/r901-primer-java-from-r-1/">packages like rJava</a> or rscala before. Even though arguably less convenient than the APIs provided by the 2 aforementioned packages, sparklyr provides an invocation API that exposes 3 functions:</p>
+<p>There is however another approach that we can use with <span class="rpackage">sparklyr</span>, which will be more familiar to users or developers who have worked with <a href="https://jozef.io/r901-primer-java-from-r-1/">packages like <span class="rpackage">rJava</span></a> or <span class="rpackage">rscala</span> before. Even though possibly less convenient than the APIs provided by the 2 aforementioned packages, <span class="rpackage">sparklyr</span> provides an invocation API that exposes 3 functions:</p>
 <ol style="list-style-type: decimal">
 <li><code>invoke(jobj, method, ...)</code> to execute a method on a Java object reference</li>
 <li><code>invoke_static(sc, class, method, ...)</code> to execute a static method associated with a Java class</li>
@@ -354,7 +354,7 @@ Severus Snape
 ##  9 JFK   
 ## 10 LGA   
 ## # … with 336,766 more rows</code></pre>
-<p>It can also be helpful to investigate the schema of our flights DataFrame:</p>
+<p>It can also be helpful to investigate the schema of our <code>flights</code> DataFrame:</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb105-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;schema&quot;</span>)</a></code></pre></div>
 <pre><code>## &lt;jobj[733]&gt;
@@ -368,7 +368,7 @@ Severus Snape
 </div>
 <div id="grouping-and-aggregation-with-invoke-chains" class="section level2">
 <h2><span class="header-section-number">9.3</span> Grouping and aggregation with invoke chains</h2>
-<p>Imagine we would like to do simple aggregations of a Spark DataFrame, such as an average of a column grouped by another column. For reference, we can do this very simply using the dplyr approach. Let’s compute the average departure delay by origin of the flight:</p>
+<p>Imagine we would like to do simple aggregations of a Spark DataFrame, such as an average of a column grouped by another column. For reference, we can do this very simply using the <span class="rpackage">dplyr</span> approach. Let’s compute the average departure delay by origin of the flight:</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb109-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(origin) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb109-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">avg</span>(dep_delay))</a></code></pre></div>
@@ -382,7 +382,7 @@ Severus Snape
 <div class="sourceCode" id="cb111"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb111-1" data-line-number="1">flights.</a>
 <a class="sourceLine" id="cb111-2" data-line-number="2">  <span class="fu">groupBy</span>(<span class="st">&quot;origin&quot;</span>).</a>
 <a class="sourceLine" id="cb111-3" data-line-number="3">  <span class="fu">agg</span>(<span class="fu">avg</span>(<span class="st">&quot;dep_delay&quot;</span>))</a></code></pre></div>
-<p>Translating that into the lower level <code>invoke()</code> API provided by sparklyr can look similar to the following code.</p>
+<p>Translating that into the lower level <code>invoke()</code> API provided by <span class="rpackage">sparklyr</span> can look similar to the following code.</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb112-2" data-line-number="2"><span class="st">  </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb112-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;groupBy&quot;</span>, <span class="st">&quot;origin&quot;</span>, <span class="kw">list</span>()) <span class="op">%&gt;%</span></a>
@@ -405,7 +405,7 @@ Severus Snape
 </div>
 <div id="wrapping-the-invocations-into-r-functions" class="section level2">
 <h2><span class="header-section-number">9.4</span> Wrapping the invocations into R functions</h2>
-<p>Seeing the above example, we can quickly write a useful wrapper to ease the pain a little. First, we can create a small function that will generate the aggregation expression we can use with <code>invoke(&quot;agg&quot;, ...)</code>:</p>
+<p>Seeing the above example, we can quickly write a useful wrapper to ease the pain a little. First, we can create a small function that will generate the aggregation expression we can use with <code>invoke(&quot;agg&quot;, ...)</code>.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">agg_expr &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, exprs) {</a>
 <a class="sourceLine" id="cb114-2" data-line-number="2">  sparklyr<span class="op">::</span><span class="kw">invoke_static</span>(</a>
 <a class="sourceLine" id="cb114-3" data-line-number="3">    tbl[[<span class="st">&quot;src&quot;</span>]][[<span class="st">&quot;con&quot;</span>]],</a>
@@ -475,17 +475,17 @@ Severus Snape
 </div>
 <div id="where-invoke-can-be-better-than-dplyr-translation-or-sql" class="section level2">
 <h2><span class="header-section-number">9.6</span> Where invoke can be better than dplyr translation or SQL</h2>
-<p>As we have seen in the above examples, working with the <code>invoke()</code> API can prove more difficult than using the intuitive syntax of dplyr or SQL queries. In some use cases, the trade-off may still be worth it. In our practice, these are some examples of such situations:</p>
+<p>As we have seen in the above examples, working with the <code>invoke()</code> API can prove more difficult than using the intuitive syntax of <span class="rpackage">dplyr</span> or SQL queries. In some use cases, the trade-off may still be worth it. In our practice, these are some examples of such situations:</p>
 <ul>
 <li>When Scala’s Spark API is more flexible, powerful or suitable for a particular task and the translation is not as good</li>
 <li>When performance is crucial and we can produce more optimal solutions using the invocations</li>
-<li>When we know the Scala API well and not want to invest time to learn the dplyr syntax, but it is easier to translate the Scala calls into a series of <code>invoke()</code> calls</li>
+<li>When we know the Scala API well and not want to invest time to learn the <span class="rpackage">dplyr</span> syntax, but it is easier to translate the Scala calls into a series of <code>invoke()</code> calls</li>
 <li>When we need to interact and manipulate other Java objects apart from the standard Spark DataFrames</li>
 </ul>
 </div>
 <div id="conclusion" class="section level2">
 <h2><span class="header-section-number">9.7</span> Conclusion</h2>
-<p>In this chapter, we have looked at how to use the lower-level invoke interface provided by sparklyr to manipulate Spark objects and other Java object references. In the following part, we will dig a bit deeper and look into using Java’s reflection API to make the invoke interface more accessible from R, getting detail invocation logs and more.</p>
+<p>In this chapter, we have looked at how to use the lower-level invoke interface provided by <span class="rpackage">sparklyr</span> to manipulate Spark objects and other Java object references. In the following chapter, we will look a bit deeper and look into using Java’s reflection API to make the invoke interface more accessible from R, getting detail invocation logs and more.</p>
 
 </div>
 </div>

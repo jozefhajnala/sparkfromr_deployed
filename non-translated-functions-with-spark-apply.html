@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-31" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -271,13 +271,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Non-translated functions with spark_apply</h1>
 <script src="static/js/highcharts.js"></script>
 <script src="static/js/highcharts-more.js"></script>
-<p>In this chapter we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance. As an example we will try to rewrite the function from the <a href="an-r-function-not-translated-to-spark-sql">previous chapter</a> allowing to use the non-translated <code>casefold()</code> function with Spark.</p>
+<p>In this chapter we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance. As an example we will try to rewrite the function from the <a href="communication-between-spark-and-sparklyr.html">previous chapter</a> allowing to use the non-translated <code>casefold()</code> function with Spark.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># Define a custom function using `casefold`</span></a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">fun_r_custom &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName) {</a>
 <a class="sourceLine" id="cb33-3" data-line-number="3">  tbl[[colName]] &lt;-<span class="st"> </span><span class="kw">casefold</span>(tbl[[colName]], <span class="dt">upper =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb33-4" data-line-number="4">  tbl</a>
 <a class="sourceLine" id="cb33-5" data-line-number="5">}</a></code></pre></div>
-<p>Now, we can use the <code>spark_apply</code> interface to execute our custom function on a Spark DataFrame, providing the name of the column on which we want to apply the function as the <code>context</code> argument.</p>
+<p>Now, we can use the <code>spark_apply()</code> interface to execute our custom function on a Spark DataFrame, providing the name of the column on which we want to apply the function as the <code>context</code> argument.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># Execute on Spark via `spark_apply`:</span></a>
 <a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">head</span>(tbl_weather) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">spark_apply</span>(fun_r_custom, <span class="dt">context =</span> {colName &lt;-<span class="st"> &quot;origin&quot;</span>})</a></code></pre></div>
@@ -294,9 +294,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <div id="what-is-so-important-about-this-distinction" class="section level2">
 <h2><span class="header-section-number">6.1</span> What is so important about this distinction?</h2>
-<p>We have now shown that we can also send code that was not translated by <code>dbplyr</code> to Spark and get it executed without issues using <code>spark_apply()</code>. So what is the catch and where does the importance of the meaning of the word <em>interface</em> come in?</p>
-<p>Let us quickly examine the performance of the 3 operations - using a Hive built-in function directly, using a function translated by dbplyr and using spark_apply:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">mb =<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
+<p>We have now shown that we can also send code that was not translated by <span class="rpackage">dbplyr</span> to Spark and get it executed without issues using <code>spark_apply()</code>. So what is the catch and where does the importance of the meaning of the word <em>interface</em> come in?</p>
+<p>Let us quickly examine the performance of the 3 operations</p>
+<ul>
+<li>using a Hive built-in function directly,</li>
+<li>using a function translated by <span class="rpackage">dbplyr</span> and</li>
+<li>using <code>spark_apply()</code></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
 <a class="sourceLine" id="cb36-2" data-line-number="2">  <span class="dt">times =</span> <span class="dv">10</span>,</a>
 <a class="sourceLine" id="cb36-3" data-line-number="3">  <span class="dt">hive_builtin =</span> <span class="kw">fun_hive_builtin</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
 <a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="dt">translated_dplyr =</span> <span class="kw">fun_implemented</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>
@@ -395,7 +400,7 @@ $(function () {
 </div>
 <p>We can see that</p>
 <ul>
-<li>the operations executed via the SQL translation mechanism of dbplyr (via both the hive built-in function and an R function with a SQL translation available) were executed in around <em>0.5 seconds</em> while</li>
+<li>the operations executed via the SQL translation mechanism of <span class="rpackage">dbplyr</span> (via both the hive built-in function and an R function with a SQL translation available) were executed in around <em>0.5 seconds</em> while</li>
 <li>the operation via <code>spark_apply()</code> took orders of magnitude longer - more than <em>6 minutes</em></li>
 </ul>
 <p>Note that the absolute values here will vary based on the setup and the infrastructure, the important message is in the relative differences, not in the absolute timings.</p>
@@ -415,7 +420,7 @@ $(function () {
 <h2><span class="header-section-number">6.3</span> What happens when we use translated or Hive built-in functions</h2>
 <p>When using functions that can be translated to Spark SQL the process is very different</p>
 <ol style="list-style-type: decimal">
-<li>The call is translated to Spark SQL using the dbplyr backend</li>
+<li>The call is translated to Spark SQL using the <span class="rpackage">dbplyr</span> backend</li>
 <li>The constructed query is sent to Spark for execution using DBI</li>
 <li>Only when <code>collect()</code> or <code>compute()</code> is called, the SQL is executed within Spark</li>
 <li>Only when <code>collect()</code> is called the results are also sent to the R session</li>
@@ -424,9 +429,9 @@ $(function () {
 </div>
 <div id="which-r-functionality-is-currently-translated-and-built-in-to-hive" class="section level2">
 <h2><span class="header-section-number">6.4</span> Which R functionality is currently translated and built-in to Hive</h2>
-<p>An important question to answer with regards to performance then is what amount of functionality is available using the fast dbplyr backend. As seen above, these features can be categorized into two groups:</p>
+<p>An important question to answer with regards to performance then is what amount of functionality is available using the fast <span class="rpackage">dbplyr</span> backend. As seen above, these features can be categorized into two groups:</p>
 <ol style="list-style-type: decimal">
-<li><p>R functions translatable to Spark SQL via dbplyr. The full list of such functions is available on <a href="https://spark.rstudio.com/dplyr/#sql-translation">RStudio’s sparklyr website</a></p></li>
+<li><p>R functions translatable to Spark SQL via <span class="rpackage">dbplyr</span>. The full list of such functions is available on <a href="https://spark.rstudio.com/dplyr/#sql-translation">RStudio’s sparklyr website</a></p></li>
 <li><p>Hive built-in functions that get translated as they are and can be evaluated by Spark. The full list is available on the <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF">Hive Operators and User-Defined Functions</a> website.</p></li>
 </ol>
 </div>

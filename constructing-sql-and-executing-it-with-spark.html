@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-31" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,11 +270,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="constructing-sql-and-executing-it-with-spark" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Constructing SQL and executing it with Spark</h1>
 <p>In the <a href="constructing-functions-by-piping-dplyr-verbs.html">previous chapter</a> of this series, we looked at writing R functions that can be executed directly by Spark without serialization overhead with a focus on writing functions as combinations of dplyr verbs and investigated how the SQL is generated and Spark plans created.</p>
-<p>In this chapter, we will look at how to write R functions that generate SQL queries that can be executed by Spark, how to execute them with DBI and how to achieve lazy SQL statements that only get executed when needed. We also briefly present wrapping these approaches into functions that can be combined with other Spark operations.</p>
+<p>In this chapter, we will look at how to write R functions that generate SQL queries that can be executed by Spark, how to execute them using the package <span class="rpackage">DBI</span> and how to achieve lazy SQL statements that only get executed when needed. We also briefly present wrapping these approaches into functions that can be combined with other Spark operations.</p>
 <div id="r-functions-as-spark-sql-generators" class="section level2">
 <h2><span class="header-section-number">8.1</span> R functions as Spark SQL generators</h2>
 <p>There are use cases where it is desirable to express the operations directly with SQL instead of combining dplyr verbs, for example when working within multi-language environments where re-usability is important. We can then send the SQL query directly to Spark to be executed. To create such queries, one option is to write R functions that work as query constructors.</p>
-<p>Again using a very simple example, a naive implementation of column normalization could look as follows. Note that the use of <code>SELECT *</code> is discouraged and only here for illustration purposes:</p>
+<p>Again using a very simple example, a naive implementation of column normalization could look as follows. Note that the use of <code>SELECT *</code> is discouraged and only here for illustration purposes.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">normalize_sql &lt;-<span class="st"> </span><span class="cf">function</span>(df, colName, newColName) {</a>
 <a class="sourceLine" id="cb68-2" data-line-number="2">  <span class="kw">paste0</span>(</a>
 <a class="sourceLine" id="cb68-3" data-line-number="3">    <span class="st">&quot;SELECT&quot;</span>,</a>
@@ -298,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.2</span> Executing the generated queries via Spark</h2>
 <div id="using-dbi-as-the-interface" class="section level3">
 <h3><span class="header-section-number">8.2.1</span> Using DBI as the interface</h3>
-<p>The R package DBI provides an interface for communication between R and relational database management systems. We can simply use the <code>dbGetQuery()</code> function to execute our query, for instance:</p>
+<p>The R package <span class="rpackage">DBI</span> provides an interface for communication between R and relational database management systems. We can simply use the <code>dbGetQuery()</code> function to execute our query, for instance.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">res &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(sc, <span class="dt">statement =</span> normalize_temp_query)</a>
 <a class="sourceLine" id="cb71-2" data-line-number="2"><span class="kw">head</span>(res)</a></code></pre></div>
 <pre><code>##   id origin year month day hour  temp  dewp humid wind_dir wind_speed wind_gust
@@ -315,13 +315,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4      0   1012.2    10 2013-01-01 09:00:00 -0.8624083
 ## 5      0   1011.9    10 2013-01-01 10:00:00 -0.9130047
 ## 6      0   1012.4    10 2013-01-01 11:00:00 -0.9737203</code></pre>
-<p>As we might have noticed thanks to the way the result is printed, a standard data frame is returned, as opposed to tibbles returned by most sparklyr operations.</p>
-<p>It is important to note that using <code>dbGetQuery()</code> <em>automatically computes and collects</em> the results to the R session. This is in contrast with the dplyr approach which constructs the query and only collects the results to the R session when <code>collect()</code> is called, or computes them when <code>compute()</code> is called.</p>
+<p>As we might have noticed thanks to the way the result is printed, a standard data frame is returned, as opposed to tibbles returned by most sparklyr-based operations.</p>
+<p>It is important to note that using <code>dbGetQuery()</code> <em>automatically computes and collects</em> the results to the R session. This is in contrast with the <span class="rpackage">dplyr</span> approach which constructs the query and only collects the results to the R session when <code>collect()</code> is called, or computes them when <code>compute()</code> is called.</p>
 <p>We will now examine 2 options to use the prepared query lazily and without collecting the results into the R session.</p>
 </div>
 <div id="invoking-sql-on-a-spark-session-object" class="section level3">
 <h3><span class="header-section-number">8.2.2</span> Invoking sql on a Spark session object</h3>
-<p>Without going into further details on the <code>invoke()</code> functionality of sparklyr which we will focus on in the fourth installment of the series, if the desire is to have a “lazy” SQL that does not get automatically computed and collected when called from R, we can invoke a <a href="https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.SparkSession@sql(sqlText:String):org.apache.spark.sql.DataFrame"><code>sql</code> method</a> on a SparkSession class object.</p>
+<p>Without going into further details on the <code>invoke()</code> functionality of sparklyr which we will focus on in the next chapter, if the desire is to have a “lazy” SQL that does not get automatically computed and collected when called from R, we can invoke a <a href="https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.SparkSession@sql(sqlText:String):org.apache.spark.sql.DataFrame"><code>sql</code> method</a> on a SparkSession class object.</p>
 <p>The method takes a string SQL query as input and processes it using Spark, returning the result as a Spark DataFrame. This gives us the ability to only compute and collect the results when desired:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="co"># Use the query &quot;lazily&quot; without execution:</span></a>
 <a class="sourceLine" id="cb73-2" data-line-number="2">normalized_lazy_ds &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span></a>
@@ -352,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-tbl-with-dbplyrs-sql" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Using tbl with dbplyr’s sql</h3>
 <p>The above method gives us a reference to a Java object as a result, which might be less intuitive to work with for R users. We can also opt to use dbplyr’s <code>sql()</code> function in combination with <code>tbl()</code> to get a more familiar result.</p>
-<p>Note that when printing the below <code>normalized_lazy_tbl</code>, the query gets partially executed to provide the first few rows. Only when <code>collect()</code> is called the entire set is retrieved to the R session:</p>
+<p>Note that when printing the below <code>normalized_lazy_tbl</code>, the query gets partially executed to provide the first few rows. Only when <code>collect()</code> is called the entire set is retrieved to the R session.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="co"># Nothing is executed yet</span></a>
 <a class="sourceLine" id="cb77-2" data-line-number="2">normalized_lazy_tbl &lt;-<span class="st"> </span>normalize_temp_query <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb77-3" data-line-number="3"><span class="st">  </span>dbplyr<span class="op">::</span><span class="kw">sql</span>() <span class="op">%&gt;%</span></a>
@@ -397,16 +397,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="wrapping-the-tbl-approach-into-functions" class="section level3">
 <h3><span class="header-section-number">8.2.4</span> Wrapping the tbl approach into functions</h3>
 <p>In the approach above we provided <code>sc</code> in the call to <code>tbl()</code>. When wrapping such processes into a function, it might however be useful to take the specific DataFrame reference as an input instead of the generic Spark connection reference.</p>
-<p>In that case, we can use the fact that the connection reference is also stored in the DataFrame reference, in the <code>con</code> sub-element of the <code>src</code> element. For instance, looking at our <code>tbl_weather</code>:</p>
+<p>In that case, we can use the fact that the connection reference is also stored in the DataFrame reference, in the <code>con</code> sub-element of the <code>src</code> element. For instance, looking at our <code>tbl_weather</code>.</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">class</span>(tbl_weather[[<span class="st">&quot;src&quot;</span>]][[<span class="st">&quot;con&quot;</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;spark_connection&quot;       &quot;spark_shell_connection&quot; &quot;DBIConnection&quot;</code></pre>
-<p>Putting this together, we can create a simple wrapper function that lazily sends a SQL query to be processed on a particular Spark DataFrame reference:</p>
+<p>Putting this together, we can create a simple wrapper function that lazily sends a SQL query to be processed on a particular Spark DataFrame reference.</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">lazy_spark_query &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, qry) {</a>
 <a class="sourceLine" id="cb83-2" data-line-number="2">  qry <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb83-3" data-line-number="3"><span class="st">    </span>dbplyr<span class="op">::</span><span class="kw">sql</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb83-4" data-line-number="4"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">tbl</span>(tbl[[<span class="st">&quot;src&quot;</span>]][[<span class="st">&quot;con&quot;</span>]], .)</a>
 <a class="sourceLine" id="cb83-5" data-line-number="5">}</a></code></pre></div>
-<p>And use it to do the same as we did above with a single function call:</p>
+<p>And use it to do the same as we did above with a single function call.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">lazy_spark_query</span>(tbl_weather, normalize_temp_query) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">collect</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 26,115 x 17
@@ -430,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.3</span> Where SQL can be better than dbplyr translation</h2>
 <div id="when-a-translation-is-not-there" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> When a translation is not there</h3>
-<p>We have discussed in the <a href="https://jozef.io/r201-spark-r-1/#an-r-function-not-translated-to-spark-sql">first part</a> that the set of operations translated to Spark SQL via dbplyr may not cover all possible use cases. In such a case, the option to write SQL directly is very useful.</p>
+<p>We have discussed in the <a href="https://jozef.io/r201-spark-r-1/#an-r-function-not-translated-to-spark-sql">first part</a> that the set of operations translated to Spark SQL via <span class="rpackage">dbplyr</span> may not cover all possible use cases. In such a case, the option to write SQL directly is very useful.</p>
 </div>
 <div id="when-translation-does-not-provide-expected-results" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> When translation does not provide expected results</h3>
@@ -527,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="when-portability-is-important" class="section level3">
 <h3><span class="header-section-number">8.3.3</span> When portability is important</h3>
-<p>Since the languages that provide interfaces to Spark are not limited to R and multi-language setups are quite common, another reason to use SQL statements directly is the portability of such solutions. A SQL statement can be executed by interfaces provided for all languages - Scala, Java, and Python, without the need to rely on R-specific packages such as dbplyr.</p>
+<p>Since the languages that provide interfaces to Spark are not limited to R and multi-language setups are quite common, another reason to use SQL statements directly is the portability of such solutions. A SQL statement can be executed by interfaces provided for all languages - Scala, Java, and Python, without the need to rely on R-specific packages such as <span class="rpackage">dbplyr</span>.</p>
 
 </div>
 </div>

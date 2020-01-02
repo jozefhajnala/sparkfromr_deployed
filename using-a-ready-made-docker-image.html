@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-31" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -297,22 +297,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Username: <code>rstudio</code></li>
 <li>Password: <code>pass</code> (or the one you chose above)</li>
 </ul>
-<p>Now you can freely start to use the code content of the book, starting by connecting to a local Spark instance:</p>
+<p>Now you can freely start to use the code content of the book, starting by connecting to a local Spark instance.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(sparklyr)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">sc &lt;-<span class="st"> </span><span class="kw">spark_connect</span>(<span class="st">&quot;local&quot;</span>)</a></code></pre></div>
 </div>
 <div id="interactively-with-the-r-console" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Interactively with the R console</h3>
-<p>Running the following should yield an interactive R session with all prerequisites to start working with the sparklyr package using a local Spark instance.</p>
+<p>Running the following should yield an interactive R session with all prerequisites to start working with the <span class="rpackage">sparklyr</span> package using a local Spark instance.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">docker</span> run --rm -it jozefhajnala/sparkfromr:latest R</a></code></pre></div>
-<p>Now you can freely start to use the code content of the book from the R consule, starting by connecting to a local Spark instance:</p>
+<p>Now you can freely start to use the code content of the book from the R console, starting by connecting to a local Spark instance.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Start using sparklyr</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(sparklyr)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">sc &lt;-<span class="st"> </span><span class="kw">spark_connect</span>(<span class="st">&quot;local&quot;</span>)</a></code></pre></div>
 </div>
 <div id="running-an-example-r-script" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Running an example R script</h3>
-<p>Running the following should execute an example R script using sparklyr with output appearing in the terminal:</p>
+<p>Running the following should execute an example R script using sparklyr with output appearing in the terminal.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="ex">docker</span> run --rm jozefhajnala/sparkfromr:latest Rscript /root/.local/spark_script.R</a></code></pre></div>
 </div>
 </div>

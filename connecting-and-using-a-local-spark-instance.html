@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2019-12-31" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -269,10 +269,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="connecting-and-using-a-local-spark-instance" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Connecting and using a local Spark instance</h1>
-<p>The following code chunks will prepare the R session for us to be able to experiment with the code presented in the book. We will attach the needed R packages, initialize and connect to a local Spark instance and copy the weather and flights datasets from the nycflights13 package to the Spark instance such that we can work with them in our examples.</p>
+<p>The following code chunks will prepare the R session for us to be able to experiment with the code presented in the book. We will attach the needed R packages, initialize and connect to a local Spark instance and copy the <code>weather</code> and <code>flights</code> datasets from the <span class="rpackage">nycflights13</span> package to the Spark instance such that we can work with them in our examples.</p>
 <div id="packages-and-data" class="section level2">
 <h2><span class="header-section-number">4.1</span> Packages and data</h2>
-<p>We will be using the sparklyr package to interface with Spark and since this package works very well with the dplyr package and its vocabulary, we will take advantage of the dplyr syntax and the pipe operator. As a source of data for our code examples we will use the nycflights13 package that conveniently provides airline data for flights departing New York City in 2013.</p>
+<p>We will be using the sparklyr package to interface with Spark and since this package works very well with the <span class="rpackage">dplyr</span> package and its vocabulary, we will take advantage of the dplyr syntax and the pipe operator. As a source of data for our code examples we will use the <span class="rpackage">nycflights13</span> package that conveniently provides airline data for flights departing New York City in 2013.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Attach packages</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">suppressPackageStartupMessages</span>({</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="kw">library</span>(sparklyr)</a>
