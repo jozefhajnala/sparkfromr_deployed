@@ -141,7 +141,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>1.1</b> Acknowledgments</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-will-you-find-in-this-book"><i class="fa fa-check"></i><b>1.1</b> What will you find in this book</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#book-sources"><i class="fa fa-check"></i><b>1.2</b> Book sources</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>1.3</b> Acknowledgments</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting-up-spark-with-r-and-sparklyr.html"><a href="setting-up-spark-with-r-and-sparklyr.html"><i class="fa fa-check"></i><b>2</b> Setting up Spark with R and sparklyr</a><ul>
 <li class="chapter" data-level="2.1" data-path="setting-up-spark-with-r-and-sparklyr.html"><a href="setting-up-spark-with-r-and-sparklyr.html#interactive-manual-installation"><i class="fa fa-check"></i><b>2.1</b> Interactive manual installation</a></li>
@@ -278,6 +280,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="welcome" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Welcome</h1>
 <p>Apache Spark is a popular open-source analytics engine for big data processing and thanks to the <span class="rpackage">sparklyr</span> and <span class="rpackage">SparkR</span> packages, the power of Spark is also available to R users.</p>
+<div id="what-will-you-find-in-this-book" class="section level2">
+<h2><span class="header-section-number">1.1</span> What will you find in this book</h2>
 <p>This short publication attempts to provide practical insights into using the <span class="rpackage">sparklyr</span> interface to gain the benefits of Apache Spark while still retaining the ability to use R code organized in custom-built functions and packages.</p>
 <p>This publication <strong>focuses on exploring the different interfaces</strong> avaialable for communication between R and Spark using the <span class="rpackage">sparklyr</span> package, namely:</p>
 <ul>
@@ -287,8 +291,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="exploring-the-invoke-api-from-r-with-java-reflection-and-examining-invokes-with-logs.html">Exploring the invoke API from R with Java reflection and examining invokes with logs</a></li>
 </ul>
 <p>If you are interested in the <span class="rpackage">sparklyr</span> package and working with Spark from R in general, we strongly recommend the very comprehensive <a href="https://therinspark.com/">Mastering Spark with R</a> book available online for free.</p>
+</div>
+<div id="book-sources" class="section level2">
+<h2><span class="header-section-number">1.2</span> Book sources</h2>
+<p>This book is rendered and published automatically from publicly accessible git repositories, you can find the</p>
+<ul>
+<li>Content sources in the <a href="https://github.com/jozefhajnala/sparkfromr">sparkfromr GitHub repository</a></li>
+<li>Rendered version in the <a href="https://github.com/jozefhajnala/sparkfromr_deployed">sparkfrom_deployed GitHub repository</a></li>
+<li>Automatically built Docker image used to render the book on <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">DockerHub</a></li>
+<li>Sources used to build the Docker images in the <a href="https://github.com/jozefhajnala/sparkfromr_docker">sparkfrom_docker GitHub repository</a></li>
+</ul>
+<p>All contributions to the above are most welcome.</p>
+</div>
 <div id="acknowledgments" class="section level2">
-<h2><span class="header-section-number">1.1</span> Acknowledgments</h2>
+<h2><span class="header-section-number">1.3</span> Acknowledgments</h2>
 <p>Creation of this book would not be possible without many openly available resources such as the R packages around the <span class="rpackage">rmarkdown</span> ecosystem created by <a href="https://yihui.org/en/">Yihui Xie</a>, namely the <span class="rpackage">bookdown</span> package via which this publication is rendered. This project also heavily relies on the <a href="https://www.rocker-project.org/">The Rocker Project</a> which provides Docker images for the R environment thanks to <a href="https://www.carlboettiger.info/">Carl Boettiger</a>, <a href="http://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a>, and <a href="https://www.noamross.net/">Noam Ross</a>. Last but not least there would be nothing to write about in this short book if the <span class="rpackage">sparklyr</span> package was not written by <a href="https://github.com/javierluraschi/">Javier Luraschi</a> et al., the R programming language itself maintained by the <a href="https://www.r-project.org/contributors.html">R core</a> group and the <a href="https://spark.apache.org/">Apache Spark</a> creators and maintainers. My thanks go to the creators and maintainers of all these amazing open source tools.</p>
 <div class="wizardry">
 <p>
