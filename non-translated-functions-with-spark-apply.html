@@ -276,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Non-translated functions with spark_apply</h1>
 <script src="static/js/highcharts.js"></script>
 <script src="static/js/highcharts-more.js"></script>
-<p>In this chapter we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance. As an example we will try to rewrite the function from the <a href="communication-between-spark-and-sparklyr.html">previous chapter</a> allowing to use the non-translated <code>casefold()</code> function with Spark.</p>
+<p>In this chapter, we will look into the <code>spark_apply()</code> interface and how it communicates with the Spark instance. As an example, we will try to rewrite the function from the <a href="communication-between-spark-and-sparklyr.html">previous chapter</a> allowing us to use the non-translated <code>casefold()</code> function with Spark.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># Define a custom function using `casefold`</span></a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">fun_r_custom &lt;-<span class="st"> </span><span class="cf">function</span>(tbl, colName) {</a>
 <a class="sourceLine" id="cb33-3" data-line-number="3">  tbl[[colName]] &lt;-<span class="st"> </span><span class="kw">casefold</span>(tbl[[colName]], <span class="dt">upper =</span> <span class="ot">FALSE</span>)</a>
@@ -448,7 +448,7 @@ $(function () {
 <p>To partially mitigate this we can take advantage of <a href="https://arrow.apache.org/">Apache Arrow</a>, a cross-language development platform for in-memory data that specifies a standardized language-independent columnar memory format for flat and hierarchical data.</p>
 <p>By adding support for Arrow in sparklyr, it makes Spark perform the row-format to column-format conversion in parallel in Spark, data is then transferred through the socket but no custom serialization takes place and all the R process needs to do is copy this data from the socket into its heap, transform it and copy it back to the socket connection.</p>
 <p>This makes the process significantly faster:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">mb =<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">microbenchmark<span class="op">::</span><span class="kw">microbenchmark</span>(</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2">  <span class="dt">times =</span> <span class="dv">10</span>, </a>
 <a class="sourceLine" id="cb37-3" data-line-number="3">  <span class="dt">setup =</span> <span class="kw">library</span>(arrow),</a>
 <a class="sourceLine" id="cb37-4" data-line-number="4">  <span class="dt">hive_builtin =</span> <span class="kw">fun_hive_builtin</span>(tbl_weather, origin) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect</span>(),</a>

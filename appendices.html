@@ -322,9 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="setup-of-apache-arrow" class="section level2">
 <h2><span class="header-section-number">13.2</span> Setup of Apache Arrow</h2>
 <p>It is worth noting that the implementation of Apache Arrow <a href="https://github.com/apache/arrow/tree/master/r">into R</a> arrived on <a href="https://cran.r-project.org/package=arrow">CRAN</a> early August 2019, which means at the time of writing of the relevant chapter it was on CRAN about 3 weeks. The functionality also depends on the <a href="https://arrow.apache.org/install/">Arrow C++ library</a>, so installation is a bit more difficult than with some other R packages.</p>
-<p>Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.14.1, sparklyr 1.0.2 and the 0.14.1 version of the C++ libraries.
-Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.14.1, sparklyr 1.0.2 and the 0.14.1 version of the C++ libraries.</p>
-<p>The aforementioned <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">Docker image</a> has both the C++ libraries and the R arrow package available for use.</p>
+<p>Care should also be taken with regards to the capability of the C++ library, the arrow R package version and the version of sparklyr. We had good results with using the R package arrow version 0.15.1.1, sparklyr 1.0.5 and the 0.15.1 version of the C++ libraries. The aforementioned <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">Docker image</a> has both the C++ libraries and the R arrow package available for use.</p>
 
 </div>
 </div>

@@ -277,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The following code chunks will prepare the R session for us to be able to experiment with the code presented in the book. We will attach the needed R packages, initialize and connect to a local Spark instance and copy the <code>weather</code> and <code>flights</code> datasets from the <span class="rpackage">nycflights13</span> package to the Spark instance such that we can work with them in our examples.</p>
 <div id="packages-and-data" class="section level2">
 <h2><span class="header-section-number">4.1</span> Packages and data</h2>
-<p>We will be using the sparklyr package to interface with Spark and since this package works very well with the <span class="rpackage">dplyr</span> package and its vocabulary, we will take advantage of the dplyr syntax and the pipe operator. As a source of data for our code examples we will use the <span class="rpackage">nycflights13</span> package that conveniently provides airline data for flights departing New York City in 2013.</p>
+<p>We will be using the sparklyr package to interface with Spark and since this package works very well with the <span class="rpackage">dplyr</span> package and its vocabulary, we will take advantage of the dplyr syntax and the pipe operator. As a source of data for our code examples, we will use the <span class="rpackage">nycflights13</span> package that conveniently provides airline data for flights departing New York City in 2013.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Attach packages</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">suppressPackageStartupMessages</span>({</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="kw">library</span>(sparklyr)</a>
@@ -319,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="first-glance-at-the-data" class="section level2">
 <h2><span class="header-section-number">4.3</span> First glance at the data</h2>
-<p>To make sure our datasets are available in the Spark instance, we can look at the first few rows of the two datasets we have copied to Spark. Notice how the print shows <code>Source: spark&lt;?&gt; [?? x</code>, telling us that the data indeed comes from a Spark instance and the data frames have an unknown amount of rows. This is because Spark will do minimal work to show us just the first 6 rows, instead of going though the entire dataset. We will talk more about the lazy nature of Spark operations in the later chapters.</p>
+<p>To make sure our datasets are available in the Spark instance, we can look at the first few rows of the two datasets we have copied to Spark. Notice how the print shows <code>Source: spark&lt;?&gt; [?? x</code>, telling us that the data indeed comes from a Spark instance and the data frames have an unknown amount of rows. This is because Spark will do minimal work to show us just the first 6 rows, instead of going through the entire dataset. We will talk more about the lazy nature of Spark operations in the later chapters.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">head</span>(tbl_flights)</a></code></pre></div>
 <pre><code>## # Source: spark&lt;?&gt; [?? x 20]
 ##      id  year month   day dep_time sched_dep_time dep_delay arr_time

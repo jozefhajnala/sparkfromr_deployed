@@ -274,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="using-a-ready-made-docker-image" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Using a ready-made Docker Image</h1>
-<p>For the purpose of this book, a <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">Docker image</a> was built which you can use to run all the code chunks present in it withouth issues.</p>
+<p>For the purpose of this book, a <a href="https://hub.docker.com/repository/docker/jozefhajnala/sparkfromr">Docker image</a> was built which you can use to run all the code chunks present in it without issues.</p>
 <div id="installing-docker" class="section level2">
 <h2><span class="header-section-number">3.1</span> Installing Docker</h2>
 <p>The installation instructions for Docker are very accessible and should get you going fairly quickly. We provide links to them, please choose based on your platform:</p>
@@ -290,14 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="using-the-docker-image-with-r" class="section level2">
 <h2><span class="header-section-number">3.2</span> Using the Docker image with R</h2>
-<p>The Docker image we prepared contains all the prerequisites needed to run all the code chunks present in this book. In fact, this very image is used to render the book itself. If you are interested in the details around the image, please feel free to visit the <a href="https://github.com/jozefhajnala/sparkfromr_docker">GitHub repository</a> from where it is openly accessible.</p>
+<p>The Docker image we prepared contains all the prerequisites needed to run all the code chunks present in this book as this very image is used to render the book itself. If you are interested in the details around the image, please feel free to visit the <a href="https://github.com/jozefhajnala/sparkfromr_docker">GitHub repository</a> from where it is openly accessible.</p>
 <p>Now we look at how we use the image in practice in a few ways.</p>
 <div id="interactively-with-rstudio" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Interactively with RStudio</h3>
 <p>Running the following line of code in a terminal should create a container and expose RStudio for use. If you are using RStudio 1.1 or newer, the <a href="https://jozef.io/r905-rstudio-terminal/">Terminal functionality</a> is built into RStudio itself.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Your can replace pass with a password of your choice</span></a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># You can replace pass below with a password of your choice</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="ex">docker</span> run -d -p 8787:8787 -e PASSWORD=pass --name rstudio jozefhajnala/sparkfromr:latest</a></code></pre></div>
-<p>After running the above line, open your favourite web browser such as Google Chrome or Firefox and navigate to <a href="http://localhost:8787" class="uri">http://localhost:8787</a>. You should be greeted by the RStudio login screen where you can use the following to login:</p>
+<p>After running the above line, open your favorite web browser such as Google Chrome or Firefox and navigate to <a href="http://localhost:8787" class="uri">http://localhost:8787</a>. You should be greeted by the RStudio login screen where you can use the following to log in:</p>
 <ul>
 <li>Username: <code>rstudio</code></li>
 <li>Password: <code>pass</code> (or the one you chose above)</li>

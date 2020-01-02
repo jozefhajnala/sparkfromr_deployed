@@ -301,32 +301,32 @@ Gandalf the White
 <pre><code>## [[1]]
 ## &lt;jobj[828]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.util.CallSite org.apache.spark.SparkContext.org$apache$spark$SparkContext$$creationSite()
+##   public java.util.concurrent.atomic.AtomicBoolean org.apache.spark.SparkContext.stopped()
 ## 
 ## [[2]]
 ## &lt;jobj[829]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.SparkConf org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_conf()
+##   public org.apache.spark.util.CallSite org.apache.spark.SparkContext.org$apache$spark$SparkContext$$creationSite()
 ## 
 ## [[3]]
 ## &lt;jobj[830]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.SparkEnv org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_env()
+##   public org.apache.spark.SparkConf org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_conf()
 ## 
 ## [[4]]
 ## &lt;jobj[831]&gt;
 ##   java.lang.reflect.Method
-##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_progressBar()
+##   public org.apache.spark.SparkEnv org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_env()
 ## 
 ## [[5]]
 ## &lt;jobj[832]&gt;
 ##   java.lang.reflect.Method
-##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_ui()
+##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_progressBar()
 ## 
 ## [[6]]
 ## &lt;jobj[833]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.rpc.RpcEndpointRef org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_heartbeatReceiver()</code></pre>
+##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_ui()</code></pre>
 <p>We can see that the <code>invoke()</code> chain has returned a list of Java object references, each of them of class <code>java.lang.reflect.Method</code>. This is a good result, but the output is not very user-friendly from the R user perspective. Let us write a small wrapper that will return a some of the method’s details in a more readable fashion, for instance the return type and an overview of parameters.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">getMethodDetails &lt;-<span class="st"> </span><span class="cf">function</span>(mthd) {</a>
 <a class="sourceLine" id="cb122-2" data-line-number="2">  returnType &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getReturnType&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a>
@@ -618,7 +618,7 @@ Gandalf the White
 </div>
 <div id="conclusion-1" class="section level2">
 <h2><span class="header-section-number">10.5</span> Conclusion</h2>
-<p>In this chapter, we have looked at using the Java reflection API with <span class="rpackage">sparklyr</span>’s <code>invoke()</code> interface to get useful insight on available methods for different object types that can be used in the context of Spark, but also in other contexts. Using invoke logging, we have also shown how the different <span class="rpackage">sparklyr</span> interfacing methods communicate with Spark under the hood.</p>
+<p>In this chapter, we have looked at using the Java reflection API with <span class="rpackage">sparklyr</span>’s <code>invoke()</code> interface to get useful insight on available methods for different object types that can be used in the context of Spark, but also other contexts. Using invoke logging, we have also shown how the different <span class="rpackage">sparklyr</span> interfacing methods communicate with Spark under the hood.</p>
 
 </div>
 </div>
