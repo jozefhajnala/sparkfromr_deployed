@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2020-01-03" />
+<meta name="date" content="2020-02-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -294,46 +294,50 @@ Gandalf the White
 <h2><span class="header-section-number">10.2</span> Using the Java reflection API to list the available methods</h2>
 <p>The <code>invoke()</code> interface is powerful, but also a bit hidden from the eyes as we do not immediately know what methods are available for which object classes. We can circumvent that using the <code>getMethods</code> method which (in short) returns an array of Method objects reflecting public member methods of the class.</p>
 <p>For instance, retrieving a list of methods for the <code>org.apache.spark.SparkContext</code> class:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">mthds &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb120-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
-<a class="sourceLine" id="cb120-4" data-line-number="4"><span class="kw">head</span>(mthds)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">mthds &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="st">  </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb120-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb120-4" data-line-number="4"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
+<a class="sourceLine" id="cb120-5" data-line-number="5"><span class="kw">head</span>(mthds)</a></code></pre></div>
 <pre><code>## [[1]]
 ## &lt;jobj[828]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.util.CallSite org.apache.spark.SparkContext.org$apache$spark$SparkContext$$creationSite()
+##   public java.util.concurrent.atomic.AtomicBoolean org.apache.spark.SparkContext.stopped()
 ## 
 ## [[2]]
 ## &lt;jobj[829]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.SparkConf org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_conf()
+##   public org.apache.spark.util.CallSite org.apache.spark.SparkContext.org$apache$spark$SparkContext$$creationSite()
 ## 
 ## [[3]]
 ## &lt;jobj[830]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.SparkEnv org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_env()
+##   public org.apache.spark.SparkConf org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_conf()
 ## 
 ## [[4]]
 ## &lt;jobj[831]&gt;
 ##   java.lang.reflect.Method
-##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_progressBar()
+##   public org.apache.spark.SparkEnv org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_env()
 ## 
 ## [[5]]
 ## &lt;jobj[832]&gt;
 ##   java.lang.reflect.Method
-##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_ui()
+##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_progressBar()
 ## 
 ## [[6]]
 ## &lt;jobj[833]&gt;
 ##   java.lang.reflect.Method
-##   public org.apache.spark.rpc.RpcEndpointRef org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_heartbeatReceiver()</code></pre>
-<p>We can see that the <code>invoke()</code> chain has returned a list of Java object references, each of them of class <code>java.lang.reflect.Method</code>. This is a good result, but the output is not very user-friendly from the R user perspective. Let us write a small wrapper that will return a some of the method’s details in a more readable fashion, for instance the return type and an overview of parameters.</p>
+##   public scala.Option org.apache.spark.SparkContext.org$apache$spark$SparkContext$$_ui()</code></pre>
+<p>We can see that the <code>invoke()</code> chain has returned a list of Java object references, each of them of class <code>java.lang.reflect.Method</code>. This is a good result, but the output is not very user-friendly from the R user perspective. Let us write a small wrapper that will return some of the method’s details in a more readable fashion, for instance the return type and an overview of parameters.</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">getMethodDetails &lt;-<span class="st"> </span><span class="cf">function</span>(mthd) {</a>
-<a class="sourceLine" id="cb122-2" data-line-number="2">  returnType &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getReturnType&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a>
-<a class="sourceLine" id="cb122-3" data-line-number="3">  params &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getParameters&quot;</span>)</a>
-<a class="sourceLine" id="cb122-4" data-line-number="4">  params &lt;-<span class="st"> </span><span class="kw">vapply</span>(params, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb122-5" data-line-number="5">  <span class="kw">c</span>(<span class="dt">returnType =</span> returnType, <span class="dt">params =</span> <span class="kw">paste</span>(params, <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>))</a>
-<a class="sourceLine" id="cb122-6" data-line-number="6">}</a></code></pre></div>
+<a class="sourceLine" id="cb122-2" data-line-number="2">  returnType &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb122-3" data-line-number="3"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;getReturnType&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb122-4" data-line-number="4"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;toString&quot;</span>)</a>
+<a class="sourceLine" id="cb122-5" data-line-number="5">  params &lt;-<span class="st"> </span>mthd <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb122-6" data-line-number="6"><span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;getParameters&quot;</span>)</a>
+<a class="sourceLine" id="cb122-7" data-line-number="7">  params &lt;-<span class="st"> </span><span class="kw">vapply</span>(params, invoke, <span class="st">&quot;toString&quot;</span>, <span class="dt">FUN.VALUE =</span> <span class="kw">character</span>(<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb122-8" data-line-number="8">  <span class="kw">c</span>(<span class="dt">returnType =</span> returnType, <span class="dt">params =</span> <span class="kw">paste</span>(params, <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>))</a>
+<a class="sourceLine" id="cb122-9" data-line-number="9">}</a></code></pre></div>
 <p>Finally, to get a nice overview, we can make another helper function that will return a named list of methods for an object’s class, including their return types and overview of parameters.</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">getAvailableMethods &lt;-<span class="st"> </span><span class="cf">function</span>(jobj) {</a>
 <a class="sourceLine" id="cb123-2" data-line-number="2">  mthds &lt;-<span class="st"> </span>jobj <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getClass&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;getMethods&quot;</span>)</a>
@@ -416,8 +420,8 @@ Gandalf the White
 <div id="using-helpers-to-explore-the-methods" class="section level3">
 <h3><span class="header-section-number">10.3.1</span> Using helpers to explore the methods</h3>
 <p>We can also use the helper functions to investigate more. For instance, we see that there is a <code>getConf</code> method avaiable to us. Looking at the object reference however does not provide useful information, so we can list the methods for that class and look for <code>&quot;get&quot;</code> methods that would show us the configuration.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">spark_conf &lt;-<span class="st"> </span>sc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_context</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;conf&quot;</span>)</a>
-<a class="sourceLine" id="cb130-2" data-line-number="2">spark_conf_methods &lt;-<span class="st"> </span>spark_conf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">getAvailableMethods</span>() </a>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">spark_conf &lt;-<span class="st"> </span><span class="kw">spark_context</span>(sc) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;conf&quot;</span>)</a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">spark_conf_methods &lt;-<span class="st"> </span><span class="kw">getAvailableMethods</span>(spark_conf) </a>
 <a class="sourceLine" id="cb130-3" data-line-number="3">spark_conf_get_methods &lt;-<span class="st"> </span>spark_conf_methods <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb130-4" data-line-number="4"><span class="st">  </span><span class="kw">names</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb130-5" data-line-number="5"><span class="st">  </span><span class="kw">grep</span>(<span class="dt">pattern =</span> <span class="st">&quot;get&quot;</span>, ., <span class="dt">value =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
@@ -555,7 +559,7 @@ Gandalf the White
 ## Invoking fieldNames</code></pre>
 <div id="using-dplyr-verbs-translated-with-dbplyr" class="section level3">
 <h3><span class="header-section-number">10.4.1</span> Using dplyr verbs translated with dbplyr</h3>
-<p>Now that the setup is complete, we use the <span class="rpackage">dplyr</span> verb approach to retrieve the count of rows and look the invocations that this entails.</p>
+<p>Now that the setup is complete, we use the <span class="rpackage">dplyr</span> verb approach to retrieve the count of rows and look at the invocations that this entails.</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## Invoking sql
 ## Invoking sql
@@ -577,7 +581,7 @@ Gandalf the White
 ##        n
 ##    &lt;dbl&gt;
 ## 1 336776</code></pre>
-<p>We see multiple invocations do the <code>sql</code> method and also the <code>columns</code> method. This makes sense since the <span class="rpackage">dplyr</span> verb approach actually works by translating the commands into Spark SQL via <span class="rpackage">dbplyr</span> and then sends those translated commands to Spark via that interface.</p>
+<p>We see multiple invocations to the <code>sql</code> method and also the <code>columns</code> method. This makes sense since the <span class="rpackage">dplyr</span> verb approach actually works by translating the commands into Spark SQL via <span class="rpackage">dbplyr</span> and then sends those translated commands to Spark via that interface.</p>
 </div>
 <div id="using-dbi-to-send-queries" class="section level3">
 <h3><span class="header-section-number">10.4.2</span> Using DBI to send queries</h3>
@@ -599,7 +603,9 @@ Gandalf the White
 <div id="using-the-invoke-interface" class="section level3">
 <h3><span class="header-section-number">10.4.3</span> Using the invoke interface</h3>
 <p>Looking at the invocations that get executed using the <code>invoke()</code> interface.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">tbl_flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">  </span><span class="kw">spark_dataframe</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb149-3" data-line-number="3"><span class="st">  </span><span class="kw">invoke</span>(<span class="st">&quot;count&quot;</span>)</a></code></pre></div>
 <pre><code>## Invoking sql
 ## Invoking count</code></pre>
 <pre><code>## [1] 336776</code></pre>

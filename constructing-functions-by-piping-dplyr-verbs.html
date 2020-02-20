@@ -24,7 +24,7 @@
 <meta name="author" content="Jozef Hajnala" />
 
 
-<meta name="date" content="2020-01-03" />
+<meta name="date" content="2020-02-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -393,7 +393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="a-more-complex-use-case---joins-group-bys-and-aggregations" class="section level2">
 <h2><span class="header-section-number">7.2</span> A more complex use case - Joins, group bys, and aggregations</h2>
-<p>The dplyr syntax makes it very easy to construct more complex aggregations across multiple Spark DataFrames. An example of a function that joins 2 Spark DataFrames and computes a mean of a selected column, grouped by another column can look as follows:</p>
+<p>The <span class="rpackage">dplyr</span> syntax makes it very easy to construct more complex aggregations across multiple Spark DataFrames. An example of a function that joins 2 Spark DataFrames and computes a mean of a selected column, grouped by another column can look as follows:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">joingrpagg_dplyr &lt;-<span class="st"> </span><span class="cf">function</span>(</a>
 <a class="sourceLine" id="cb53-2" data-line-number="2">  df1, df2, </a>
 <a class="sourceLine" id="cb53-3" data-line-number="3">  <span class="dt">joinColNames =</span> <span class="kw">setdiff</span>(<span class="kw">intersect</span>(<span class="kw">colnames</span>(df1), <span class="kw">colnames</span>(df2)), <span class="st">&quot;id&quot;</span>),</a>
@@ -543,12 +543,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="portability-of-used-methods" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> Portability of used methods</h3>
-<p>And, rather obviously, when using Hive built-in functions in the dplyr-based function, we will most likely not be able to execute it on the local data frames, as we have <a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r">seen previously</a>.</p>
+<p>And, rather obviously, when using Hive built-in functions in the <span class="rpackage">dplyr</span>-based function, we will most likely not be able to execute it on the local data frames, as we have <a href="communication-between-spark-and-sparklyr.html#a-hive-built-in-function-not-existing-in-r">seen previously</a>.</p>
 </div>
 </div>
 <div id="conclusion-take-home-messages-1" class="section level2">
 <h2><span class="header-section-number">7.4</span> Conclusion, take-home messages</h2>
-<p>In this chapter, we have shown that we can take advantage of the performance of Spark while still writing arbitrary R functions by using dplyr syntax, which supports translation to Spark SQL using the <span class="rpackage">dbplyr</span> backend. We have also looked at some important differences when applying the same dplyr transformations to local and remote data sets.</p>
+<p>In this chapter, we have shown that we can take advantage of the performance of Spark while still writing arbitrary R functions by using <span class="rpackage">dplyr</span> syntax, which supports translation to Spark SQL using the <span class="rpackage">dbplyr</span> backend. We have also looked at some important differences when applying the same dplyr transformations to local and remote data sets.</p>
 <p>With this approach, we can use R development best practices, testing, and documentation methods in a standard way when writing our R packages, getting the best of both worlds - Apache Spark for performance and R for convenient development of data science applications.</p>
 <p>In the next chapter, we will look at writing R functions that will be using SQL directly, instead of relying on <span class="rpackage">dbplyr</span> for the translation, and how we can efficiently send them to the Spark instance for execution and optionally retrieve the results to our R session.</p>
 
